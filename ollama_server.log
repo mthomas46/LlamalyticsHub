@@ -1,0 +1,1582 @@
+2025-05-12 08:06:16,534 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:06:32,879 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:11:35,655 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:11:35,920 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.130.140:5000
+2025-05-12 08:11:35,920 INFO [33mPress CTRL+C to quit[0m
+2025-05-12 08:11:35,921 INFO  * Restarting with stat
+2025-05-12 08:11:36,108 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:11:36,126 WARNING  * Debugger is active!
+2025-05-12 08:11:36,142 INFO  * Debugger PIN: 770-879-636
+2025-05-12 08:13:07,174 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:13:07,197 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.130.140:5000
+2025-05-12 08:13:07,197 INFO [33mPress CTRL+C to quit[0m
+2025-05-12 08:13:07,197 INFO  * Restarting with stat
+2025-05-12 08:13:07,360 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:13:07,378 WARNING  * Debugger is active!
+2025-05-12 08:13:07,387 INFO  * Debugger PIN: 770-879-636
+2025-05-12 08:16:00,185 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:16:00,222 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.130.140:5000
+2025-05-12 08:16:00,222 INFO [33mPress CTRL+C to quit[0m
+2025-05-12 08:16:00,224 INFO  * Restarting with stat
+2025-05-12 08:16:00,387 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:16:00,404 WARNING  * Debugger is active!
+2025-05-12 08:16:00,413 INFO  * Debugger PIN: 770-879-636
+2025-05-12 08:19:10,032 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:19:10,032 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:19:16,795 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:19:16,842 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.130.140:5000
+2025-05-12 08:19:16,842 INFO [33mPress CTRL+C to quit[0m
+2025-05-12 08:19:16,843 INFO  * Restarting with stat
+2025-05-12 08:19:17,012 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-12 08:19:17,030 WARNING  * Debugger is active!
+2025-05-12 08:19:17,045 INFO  * Debugger PIN: 770-879-636
+2025-05-13 11:32:47,721 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 11:32:47,722 INFO === Ollama Server Startup ===
+2025-05-13 11:32:47,722 INFO Mode: development (Flask app.run)
+2025-05-13 11:32:47,722 INFO Host: 0.0.0.0
+2025-05-13 11:32:47,722 INFO Port: 5000
+2025-05-13 11:32:47,722 INFO Process ID: 50871
+2025-05-13 11:32:47,722 INFO CPU count: 16
+2025-05-13 11:32:47,722 INFO Log file: ollama_server.log
+2025-05-13 11:32:47,722 INFO API key set: no
+2025-05-13 11:32:47,722 INFO GitHub token set: no
+2025-05-13 11:32:47,737 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:32:47,737 INFO Server is starting up...
+2025-05-13 11:32:47,737 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:32:47,737 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:32:47,737 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:32:47,737 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:32:47,737 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:32:47,737 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:32:47,737 INFO Server ready to accept requests.
+2025-05-13 11:32:47,737 INFO === Ollama Server Startup ===
+2025-05-13 11:32:47,737 INFO Mode: development (Flask app.run)
+2025-05-13 11:32:47,737 INFO Host: 0.0.0.0
+2025-05-13 11:32:47,737 INFO Port: 5000
+2025-05-13 11:32:47,737 INFO Process ID: 50871
+2025-05-13 11:32:47,737 INFO CPU count: 16
+2025-05-13 11:32:47,737 INFO Log file: ollama_server.log
+2025-05-13 11:32:47,737 INFO API key set: no
+2025-05-13 11:32:47,737 INFO GitHub token set: no
+2025-05-13 11:32:47,739 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:32:47,739 INFO Server is starting up...
+2025-05-13 11:32:47,739 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:32:47,739 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:32:47,739 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:32:47,739 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:32:47,739 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:32:47,739 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:32:47,739 INFO Server ready to accept requests.
+2025-05-13 11:32:47,799 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.31.67:5000
+2025-05-13 11:32:47,799 INFO [33mPress CTRL+C to quit[0m
+2025-05-13 11:32:47,800 INFO  * Restarting with stat
+2025-05-13 11:32:47,960 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 11:32:47,961 INFO === Ollama Server Startup ===
+2025-05-13 11:32:47,961 INFO Mode: development (Flask app.run)
+2025-05-13 11:32:47,961 INFO Host: 0.0.0.0
+2025-05-13 11:32:47,961 INFO Port: 5000
+2025-05-13 11:32:47,961 INFO Process ID: 50923
+2025-05-13 11:32:47,961 INFO CPU count: 16
+2025-05-13 11:32:47,961 INFO Log file: ollama_server.log
+2025-05-13 11:32:47,961 INFO API key set: no
+2025-05-13 11:32:47,961 INFO GitHub token set: no
+2025-05-13 11:32:47,963 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:32:47,963 INFO Server is starting up...
+2025-05-13 11:32:47,963 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:32:47,963 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:32:47,963 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:32:47,963 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:32:47,963 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:32:47,963 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:32:47,963 INFO Server ready to accept requests.
+2025-05-13 11:32:47,963 INFO === Ollama Server Startup ===
+2025-05-13 11:32:47,963 INFO Mode: development (Flask app.run)
+2025-05-13 11:32:47,963 INFO Host: 0.0.0.0
+2025-05-13 11:32:47,963 INFO Port: 5000
+2025-05-13 11:32:47,963 INFO Process ID: 50923
+2025-05-13 11:32:47,963 INFO CPU count: 16
+2025-05-13 11:32:47,963 INFO Log file: ollama_server.log
+2025-05-13 11:32:47,963 INFO API key set: no
+2025-05-13 11:32:47,963 INFO GitHub token set: no
+2025-05-13 11:32:47,965 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:32:47,965 INFO Server is starting up...
+2025-05-13 11:32:47,965 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:32:47,965 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:32:47,965 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:32:47,965 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:32:47,965 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:32:47,965 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:32:47,965 INFO Server ready to accept requests.
+2025-05-13 11:32:47,985 WARNING  * Debugger is active!
+2025-05-13 11:32:47,994 INFO  * Debugger PIN: 770-879-636
+2025-05-13 11:35:01,113 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 11:35:01,114 INFO === Ollama Server Startup ===
+2025-05-13 11:35:01,114 INFO Mode: development (Flask app.run)
+2025-05-13 11:35:01,114 INFO Host: 0.0.0.0
+2025-05-13 11:35:01,114 INFO Port: 5000
+2025-05-13 11:35:01,114 INFO Process ID: 62106
+2025-05-13 11:35:01,114 INFO CPU count: 16
+2025-05-13 11:35:01,114 INFO Log file: ollama_server.log
+2025-05-13 11:35:01,114 INFO API key set: no
+2025-05-13 11:35:01,114 INFO GitHub token set: no
+2025-05-13 11:35:01,116 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:35:01,116 INFO Server is starting up...
+2025-05-13 11:35:01,116 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:35:01,116 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:35:01,116 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:35:01,116 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:35:01,116 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:35:01,116 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:35:01,116 INFO Server ready to accept requests.
+2025-05-13 11:35:01,116 INFO === Ollama Server Startup ===
+2025-05-13 11:35:01,116 INFO Mode: development (Flask app.run)
+2025-05-13 11:35:01,116 INFO Host: 0.0.0.0
+2025-05-13 11:35:01,116 INFO Port: 5000
+2025-05-13 11:35:01,116 INFO Process ID: 62106
+2025-05-13 11:35:01,116 INFO CPU count: 16
+2025-05-13 11:35:01,116 INFO Log file: ollama_server.log
+2025-05-13 11:35:01,116 INFO API key set: no
+2025-05-13 11:35:01,116 INFO GitHub token set: no
+2025-05-13 11:35:01,118 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:35:01,118 INFO Server is starting up...
+2025-05-13 11:35:01,118 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:35:01,118 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:35:01,118 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:35:01,118 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:35:01,118 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:35:01,118 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:35:01,118 INFO Server ready to accept requests.
+2025-05-13 11:35:01,143 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.31.67:5000
+2025-05-13 11:35:01,143 INFO [33mPress CTRL+C to quit[0m
+2025-05-13 11:35:01,143 INFO  * Restarting with stat
+2025-05-13 11:35:01,306 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 11:35:01,306 INFO === Ollama Server Startup ===
+2025-05-13 11:35:01,306 INFO Mode: development (Flask app.run)
+2025-05-13 11:35:01,306 INFO Host: 0.0.0.0
+2025-05-13 11:35:01,306 INFO Port: 5000
+2025-05-13 11:35:01,306 INFO Process ID: 62133
+2025-05-13 11:35:01,306 INFO CPU count: 16
+2025-05-13 11:35:01,306 INFO Log file: ollama_server.log
+2025-05-13 11:35:01,306 INFO API key set: no
+2025-05-13 11:35:01,306 INFO GitHub token set: no
+2025-05-13 11:35:01,308 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:35:01,308 INFO Server is starting up...
+2025-05-13 11:35:01,308 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:35:01,308 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:35:01,308 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:35:01,308 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:35:01,308 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:35:01,308 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:35:01,308 INFO Server ready to accept requests.
+2025-05-13 11:35:01,308 INFO === Ollama Server Startup ===
+2025-05-13 11:35:01,309 INFO Mode: development (Flask app.run)
+2025-05-13 11:35:01,309 INFO Host: 0.0.0.0
+2025-05-13 11:35:01,309 INFO Port: 5000
+2025-05-13 11:35:01,309 INFO Process ID: 62133
+2025-05-13 11:35:01,309 INFO CPU count: 16
+2025-05-13 11:35:01,309 INFO Log file: ollama_server.log
+2025-05-13 11:35:01,309 INFO API key set: no
+2025-05-13 11:35:01,309 INFO GitHub token set: no
+2025-05-13 11:35:01,310 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 11:35:01,310 INFO Server is starting up...
+2025-05-13 11:35:01,310 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 11:35:01,310 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 11:35:01,310 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 11:35:01,310 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 11:35:01,310 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 11:35:01,310 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 11:35:01,310 INFO Server ready to accept requests.
+2025-05-13 11:35:01,326 WARNING  * Debugger is active!
+2025-05-13 11:35:01,335 INFO  * Debugger PIN: 732-849-768
+2025-05-13 11:35:01,914 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:01,915 INFO Generating response for prompt: ping...
+2025-05-13 11:35:04,920 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:04,921 INFO Generating response for prompt: ping...
+2025-05-13 11:35:07,926 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:07,926 INFO Generating response for prompt: ping...
+2025-05-13 11:35:10,934 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:10,935 INFO Generating response for prompt: ping...
+2025-05-13 11:35:12,145 INFO Generation complete.
+2025-05-13 11:35:12,146 INFO 127.0.0.1 - - [13/May/2025 11:35:12] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:35:13,940 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:13,940 INFO Generating response for prompt: ping...
+2025-05-13 11:35:15,678 INFO Generation complete.
+2025-05-13 11:35:15,678 INFO 127.0.0.1 - - [13/May/2025 11:35:15] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:35:16,947 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:16,948 INFO Generating response for prompt: ping...
+2025-05-13 11:35:17,775 INFO Generation complete.
+2025-05-13 11:35:17,776 INFO 127.0.0.1 - - [13/May/2025 11:35:17] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:35:19,955 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:19,955 INFO Generating response for prompt: ping...
+2025-05-13 11:35:21,581 INFO Generation complete.
+2025-05-13 11:35:21,581 INFO 127.0.0.1 - - [13/May/2025 11:35:21] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:35:22,964 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:22,964 INFO Generating response for prompt: ping...
+2025-05-13 11:35:25,970 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 11:35:25,971 INFO Generating response for prompt: ping...
+2025-05-13 11:35:27,239 INFO Generation complete.
+2025-05-13 11:35:27,240 INFO 127.0.0.1 - - [13/May/2025 11:35:27] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:35:29,098 INFO Generation complete.
+2025-05-13 11:35:29,099 INFO 127.0.0.1 - - [13/May/2025 11:35:29] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:35:35,886 INFO Generation complete.
+2025-05-13 11:35:35,887 INFO 127.0.0.1 - - [13/May/2025 11:35:35] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:35:58,042 INFO Generation complete.
+2025-05-13 11:35:58,046 INFO 127.0.0.1 - - [13/May/2025 11:35:58] "GET /health HTTP/1.1" 200 -
+2025-05-13 11:36:05,006 INFO Generation complete.
+2025-05-13 11:36:05,009 INFO 127.0.0.1 - - [13/May/2025 11:36:05] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:25:48,081 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:25:48,081 INFO === Ollama Server Startup ===
+2025-05-13 15:25:48,081 INFO Mode: development (Flask app.run)
+2025-05-13 15:25:48,081 INFO Host: 0.0.0.0
+2025-05-13 15:25:48,081 INFO Port: 5000
+2025-05-13 15:25:48,081 INFO Process ID: 88257
+2025-05-13 15:25:48,081 INFO CPU count: 16
+2025-05-13 15:25:48,081 INFO Log file: ollama_server.log
+2025-05-13 15:25:48,081 INFO API key set: no
+2025-05-13 15:25:48,081 INFO GitHub token set: no
+2025-05-13 15:25:48,144 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:25:48,144 INFO Server is starting up...
+2025-05-13 15:25:48,144 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:25:48,144 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:25:48,145 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:25:48,145 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:25:48,145 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:25:48,145 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:25:48,145 INFO Server ready to accept requests.
+2025-05-13 15:25:48,145 INFO === Ollama Server Startup ===
+2025-05-13 15:25:48,145 INFO Mode: development (Flask app.run)
+2025-05-13 15:25:48,145 INFO Host: 0.0.0.0
+2025-05-13 15:25:48,145 INFO Port: 5000
+2025-05-13 15:25:48,145 INFO Process ID: 88257
+2025-05-13 15:25:48,145 INFO CPU count: 16
+2025-05-13 15:25:48,145 INFO Log file: ollama_server.log
+2025-05-13 15:25:48,145 INFO API key set: no
+2025-05-13 15:25:48,145 INFO GitHub token set: no
+2025-05-13 15:25:48,147 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:25:48,147 INFO Server is starting up...
+2025-05-13 15:25:48,147 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:25:48,147 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:25:48,147 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:25:48,147 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:25:48,147 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:25:48,147 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:25:48,147 INFO Server ready to accept requests.
+2025-05-13 15:26:09,702 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:26:09,702 INFO Generating response for prompt: ping...
+2025-05-13 15:26:18,845 INFO Generation complete.
+2025-05-13 15:26:18,845 INFO 127.0.0.1 - - [13/May/2025 15:26:18] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:26:32,091 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:26:32,091 INFO Generating response for prompt: ping...
+2025-05-13 15:26:32,559 INFO Generation complete.
+2025-05-13 15:26:32,559 INFO 127.0.0.1 - - [13/May/2025 15:26:32] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:26:34,529 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:26:34,530 INFO === Ollama Server Startup ===
+2025-05-13 15:26:34,530 INFO Mode: development (Flask app.run)
+2025-05-13 15:26:34,530 INFO Host: 0.0.0.0
+2025-05-13 15:26:34,530 INFO Port: 5000
+2025-05-13 15:26:34,530 INFO Process ID: 94759
+2025-05-13 15:26:34,530 INFO CPU count: 16
+2025-05-13 15:26:34,530 INFO Log file: ollama_server.log
+2025-05-13 15:26:34,530 INFO API key set: no
+2025-05-13 15:26:34,530 INFO GitHub token set: no
+2025-05-13 15:26:34,532 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:26:34,532 INFO Server is starting up...
+2025-05-13 15:26:34,532 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:26:34,532 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:26:34,532 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:26:34,532 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:26:34,532 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:26:34,532 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:26:34,532 INFO Server ready to accept requests.
+2025-05-13 15:26:34,532 INFO === Ollama Server Startup ===
+2025-05-13 15:26:34,532 INFO Mode: development (Flask app.run)
+2025-05-13 15:26:34,532 INFO Host: 0.0.0.0
+2025-05-13 15:26:34,532 INFO Port: 5000
+2025-05-13 15:26:34,532 INFO Process ID: 94759
+2025-05-13 15:26:34,532 INFO CPU count: 16
+2025-05-13 15:26:34,532 INFO Log file: ollama_server.log
+2025-05-13 15:26:34,532 INFO API key set: no
+2025-05-13 15:26:34,532 INFO GitHub token set: no
+2025-05-13 15:26:34,534 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:26:34,534 INFO Server is starting up...
+2025-05-13 15:26:34,534 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:26:34,534 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:26:34,534 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:26:34,534 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:26:34,534 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:26:34,534 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:26:34,534 INFO Server ready to accept requests.
+2025-05-13 15:26:34,564 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.31.67:5000
+2025-05-13 15:26:34,564 INFO [33mPress CTRL+C to quit[0m
+2025-05-13 15:26:34,564 INFO  * Restarting with stat
+2025-05-13 15:26:34,739 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:26:34,740 INFO === Ollama Server Startup ===
+2025-05-13 15:26:34,740 INFO Mode: development (Flask app.run)
+2025-05-13 15:26:34,740 INFO Host: 0.0.0.0
+2025-05-13 15:26:34,740 INFO Port: 5000
+2025-05-13 15:26:34,740 INFO Process ID: 94789
+2025-05-13 15:26:34,740 INFO CPU count: 16
+2025-05-13 15:26:34,740 INFO Log file: ollama_server.log
+2025-05-13 15:26:34,740 INFO API key set: no
+2025-05-13 15:26:34,740 INFO GitHub token set: no
+2025-05-13 15:26:34,742 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:26:34,742 INFO Server is starting up...
+2025-05-13 15:26:34,742 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:26:34,742 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:26:34,742 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:26:34,742 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:26:34,742 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:26:34,742 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:26:34,742 INFO Server ready to accept requests.
+2025-05-13 15:26:34,742 INFO === Ollama Server Startup ===
+2025-05-13 15:26:34,742 INFO Mode: development (Flask app.run)
+2025-05-13 15:26:34,742 INFO Host: 0.0.0.0
+2025-05-13 15:26:34,742 INFO Port: 5000
+2025-05-13 15:26:34,742 INFO Process ID: 94789
+2025-05-13 15:26:34,742 INFO CPU count: 16
+2025-05-13 15:26:34,742 INFO Log file: ollama_server.log
+2025-05-13 15:26:34,742 INFO API key set: no
+2025-05-13 15:26:34,742 INFO GitHub token set: no
+2025-05-13 15:26:34,744 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:26:34,744 INFO Server is starting up...
+2025-05-13 15:26:34,744 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:26:34,744 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:26:34,744 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:26:34,744 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:26:34,744 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:26:34,744 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:26:34,744 INFO Server ready to accept requests.
+2025-05-13 15:26:34,763 WARNING  * Debugger is active!
+2025-05-13 15:26:34,772 INFO  * Debugger PIN: 732-849-768
+2025-05-13 15:26:35,249 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:26:35,249 INFO Generating response for prompt: ping...
+2025-05-13 15:26:38,257 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:26:38,257 INFO Generating response for prompt: ping...
+2025-05-13 15:26:38,407 INFO Generation complete.
+2025-05-13 15:26:38,408 INFO 127.0.0.1 - - [13/May/2025 15:26:38] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:26:41,263 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:26:41,263 INFO Generating response for prompt: ping...
+2025-05-13 15:26:42,025 INFO Generation complete.
+2025-05-13 15:26:42,025 INFO 127.0.0.1 - - [13/May/2025 15:26:42] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:26:42,578 INFO Generation complete.
+2025-05-13 15:26:42,578 INFO 127.0.0.1 - - [13/May/2025 15:26:42] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:26:51,986 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:26:51,986 INFO Generating response for prompt: ping...
+2025-05-13 15:26:57,095 INFO Generation complete.
+2025-05-13 15:26:57,096 INFO 127.0.0.1 - - [13/May/2025 15:26:57] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:27:05,911 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:27:05,912 INFO === Ollama Server Startup ===
+2025-05-13 15:27:05,912 INFO Mode: development (Flask app.run)
+2025-05-13 15:27:05,912 INFO Host: 0.0.0.0
+2025-05-13 15:27:05,912 INFO Port: 5000
+2025-05-13 15:27:05,912 INFO Process ID: 97253
+2025-05-13 15:27:05,912 INFO CPU count: 16
+2025-05-13 15:27:05,912 INFO Log file: ollama_server.log
+2025-05-13 15:27:05,912 INFO API key set: no
+2025-05-13 15:27:05,912 INFO GitHub token set: no
+2025-05-13 15:27:05,914 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:27:05,915 INFO Server is starting up...
+2025-05-13 15:27:05,915 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:27:05,915 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:27:05,915 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:27:05,915 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:27:05,915 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:27:05,915 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:27:05,915 INFO Server ready to accept requests.
+2025-05-13 15:27:05,915 INFO === Ollama Server Startup ===
+2025-05-13 15:27:05,915 INFO Mode: development (Flask app.run)
+2025-05-13 15:27:05,915 INFO Host: 0.0.0.0
+2025-05-13 15:27:05,915 INFO Port: 5000
+2025-05-13 15:27:05,915 INFO Process ID: 97253
+2025-05-13 15:27:05,915 INFO CPU count: 16
+2025-05-13 15:27:05,915 INFO Log file: ollama_server.log
+2025-05-13 15:27:05,915 INFO API key set: no
+2025-05-13 15:27:05,915 INFO GitHub token set: no
+2025-05-13 15:27:05,917 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:27:05,917 INFO Server is starting up...
+2025-05-13 15:27:05,917 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:27:05,917 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:27:05,917 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:27:05,917 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:27:05,917 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:27:05,917 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:27:05,917 INFO Server ready to accept requests.
+2025-05-13 15:27:15,425 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:27:15,425 INFO Generating response for prompt: ping...
+2025-05-13 15:27:18,240 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:27:18,240 INFO Generating response for prompt: ping...
+2025-05-13 15:27:21,248 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:27:21,248 INFO Generating response for prompt: ping...
+2025-05-13 15:27:22,539 INFO Generation complete.
+2025-05-13 15:27:22,540 INFO 127.0.0.1 - - [13/May/2025 15:27:22] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:27:23,620 INFO Generation complete.
+2025-05-13 15:27:23,621 INFO 127.0.0.1 - - [13/May/2025 15:27:23] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:27:24,255 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:27:24,255 INFO Generating response for prompt: ping...
+2025-05-13 15:27:25,168 INFO Generation complete.
+2025-05-13 15:27:25,168 INFO 127.0.0.1 - - [13/May/2025 15:27:25] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:27:25,659 INFO Generation complete.
+2025-05-13 15:27:25,659 INFO 127.0.0.1 - - [13/May/2025 15:27:25] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:30:42,932 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:30:42,932 INFO Generating response for prompt: ping...
+2025-05-13 15:30:43,509 INFO Generation complete.
+2025-05-13 15:30:43,509 INFO 127.0.0.1 - - [13/May/2025 15:30:43] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:30:48,191 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:30:48,191 INFO Generating response for prompt: ping...
+2025-05-13 15:30:52,521 INFO Generation complete.
+2025-05-13 15:30:52,522 INFO 127.0.0.1 - - [13/May/2025 15:30:52] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:33:37,586 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:33:37,586 INFO Generating response for prompt: ping...
+2025-05-13 15:34:16,483 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:34:16,484 INFO === Ollama Server Startup ===
+2025-05-13 15:34:16,484 INFO Mode: development (Flask app.run)
+2025-05-13 15:34:16,484 INFO Host: 0.0.0.0
+2025-05-13 15:34:16,484 INFO Port: 5000
+2025-05-13 15:34:16,484 INFO Process ID: 36366
+2025-05-13 15:34:16,484 INFO CPU count: 16
+2025-05-13 15:34:16,484 INFO Log file: ollama_server.log
+2025-05-13 15:34:16,484 INFO API key set: no
+2025-05-13 15:34:16,484 INFO GitHub token set: no
+2025-05-13 15:34:16,486 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:34:16,486 INFO Server is starting up...
+2025-05-13 15:34:16,486 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:34:16,486 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:34:16,486 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:34:16,486 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:34:16,486 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:34:16,486 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:34:16,487 INFO Server ready to accept requests.
+2025-05-13 15:34:16,487 INFO === Ollama Server Startup ===
+2025-05-13 15:34:16,487 INFO Mode: development (Flask app.run)
+2025-05-13 15:34:16,487 INFO Host: 0.0.0.0
+2025-05-13 15:34:16,487 INFO Port: 5000
+2025-05-13 15:34:16,487 INFO Process ID: 36366
+2025-05-13 15:34:16,487 INFO CPU count: 16
+2025-05-13 15:34:16,487 INFO Log file: ollama_server.log
+2025-05-13 15:34:16,487 INFO API key set: no
+2025-05-13 15:34:16,487 INFO GitHub token set: no
+2025-05-13 15:34:16,488 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:34:16,488 INFO Server is starting up...
+2025-05-13 15:34:16,488 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:34:16,488 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:34:16,488 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:34:16,488 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:34:16,488 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:34:16,488 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:34:16,488 INFO Server ready to accept requests.
+2025-05-13 15:34:16,516 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.31.67:5000
+2025-05-13 15:34:16,516 INFO [33mPress CTRL+C to quit[0m
+2025-05-13 15:34:16,516 INFO  * Restarting with stat
+2025-05-13 15:34:16,686 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:34:16,687 INFO === Ollama Server Startup ===
+2025-05-13 15:34:16,687 INFO Mode: development (Flask app.run)
+2025-05-13 15:34:16,687 INFO Host: 0.0.0.0
+2025-05-13 15:34:16,687 INFO Port: 5000
+2025-05-13 15:34:16,687 INFO Process ID: 36368
+2025-05-13 15:34:16,687 INFO CPU count: 16
+2025-05-13 15:34:16,687 INFO Log file: ollama_server.log
+2025-05-13 15:34:16,687 INFO API key set: no
+2025-05-13 15:34:16,687 INFO GitHub token set: no
+2025-05-13 15:34:16,689 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:34:16,689 INFO Server is starting up...
+2025-05-13 15:34:16,689 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:34:16,689 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:34:16,689 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:34:16,689 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:34:16,689 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:34:16,689 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:34:16,689 INFO Server ready to accept requests.
+2025-05-13 15:34:16,689 INFO === Ollama Server Startup ===
+2025-05-13 15:34:16,689 INFO Mode: development (Flask app.run)
+2025-05-13 15:34:16,689 INFO Host: 0.0.0.0
+2025-05-13 15:34:16,689 INFO Port: 5000
+2025-05-13 15:34:16,689 INFO Process ID: 36368
+2025-05-13 15:34:16,689 INFO CPU count: 16
+2025-05-13 15:34:16,689 INFO Log file: ollama_server.log
+2025-05-13 15:34:16,689 INFO API key set: no
+2025-05-13 15:34:16,689 INFO GitHub token set: no
+2025-05-13 15:34:16,691 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:34:16,691 INFO Server is starting up...
+2025-05-13 15:34:16,691 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:34:16,691 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:34:16,691 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:34:16,691 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:34:16,691 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:34:16,691 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:34:16,691 INFO Server ready to accept requests.
+2025-05-13 15:34:16,707 WARNING  * Debugger is active!
+2025-05-13 15:34:16,716 INFO  * Debugger PIN: 732-849-768
+2025-05-13 15:34:17,206 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:34:17,206 INFO Generating response for prompt: ping...
+2025-05-13 15:34:20,216 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:34:20,216 INFO Generating response for prompt: ping...
+2025-05-13 15:34:20,371 INFO Generation complete.
+2025-05-13 15:34:20,372 INFO 127.0.0.1 - - [13/May/2025 15:34:20] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:34:26,619 INFO Generation complete.
+2025-05-13 15:34:26,619 INFO 127.0.0.1 - - [13/May/2025 15:34:26] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:34:26,660 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:34:26,660 INFO Generating response for prompt: ping...
+2025-05-13 15:37:21,441 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:37:21,442 INFO === Ollama Server Startup ===
+2025-05-13 15:37:21,442 INFO Mode: development (Flask app.run)
+2025-05-13 15:37:21,442 INFO Host: 0.0.0.0
+2025-05-13 15:37:21,442 INFO Port: 5000
+2025-05-13 15:37:21,442 INFO Process ID: 36891
+2025-05-13 15:37:21,442 INFO CPU count: 16
+2025-05-13 15:37:21,442 INFO Log file: ollama_server.log
+2025-05-13 15:37:21,442 INFO API key set: no
+2025-05-13 15:37:21,442 INFO GitHub token set: no
+2025-05-13 15:37:21,444 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:37:21,444 INFO Server is starting up...
+2025-05-13 15:37:21,444 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:37:21,444 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:37:21,444 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:37:21,444 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:37:21,444 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:37:21,444 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:37:21,445 INFO Server ready to accept requests.
+2025-05-13 15:37:21,445 INFO === Ollama Server Startup ===
+2025-05-13 15:37:21,445 INFO Mode: development (Flask app.run)
+2025-05-13 15:37:21,445 INFO Host: 0.0.0.0
+2025-05-13 15:37:21,445 INFO Port: 5000
+2025-05-13 15:37:21,445 INFO Process ID: 36891
+2025-05-13 15:37:21,445 INFO CPU count: 16
+2025-05-13 15:37:21,445 INFO Log file: ollama_server.log
+2025-05-13 15:37:21,445 INFO API key set: no
+2025-05-13 15:37:21,445 INFO GitHub token set: no
+2025-05-13 15:37:21,446 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:37:21,446 INFO Server is starting up...
+2025-05-13 15:37:21,446 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:37:21,446 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:37:21,446 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:37:21,446 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:37:21,446 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:37:21,446 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:37:21,446 INFO Server ready to accept requests.
+2025-05-13 15:37:21,521 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.31.67:5000
+2025-05-13 15:37:21,521 INFO [33mPress CTRL+C to quit[0m
+2025-05-13 15:37:21,522 INFO  * Restarting with stat
+2025-05-13 15:37:21,698 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-13 15:37:21,699 INFO === Ollama Server Startup ===
+2025-05-13 15:37:21,699 INFO Mode: development (Flask app.run)
+2025-05-13 15:37:21,699 INFO Host: 0.0.0.0
+2025-05-13 15:37:21,699 INFO Port: 5000
+2025-05-13 15:37:21,699 INFO Process ID: 36893
+2025-05-13 15:37:21,699 INFO CPU count: 16
+2025-05-13 15:37:21,699 INFO Log file: ollama_server.log
+2025-05-13 15:37:21,699 INFO API key set: no
+2025-05-13 15:37:21,699 INFO GitHub token set: no
+2025-05-13 15:37:21,701 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:37:21,701 INFO Server is starting up...
+2025-05-13 15:37:21,701 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:37:21,701 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:37:21,701 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:37:21,701 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:37:21,701 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:37:21,701 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:37:21,701 INFO Server ready to accept requests.
+2025-05-13 15:37:21,701 INFO === Ollama Server Startup ===
+2025-05-13 15:37:21,701 INFO Mode: development (Flask app.run)
+2025-05-13 15:37:21,701 INFO Host: 0.0.0.0
+2025-05-13 15:37:21,701 INFO Port: 5000
+2025-05-13 15:37:21,701 INFO Process ID: 36893
+2025-05-13 15:37:21,701 INFO CPU count: 16
+2025-05-13 15:37:21,701 INFO Log file: ollama_server.log
+2025-05-13 15:37:21,701 INFO API key set: no
+2025-05-13 15:37:21,701 INFO GitHub token set: no
+2025-05-13 15:37:21,703 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-13 15:37:21,703 INFO Server is starting up...
+2025-05-13 15:37:21,703 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-13 15:37:21,703 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-13 15:37:21,703 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-13 15:37:21,703 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-13 15:37:21,703 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-13 15:37:21,703 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-13 15:37:21,703 INFO Server ready to accept requests.
+2025-05-13 15:37:21,721 WARNING  * Debugger is active!
+2025-05-13 15:37:21,734 INFO  * Debugger PIN: 732-849-768
+2025-05-13 15:37:22,185 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:37:22,185 INFO Generating response for prompt: ping...
+2025-05-13 15:37:25,195 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:37:25,195 INFO Generating response for prompt: ping...
+2025-05-13 15:37:28,202 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:37:28,203 INFO Generating response for prompt: ping...
+2025-05-13 15:37:31,206 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:37:31,207 INFO Generating response for prompt: ping...
+2025-05-13 15:37:31,973 INFO Generation complete.
+2025-05-13 15:37:31,974 INFO 127.0.0.1 - - [13/May/2025 15:37:31] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:37:34,216 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:37:34,216 INFO Generating response for prompt: ping...
+2025-05-13 15:37:37,109 INFO Generation complete.
+2025-05-13 15:37:37,109 INFO 127.0.0.1 - - [13/May/2025 15:37:37] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:37:37,220 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:37:37,220 INFO Generating response for prompt: ping...
+2025-05-13 15:37:37,584 INFO Generation complete.
+2025-05-13 15:37:37,584 INFO 127.0.0.1 - - [13/May/2025 15:37:37] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:37:38,592 INFO Generation complete.
+2025-05-13 15:37:38,592 INFO 127.0.0.1 - - [13/May/2025 15:37:38] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:37:39,017 INFO Generation complete.
+2025-05-13 15:37:39,018 INFO 127.0.0.1 - - [13/May/2025 15:37:39] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:37:42,763 INFO Generation complete.
+2025-05-13 15:37:42,763 INFO 127.0.0.1 - - [13/May/2025 15:37:42] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:09,022 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:09,022 INFO Generating response for prompt: ping...
+2025-05-13 15:38:12,463 INFO Generation complete.
+2025-05-13 15:38:12,464 INFO 127.0.0.1 - - [13/May/2025 15:38:12] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:12,545 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:12,545 INFO Generating response for prompt: ping...
+2025-05-13 15:38:14,616 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:14,616 INFO Generating response for prompt: ping...
+2025-05-13 15:38:17,624 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:17,624 INFO Generating response for prompt: ping...
+2025-05-13 15:38:18,258 INFO Generation complete.
+2025-05-13 15:38:18,259 INFO 127.0.0.1 - - [13/May/2025 15:38:18] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:20,632 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:20,632 INFO Generating response for prompt: ping...
+2025-05-13 15:38:23,018 INFO Generation complete.
+2025-05-13 15:38:23,018 INFO 127.0.0.1 - - [13/May/2025 15:38:23] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:23,641 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:23,641 INFO Generating response for prompt: ping...
+2025-05-13 15:38:26,294 INFO Generation complete.
+2025-05-13 15:38:26,295 INFO 127.0.0.1 - - [13/May/2025 15:38:26] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:26,647 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:26,647 INFO Generating response for prompt: ping...
+2025-05-13 15:38:28,842 INFO Generation complete.
+2025-05-13 15:38:28,842 INFO 127.0.0.1 - - [13/May/2025 15:38:28] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:29,655 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:29,655 INFO Generating response for prompt: ping...
+2025-05-13 15:38:32,662 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:32,662 INFO Generating response for prompt: ping...
+2025-05-13 15:38:35,337 INFO Generation complete.
+2025-05-13 15:38:35,338 INFO 127.0.0.1 - - [13/May/2025 15:38:35] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:35,667 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:35,667 INFO Generating response for prompt: ping...
+2025-05-13 15:38:36,261 INFO Generation complete.
+2025-05-13 15:38:36,261 INFO 127.0.0.1 - - [13/May/2025 15:38:36] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:38,675 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:38,675 INFO Generating response for prompt: ping...
+2025-05-13 15:38:41,684 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:38:41,684 INFO Generating response for prompt: ping...
+2025-05-13 15:38:44,899 INFO Generation complete.
+2025-05-13 15:38:44,899 INFO 127.0.0.1 - - [13/May/2025 15:38:44] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:47,327 INFO Generation complete.
+2025-05-13 15:38:47,328 INFO 127.0.0.1 - - [13/May/2025 15:38:47] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:49,661 INFO Generation complete.
+2025-05-13 15:38:49,661 INFO 127.0.0.1 - - [13/May/2025 15:38:49] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:54,270 INFO Generation complete.
+2025-05-13 15:38:54,270 INFO 127.0.0.1 - - [13/May/2025 15:38:54] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:38:56,086 INFO Generation complete.
+2025-05-13 15:38:56,086 INFO 127.0.0.1 - - [13/May/2025 15:38:56] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:39:44,888 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:39:44,888 INFO Generating response for prompt: ping...
+2025-05-13 15:39:51,112 INFO Generation complete.
+2025-05-13 15:39:51,112 INFO 127.0.0.1 - - [13/May/2025 15:39:51] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:41:17,403 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:41:17,403 INFO Generating response for prompt: ping...
+2025-05-13 15:41:19,474 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:41:19,474 INFO Generating response for prompt: ping...
+2025-05-13 15:41:21,529 INFO Generation complete.
+2025-05-13 15:41:21,530 INFO 127.0.0.1 - - [13/May/2025 15:41:21] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:41:22,481 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:41:22,481 INFO Generating response for prompt: ping...
+2025-05-13 15:41:25,488 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-13 15:41:25,488 INFO Generating response for prompt: ping...
+2025-05-13 15:41:26,533 INFO Generation complete.
+2025-05-13 15:41:26,533 INFO 127.0.0.1 - - [13/May/2025 15:41:26] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:41:27,149 INFO Generation complete.
+2025-05-13 15:41:27,150 INFO 127.0.0.1 - - [13/May/2025 15:41:27] "GET /health HTTP/1.1" 200 -
+2025-05-13 15:41:28,797 INFO Generation complete.
+2025-05-13 15:41:28,797 INFO 127.0.0.1 - - [13/May/2025 15:41:28] "GET /health HTTP/1.1" 200 -
+2025-05-14 09:11:17,457 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:11:17,458 INFO === Ollama Server Startup ===
+2025-05-14 09:11:17,458 INFO Mode: development (Flask app.run)
+2025-05-14 09:11:17,458 INFO Host: 0.0.0.0
+2025-05-14 09:11:17,458 INFO Port: 5000
+2025-05-14 09:11:17,458 INFO Process ID: 90438
+2025-05-14 09:11:17,458 INFO CPU count: 16
+2025-05-14 09:11:17,458 INFO Log file: ollama_server.log
+2025-05-14 09:11:17,458 INFO API key set: no
+2025-05-14 09:11:17,458 INFO GitHub token set: no
+2025-05-14 09:11:17,488 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:11:17,488 INFO Server is starting up...
+2025-05-14 09:11:17,488 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:11:17,488 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:11:17,488 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:11:17,488 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:11:17,488 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:11:17,488 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:11:17,488 INFO Server ready to accept requests.
+2025-05-14 09:11:17,488 INFO === Ollama Server Startup ===
+2025-05-14 09:11:17,488 INFO Mode: development (Flask app.run)
+2025-05-14 09:11:17,488 INFO Host: 0.0.0.0
+2025-05-14 09:11:17,488 INFO Port: 5000
+2025-05-14 09:11:17,488 INFO Process ID: 90438
+2025-05-14 09:11:17,488 INFO CPU count: 16
+2025-05-14 09:11:17,488 INFO Log file: ollama_server.log
+2025-05-14 09:11:17,488 INFO API key set: no
+2025-05-14 09:11:17,488 INFO GitHub token set: no
+2025-05-14 09:11:17,490 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:11:17,491 INFO Server is starting up...
+2025-05-14 09:11:17,491 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:11:17,491 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:11:17,491 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:11:17,491 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:11:17,491 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:11:17,491 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:11:17,491 INFO Server ready to accept requests.
+2025-05-14 09:11:29,348 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:11:29,348 INFO === Ollama Server Startup ===
+2025-05-14 09:11:29,348 INFO Mode: development (Flask app.run)
+2025-05-14 09:11:29,348 INFO Host: 0.0.0.0
+2025-05-14 09:11:29,348 INFO Port: 5000
+2025-05-14 09:11:29,348 INFO Process ID: 90480
+2025-05-14 09:11:29,349 INFO CPU count: 16
+2025-05-14 09:11:29,349 INFO Log file: ollama_server.log
+2025-05-14 09:11:29,349 INFO API key set: no
+2025-05-14 09:11:29,349 INFO GitHub token set: no
+2025-05-14 09:11:29,351 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:11:29,351 INFO Server is starting up...
+2025-05-14 09:11:29,351 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:11:29,351 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:11:29,351 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:11:29,351 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:11:29,351 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:11:29,351 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:11:29,351 INFO Server ready to accept requests.
+2025-05-14 09:11:29,351 INFO === Ollama Server Startup ===
+2025-05-14 09:11:29,351 INFO Mode: development (Flask app.run)
+2025-05-14 09:11:29,351 INFO Host: 0.0.0.0
+2025-05-14 09:11:29,351 INFO Port: 5000
+2025-05-14 09:11:29,351 INFO Process ID: 90480
+2025-05-14 09:11:29,351 INFO CPU count: 16
+2025-05-14 09:11:29,351 INFO Log file: ollama_server.log
+2025-05-14 09:11:29,351 INFO API key set: no
+2025-05-14 09:11:29,351 INFO GitHub token set: no
+2025-05-14 09:11:29,353 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:11:29,353 INFO Server is starting up...
+2025-05-14 09:11:29,353 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:11:29,353 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:11:29,353 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:11:29,353 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:11:29,353 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:11:29,353 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:11:29,353 INFO Server ready to accept requests.
+2025-05-14 09:12:51,034 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:12:51,074 INFO  * Restarting with stat
+2025-05-14 09:12:51,405 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:12:51,406 INFO === Ollama Server Startup ===
+2025-05-14 09:12:51,406 INFO Mode: development (Flask app.run)
+2025-05-14 09:12:51,406 INFO Host: 0.0.0.0
+2025-05-14 09:12:51,406 INFO Port: 5000
+2025-05-14 09:12:51,406 INFO Process ID: 90903
+2025-05-14 09:12:51,406 INFO CPU count: 16
+2025-05-14 09:12:51,406 INFO Log file: ollama_server.log
+2025-05-14 09:12:51,406 INFO API key set: no
+2025-05-14 09:12:51,406 INFO GitHub token set: no
+2025-05-14 09:12:51,408 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:12:51,408 INFO Server is starting up...
+2025-05-14 09:12:51,408 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:12:51,408 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:12:51,408 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:12:51,408 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:12:51,408 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:12:51,408 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:12:51,408 INFO Server ready to accept requests.
+2025-05-14 09:12:51,408 INFO === Ollama Server Startup ===
+2025-05-14 09:12:51,408 INFO Mode: development (Flask app.run)
+2025-05-14 09:12:51,408 INFO Host: 0.0.0.0
+2025-05-14 09:12:51,408 INFO Port: 5000
+2025-05-14 09:12:51,408 INFO Process ID: 90903
+2025-05-14 09:12:51,408 INFO CPU count: 16
+2025-05-14 09:12:51,408 INFO Log file: ollama_server.log
+2025-05-14 09:12:51,408 INFO API key set: no
+2025-05-14 09:12:51,408 INFO GitHub token set: no
+2025-05-14 09:12:51,410 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:12:51,410 INFO Server is starting up...
+2025-05-14 09:12:51,410 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:12:51,410 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:12:51,410 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:12:51,410 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:12:51,410 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:12:51,410 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:12:51,410 INFO Server ready to accept requests.
+2025-05-14 09:12:51,471 WARNING  * Debugger is active!
+2025-05-14 09:12:51,485 INFO  * Debugger PIN: 732-849-768
+2025-05-14 09:14:12,838 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:14:12,839 INFO === Ollama Server Startup ===
+2025-05-14 09:14:12,839 INFO Mode: development (Flask app.run)
+2025-05-14 09:14:12,839 INFO Host: 0.0.0.0
+2025-05-14 09:14:12,839 INFO Port: 5000
+2025-05-14 09:14:12,839 INFO Process ID: 92069
+2025-05-14 09:14:12,839 INFO CPU count: 16
+2025-05-14 09:14:12,839 INFO Log file: ollama_server.log
+2025-05-14 09:14:12,839 INFO API key set: no
+2025-05-14 09:14:12,839 INFO GitHub token set: no
+2025-05-14 09:14:12,841 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:14:12,841 INFO Server is starting up...
+2025-05-14 09:14:12,841 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:14:12,841 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:14:12,841 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:14:12,841 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:14:12,841 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:14:12,841 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:14:12,841 INFO Server ready to accept requests.
+2025-05-14 09:14:12,841 INFO === Ollama Server Startup ===
+2025-05-14 09:14:12,841 INFO Mode: development (Flask app.run)
+2025-05-14 09:14:12,841 INFO Host: 0.0.0.0
+2025-05-14 09:14:12,841 INFO Port: 5000
+2025-05-14 09:14:12,841 INFO Process ID: 92069
+2025-05-14 09:14:12,841 INFO CPU count: 16
+2025-05-14 09:14:12,842 INFO Log file: ollama_server.log
+2025-05-14 09:14:12,842 INFO API key set: no
+2025-05-14 09:14:12,842 INFO GitHub token set: no
+2025-05-14 09:14:12,843 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:14:12,843 INFO Server is starting up...
+2025-05-14 09:14:12,843 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:14:12,843 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:14:12,843 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:14:12,843 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:14:12,843 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:14:12,843 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:14:12,843 INFO Server ready to accept requests.
+2025-05-14 09:14:12,874 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.31.67:5000
+2025-05-14 09:14:12,874 INFO [33mPress CTRL+C to quit[0m
+2025-05-14 09:14:12,875 INFO  * Restarting with stat
+2025-05-14 09:14:13,038 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:14:13,039 INFO === Ollama Server Startup ===
+2025-05-14 09:14:13,039 INFO Mode: development (Flask app.run)
+2025-05-14 09:14:13,039 INFO Host: 0.0.0.0
+2025-05-14 09:14:13,039 INFO Port: 5000
+2025-05-14 09:14:13,039 INFO Process ID: 92074
+2025-05-14 09:14:13,039 INFO CPU count: 16
+2025-05-14 09:14:13,039 INFO Log file: ollama_server.log
+2025-05-14 09:14:13,039 INFO API key set: no
+2025-05-14 09:14:13,039 INFO GitHub token set: no
+2025-05-14 09:14:13,041 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:14:13,041 INFO Server is starting up...
+2025-05-14 09:14:13,041 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:14:13,041 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:14:13,041 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:14:13,041 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:14:13,041 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:14:13,042 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:14:13,042 INFO Server ready to accept requests.
+2025-05-14 09:14:13,042 INFO === Ollama Server Startup ===
+2025-05-14 09:14:13,042 INFO Mode: development (Flask app.run)
+2025-05-14 09:14:13,042 INFO Host: 0.0.0.0
+2025-05-14 09:14:13,042 INFO Port: 5000
+2025-05-14 09:14:13,042 INFO Process ID: 92074
+2025-05-14 09:14:13,042 INFO CPU count: 16
+2025-05-14 09:14:13,042 INFO Log file: ollama_server.log
+2025-05-14 09:14:13,042 INFO API key set: no
+2025-05-14 09:14:13,042 INFO GitHub token set: no
+2025-05-14 09:14:13,043 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:14:13,043 INFO Server is starting up...
+2025-05-14 09:14:13,043 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:14:13,044 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:14:13,044 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:14:13,044 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:14:13,044 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:14:13,044 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:14:13,044 INFO Server ready to accept requests.
+2025-05-14 09:14:13,061 WARNING  * Debugger is active!
+2025-05-14 09:14:13,069 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:15:02,393 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:15:02,425 INFO  * Restarting with stat
+2025-05-14 09:15:02,721 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:15:02,722 INFO === Ollama Server Startup ===
+2025-05-14 09:15:02,722 INFO Mode: development (Flask app.run)
+2025-05-14 09:15:02,722 INFO Host: 0.0.0.0
+2025-05-14 09:15:02,722 INFO Port: 5000
+2025-05-14 09:15:02,722 INFO Process ID: 92176
+2025-05-14 09:15:02,722 INFO CPU count: 16
+2025-05-14 09:15:02,722 INFO Log file: ollama_server.log
+2025-05-14 09:15:02,722 INFO API key set: no
+2025-05-14 09:15:02,722 INFO GitHub token set: no
+2025-05-14 09:15:02,724 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:15:02,724 INFO Server is starting up...
+2025-05-14 09:15:02,724 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:15:02,724 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:15:02,724 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:15:02,724 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:15:02,724 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:15:02,724 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:15:02,724 INFO Server ready to accept requests.
+2025-05-14 09:15:02,724 INFO === Ollama Server Startup ===
+2025-05-14 09:15:02,724 INFO Mode: development (Flask app.run)
+2025-05-14 09:15:02,724 INFO Host: 0.0.0.0
+2025-05-14 09:15:02,724 INFO Port: 5000
+2025-05-14 09:15:02,724 INFO Process ID: 92176
+2025-05-14 09:15:02,724 INFO CPU count: 16
+2025-05-14 09:15:02,724 INFO Log file: ollama_server.log
+2025-05-14 09:15:02,724 INFO API key set: no
+2025-05-14 09:15:02,724 INFO GitHub token set: no
+2025-05-14 09:15:02,726 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:15:02,726 INFO Server is starting up...
+2025-05-14 09:15:02,726 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:15:02,726 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:15:02,726 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:15:02,726 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:15:02,727 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:15:02,727 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:15:02,727 INFO Server ready to accept requests.
+2025-05-14 09:15:02,750 WARNING  * Debugger is active!
+2025-05-14 09:15:02,765 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:15:34,459 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-14 09:15:34,460 INFO Generating response for prompt: ping...
+2025-05-14 09:17:39,288 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:17:39,289 INFO === Ollama Server Startup ===
+2025-05-14 09:17:39,289 INFO Mode: development (Flask app.run)
+2025-05-14 09:17:39,289 INFO Host: 0.0.0.0
+2025-05-14 09:17:39,289 INFO Port: 5000
+2025-05-14 09:17:39,289 INFO Process ID: 92809
+2025-05-14 09:17:39,289 INFO CPU count: 16
+2025-05-14 09:17:39,289 INFO Log file: ollama_server.log
+2025-05-14 09:17:39,289 INFO API key set: no
+2025-05-14 09:17:39,289 INFO GitHub token set: no
+2025-05-14 09:17:39,292 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:17:39,292 INFO Server is starting up...
+2025-05-14 09:17:39,292 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:17:39,292 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:17:39,292 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:17:39,292 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:17:39,292 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:17:39,292 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:17:39,292 INFO Server ready to accept requests.
+2025-05-14 09:17:39,292 INFO === Ollama Server Startup ===
+2025-05-14 09:17:39,293 INFO Mode: development (Flask app.run)
+2025-05-14 09:17:39,293 INFO Host: 0.0.0.0
+2025-05-14 09:17:39,293 INFO Port: 5000
+2025-05-14 09:17:39,293 INFO Process ID: 92809
+2025-05-14 09:17:39,293 INFO CPU count: 16
+2025-05-14 09:17:39,293 INFO Log file: ollama_server.log
+2025-05-14 09:17:39,293 INFO API key set: no
+2025-05-14 09:17:39,293 INFO GitHub token set: no
+2025-05-14 09:17:39,294 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:17:39,294 INFO Server is starting up...
+2025-05-14 09:17:39,294 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:17:39,294 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:17:39,294 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:17:39,294 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:17:39,294 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:17:39,294 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:17:39,294 INFO Server ready to accept requests.
+2025-05-14 09:17:39,336 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.31.67:5000
+2025-05-14 09:17:39,336 INFO [33mPress CTRL+C to quit[0m
+2025-05-14 09:17:39,337 INFO  * Restarting with stat
+2025-05-14 09:17:39,521 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:17:39,522 INFO === Ollama Server Startup ===
+2025-05-14 09:17:39,522 INFO Mode: development (Flask app.run)
+2025-05-14 09:17:39,522 INFO Host: 0.0.0.0
+2025-05-14 09:17:39,522 INFO Port: 5000
+2025-05-14 09:17:39,522 INFO Process ID: 92812
+2025-05-14 09:17:39,522 INFO CPU count: 16
+2025-05-14 09:17:39,522 INFO Log file: ollama_server.log
+2025-05-14 09:17:39,522 INFO API key set: no
+2025-05-14 09:17:39,522 INFO GitHub token set: no
+2025-05-14 09:17:39,525 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:17:39,525 INFO Server is starting up...
+2025-05-14 09:17:39,525 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:17:39,525 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:17:39,525 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:17:39,525 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:17:39,525 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:17:39,525 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:17:39,525 INFO Server ready to accept requests.
+2025-05-14 09:17:39,525 INFO === Ollama Server Startup ===
+2025-05-14 09:17:39,525 INFO Mode: development (Flask app.run)
+2025-05-14 09:17:39,525 INFO Host: 0.0.0.0
+2025-05-14 09:17:39,525 INFO Port: 5000
+2025-05-14 09:17:39,525 INFO Process ID: 92812
+2025-05-14 09:17:39,525 INFO CPU count: 16
+2025-05-14 09:17:39,525 INFO Log file: ollama_server.log
+2025-05-14 09:17:39,525 INFO API key set: no
+2025-05-14 09:17:39,526 INFO GitHub token set: no
+2025-05-14 09:17:39,527 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:17:39,527 INFO Server is starting up...
+2025-05-14 09:17:39,527 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:17:39,527 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:17:39,527 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:17:39,527 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:17:39,527 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:17:39,527 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:17:39,527 INFO Server ready to accept requests.
+2025-05-14 09:17:39,547 WARNING  * Debugger is active!
+2025-05-14 09:17:39,558 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:17:46,018 INFO Incoming request: GET /health from 127.0.0.1
+2025-05-14 09:17:46,018 INFO Generating response for prompt: ping...
+2025-05-14 09:17:53,026 INFO Generation complete.
+2025-05-14 09:17:53,026 INFO 127.0.0.1 - - [14/May/2025 09:17:53] "GET /health HTTP/1.1" 200 -
+2025-05-14 09:18:44,985 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:18:45,014 INFO  * Restarting with stat
+2025-05-14 09:18:45,256 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:18:45,257 INFO === Ollama Server Startup ===
+2025-05-14 09:18:45,257 INFO Mode: development (Flask app.run)
+2025-05-14 09:18:45,257 INFO Host: 0.0.0.0
+2025-05-14 09:18:45,257 INFO Port: 5000
+2025-05-14 09:18:45,257 INFO Process ID: 93623
+2025-05-14 09:18:45,257 INFO CPU count: 16
+2025-05-14 09:18:45,257 INFO Log file: ollama_server.log
+2025-05-14 09:18:45,257 INFO API key set: no
+2025-05-14 09:18:45,257 INFO GitHub token set: no
+2025-05-14 09:18:45,259 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:18:45,259 INFO Server is starting up...
+2025-05-14 09:18:45,259 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:18:45,259 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:18:45,259 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:18:45,259 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:18:45,259 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:18:45,259 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:18:45,260 INFO Server ready to accept requests.
+2025-05-14 09:18:45,260 INFO === Ollama Server Startup ===
+2025-05-14 09:18:45,260 INFO Mode: development (Flask app.run)
+2025-05-14 09:18:45,260 INFO Host: 0.0.0.0
+2025-05-14 09:18:45,260 INFO Port: 5000
+2025-05-14 09:18:45,260 INFO Process ID: 93623
+2025-05-14 09:18:45,260 INFO CPU count: 16
+2025-05-14 09:18:45,260 INFO Log file: ollama_server.log
+2025-05-14 09:18:45,260 INFO API key set: no
+2025-05-14 09:18:45,260 INFO GitHub token set: no
+2025-05-14 09:18:45,261 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:18:45,261 INFO Server is starting up...
+2025-05-14 09:18:45,261 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:18:45,261 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:18:45,261 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:18:45,261 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:18:45,261 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:18:45,262 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:18:45,262 INFO Server ready to accept requests.
+2025-05-14 09:18:45,282 WARNING  * Debugger is active!
+2025-05-14 09:18:45,292 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:19:32,568 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:19:32,593 INFO  * Restarting with stat
+2025-05-14 09:19:32,888 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:19:32,889 INFO === Ollama Server Startup ===
+2025-05-14 09:19:32,889 INFO Mode: development (Flask app.run)
+2025-05-14 09:19:32,889 INFO Host: 0.0.0.0
+2025-05-14 09:19:32,889 INFO Port: 5000
+2025-05-14 09:19:32,889 INFO Process ID: 95131
+2025-05-14 09:19:32,889 INFO CPU count: 16
+2025-05-14 09:19:32,889 INFO Log file: ollama_server.log
+2025-05-14 09:19:32,889 INFO API key set: no
+2025-05-14 09:19:32,889 INFO GitHub token set: no
+2025-05-14 09:19:32,891 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:19:32,891 INFO Server is starting up...
+2025-05-14 09:19:32,892 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:19:32,892 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:19:32,892 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:19:32,892 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:19:32,892 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:19:32,892 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:19:32,892 INFO Server ready to accept requests.
+2025-05-14 09:19:32,892 INFO === Ollama Server Startup ===
+2025-05-14 09:19:32,892 INFO Mode: development (Flask app.run)
+2025-05-14 09:19:32,892 INFO Host: 0.0.0.0
+2025-05-14 09:19:32,892 INFO Port: 5000
+2025-05-14 09:19:32,892 INFO Process ID: 95131
+2025-05-14 09:19:32,892 INFO CPU count: 16
+2025-05-14 09:19:32,892 INFO Log file: ollama_server.log
+2025-05-14 09:19:32,892 INFO API key set: no
+2025-05-14 09:19:32,892 INFO GitHub token set: no
+2025-05-14 09:19:32,893 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:19:32,894 INFO Server is starting up...
+2025-05-14 09:19:32,894 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:19:32,894 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:19:32,894 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:19:32,894 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:19:32,894 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:19:32,894 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:19:32,894 INFO Server ready to accept requests.
+2025-05-14 09:19:32,915 WARNING  * Debugger is active!
+2025-05-14 09:19:32,924 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:20:04,118 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:20:04,152 INFO  * Restarting with stat
+2025-05-14 09:20:04,414 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:20:04,414 INFO === Ollama Server Startup ===
+2025-05-14 09:20:04,414 INFO Mode: development (Flask app.run)
+2025-05-14 09:20:04,414 INFO Host: 0.0.0.0
+2025-05-14 09:20:04,414 INFO Port: 5000
+2025-05-14 09:20:04,414 INFO Process ID: 95278
+2025-05-14 09:20:04,414 INFO CPU count: 16
+2025-05-14 09:20:04,414 INFO Log file: ollama_server.log
+2025-05-14 09:20:04,414 INFO API key set: no
+2025-05-14 09:20:04,415 INFO GitHub token set: no
+2025-05-14 09:20:04,417 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:20:04,417 INFO Server is starting up...
+2025-05-14 09:20:04,417 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:20:04,417 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:20:04,417 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:20:04,417 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:20:04,417 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:20:04,417 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:20:04,417 INFO Server ready to accept requests.
+2025-05-14 09:20:04,417 INFO === Ollama Server Startup ===
+2025-05-14 09:20:04,417 INFO Mode: development (Flask app.run)
+2025-05-14 09:20:04,417 INFO Host: 0.0.0.0
+2025-05-14 09:20:04,417 INFO Port: 5000
+2025-05-14 09:20:04,417 INFO Process ID: 95278
+2025-05-14 09:20:04,417 INFO CPU count: 16
+2025-05-14 09:20:04,417 INFO Log file: ollama_server.log
+2025-05-14 09:20:04,417 INFO API key set: no
+2025-05-14 09:20:04,417 INFO GitHub token set: no
+2025-05-14 09:20:04,420 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:20:04,420 INFO Server is starting up...
+2025-05-14 09:20:04,420 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:20:04,420 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:20:04,420 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:20:04,420 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:20:04,420 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:20:04,420 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:20:04,420 INFO Server ready to accept requests.
+2025-05-14 09:20:04,441 WARNING  * Debugger is active!
+2025-05-14 09:20:04,455 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:22:13,418 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:22:13,459 INFO  * Restarting with stat
+2025-05-14 09:22:13,751 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:22:13,752 INFO === Ollama Server Startup ===
+2025-05-14 09:22:13,752 INFO Mode: development (Flask app.run)
+2025-05-14 09:22:13,752 INFO Host: 0.0.0.0
+2025-05-14 09:22:13,752 INFO Port: 5000
+2025-05-14 09:22:13,752 INFO Process ID: 95383
+2025-05-14 09:22:13,752 INFO CPU count: 16
+2025-05-14 09:22:13,752 INFO Log file: ollama_server.log
+2025-05-14 09:22:13,752 INFO API key set: no
+2025-05-14 09:22:13,752 INFO GitHub token set: no
+2025-05-14 09:22:13,755 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:22:13,755 INFO Server is starting up...
+2025-05-14 09:22:13,755 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:22:13,755 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:22:13,755 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:22:13,755 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:22:13,755 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:22:13,755 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:22:13,755 INFO Server ready to accept requests.
+2025-05-14 09:22:13,755 INFO === Ollama Server Startup ===
+2025-05-14 09:22:13,755 INFO Mode: development (Flask app.run)
+2025-05-14 09:22:13,755 INFO Host: 0.0.0.0
+2025-05-14 09:22:13,755 INFO Port: 5000
+2025-05-14 09:22:13,755 INFO Process ID: 95383
+2025-05-14 09:22:13,755 INFO CPU count: 16
+2025-05-14 09:22:13,755 INFO Log file: ollama_server.log
+2025-05-14 09:22:13,755 INFO API key set: no
+2025-05-14 09:22:13,755 INFO GitHub token set: no
+2025-05-14 09:22:13,757 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:22:13,757 INFO Server is starting up...
+2025-05-14 09:22:13,757 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:22:13,757 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:22:13,757 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:22:13,757 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:22:13,757 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:22:13,757 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:22:13,757 INFO Server ready to accept requests.
+2025-05-14 09:22:13,779 WARNING  * Debugger is active!
+2025-05-14 09:22:13,797 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:44:31,545 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:44:31,570 INFO  * Restarting with stat
+2025-05-14 09:44:31,868 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:44:31,868 INFO === Ollama Server Startup ===
+2025-05-14 09:44:31,868 INFO Mode: development (Flask app.run)
+2025-05-14 09:44:31,869 INFO Host: 0.0.0.0
+2025-05-14 09:44:31,869 INFO Port: 5000
+2025-05-14 09:44:31,869 INFO Process ID: 2253
+2025-05-14 09:44:31,869 INFO CPU count: 16
+2025-05-14 09:44:31,869 INFO Log file: ollama_server.log
+2025-05-14 09:44:31,869 INFO API key set: no
+2025-05-14 09:44:31,869 INFO GitHub token set: no
+2025-05-14 09:44:31,889 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:44:31,889 INFO Server is starting up...
+2025-05-14 09:44:31,889 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:44:31,890 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:44:31,890 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:44:31,890 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:44:31,890 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:44:31,890 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:44:31,890 INFO Server ready to accept requests.
+2025-05-14 09:44:31,890 INFO === Ollama Server Startup ===
+2025-05-14 09:44:31,890 INFO Mode: development (Flask app.run)
+2025-05-14 09:44:31,890 INFO Host: 0.0.0.0
+2025-05-14 09:44:31,890 INFO Port: 5000
+2025-05-14 09:44:31,890 INFO Process ID: 2253
+2025-05-14 09:44:31,890 INFO CPU count: 16
+2025-05-14 09:44:31,890 INFO Log file: ollama_server.log
+2025-05-14 09:44:31,890 INFO API key set: no
+2025-05-14 09:44:31,890 INFO GitHub token set: no
+2025-05-14 09:44:31,892 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:44:31,892 INFO Server is starting up...
+2025-05-14 09:44:31,892 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:44:31,892 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:44:31,892 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:44:31,892 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:44:31,892 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:44:31,892 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:44:31,892 INFO Server ready to accept requests.
+2025-05-14 09:44:31,914 WARNING  * Debugger is active!
+2025-05-14 09:44:31,926 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:47:22,047 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:47:22,087 INFO  * Restarting with stat
+2025-05-14 09:47:22,365 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:47:22,366 INFO === Ollama Server Startup ===
+2025-05-14 09:47:22,366 INFO Mode: development (Flask app.run)
+2025-05-14 09:47:22,366 INFO Host: 0.0.0.0
+2025-05-14 09:47:22,366 INFO Port: 5000
+2025-05-14 09:47:22,366 INFO Process ID: 3070
+2025-05-14 09:47:22,366 INFO CPU count: 16
+2025-05-14 09:47:22,366 INFO Log file: ollama_server.log
+2025-05-14 09:47:22,366 INFO API key set: no
+2025-05-14 09:47:22,366 INFO GitHub token set: no
+2025-05-14 09:47:22,369 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:47:22,369 INFO Server is starting up...
+2025-05-14 09:47:22,369 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:47:22,369 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:47:22,369 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:47:22,369 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:47:22,369 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:47:22,369 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:47:22,369 INFO Server ready to accept requests.
+2025-05-14 09:47:22,369 INFO === Ollama Server Startup ===
+2025-05-14 09:47:22,369 INFO Mode: development (Flask app.run)
+2025-05-14 09:47:22,369 INFO Host: 0.0.0.0
+2025-05-14 09:47:22,369 INFO Port: 5000
+2025-05-14 09:47:22,369 INFO Process ID: 3070
+2025-05-14 09:47:22,369 INFO CPU count: 16
+2025-05-14 09:47:22,369 INFO Log file: ollama_server.log
+2025-05-14 09:47:22,369 INFO API key set: no
+2025-05-14 09:47:22,369 INFO GitHub token set: no
+2025-05-14 09:47:22,371 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:47:22,371 INFO Server is starting up...
+2025-05-14 09:47:22,371 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:47:22,371 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:47:22,371 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:47:22,371 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:47:22,371 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:47:22,371 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:47:22,371 INFO Server ready to accept requests.
+2025-05-14 09:47:22,392 WARNING  * Debugger is active!
+2025-05-14 09:47:22,404 INFO  * Debugger PIN: 770-879-636
+2025-05-14 09:57:07,747 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-14 09:57:07,779 INFO  * Restarting with stat
+2025-05-14 09:57:08,056 INFO OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-14 09:57:08,057 INFO === Ollama Server Startup ===
+2025-05-14 09:57:08,057 INFO Mode: development (Flask app.run)
+2025-05-14 09:57:08,057 INFO Host: 0.0.0.0
+2025-05-14 09:57:08,057 INFO Port: 5000
+2025-05-14 09:57:08,057 INFO Process ID: 16256
+2025-05-14 09:57:08,057 INFO CPU count: 16
+2025-05-14 09:57:08,057 INFO Log file: ollama_server.log
+2025-05-14 09:57:08,057 INFO API key set: no
+2025-05-14 09:57:08,057 INFO GitHub token set: no
+2025-05-14 09:57:08,059 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:57:08,059 INFO Server is starting up...
+2025-05-14 09:57:08,059 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:57:08,059 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:57:08,059 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:57:08,059 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:57:08,059 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:57:08,059 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:57:08,059 INFO Server ready to accept requests.
+2025-05-14 09:57:08,059 INFO === Ollama Server Startup ===
+2025-05-14 09:57:08,059 INFO Mode: development (Flask app.run)
+2025-05-14 09:57:08,059 INFO Host: 0.0.0.0
+2025-05-14 09:57:08,059 INFO Port: 5000
+2025-05-14 09:57:08,059 INFO Process ID: 16256
+2025-05-14 09:57:08,059 INFO CPU count: 16
+2025-05-14 09:57:08,059 INFO Log file: ollama_server.log
+2025-05-14 09:57:08,060 INFO API key set: no
+2025-05-14 09:57:08,060 INFO GitHub token set: no
+2025-05-14 09:57:08,061 INFO Could not determine hostname/IP: [Errno 8] nodename nor servname provided, or not known
+2025-05-14 09:57:08,061 INFO Server is starting up...
+2025-05-14 09:57:08,061 INFO Endpoint: static | Methods: GET | Path: /static/<path:filename>
+2025-05-14 09:57:08,061 INFO Endpoint: help | Methods: GET | Path: /help
+2025-05-14 09:57:08,061 INFO Endpoint: generate_text | Methods: POST | Path: /generate/text
+2025-05-14 09:57:08,061 INFO Endpoint: generate_file | Methods: POST | Path: /generate/file
+2025-05-14 09:57:08,061 INFO Endpoint: generate_github_pr | Methods: POST | Path: /generate/github-pr
+2025-05-14 09:57:08,061 INFO Endpoint: health | Methods: GET | Path: /health
+2025-05-14 09:57:08,061 INFO Server ready to accept requests.
+2025-05-14 09:57:08,081 WARNING  * Debugger is active!
+2025-05-14 09:57:08,090 INFO  * Debugger PIN: 770-879-636
+2025-05-15 08:45:55,213 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.61.119:5000
+2025-05-15 08:45:55,213 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 08:45:55,215 INFO  * Restarting with stat
+2025-05-15 08:45:55,600 WARNING  * Debugger is active!
+2025-05-15 08:45:55,614 INFO  * Debugger PIN: 770-879-636
+2025-05-15 08:46:02,977 INFO 127.0.0.1 - - [15/May/2025 08:46:02] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:02:02.184 | ERROR    | __main__:generate_github_report:870 - Error generating GitHub report
+Traceback (most recent call last):
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1124, in <module>
+    main()
+    └ <function main at 0x102c90040>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1120, in main
+    main_menu(params)
+    │         └ {'host': 'http://localhost:11434', 'model': 'codellama:7b', 'port': 5000}
+    └ <function main_menu at 0x102c83ce0>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1017, in main_menu
+    reports_menu(params)
+    │            └ {'host': 'http://localhost:11434', 'model': 'codellama:7b', 'port': 5000}
+    └ <function reports_menu at 0x102c83e20>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1059, in reports_menu
+    generate_github_report()
+    └ <function generate_github_report at 0x102c819e0>
+
+> File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 635, in generate_github_report
+    branch_cache[repo] = [b.name for b in repo_obj.get_branches()]
+    │            │                        └ None
+    │            └ 'jirassic_pack'
+    └ {}
+
+AttributeError: 'NoneType' object has no attribute 'get_branches'
+2025-05-15 09:02:48,012 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/test_github_connect.py', reloading
+2025-05-15 09:02:48,063 INFO  * Restarting with stat
+2025-05-15 09:02:48,385 WARNING  * Debugger is active!
+2025-05-15 09:02:48,397 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:03:18,628 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:03:18,655 INFO  * Restarting with stat
+2025-05-15 09:03:19,035 WARNING  * Debugger is active!
+2025-05-15 09:03:19,046 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:03:40,187 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:03:40,234 INFO  * Restarting with stat
+2025-05-15 09:03:40,473 WARNING  * Debugger is active!
+2025-05-15 09:03:40,482 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:05:01,352 INFO 127.0.0.1 - - [15/May/2025 09:05:01] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:08:12,451 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:08:12,476 INFO  * Restarting with stat
+2025-05-15 09:08:12,815 WARNING  * Debugger is active!
+2025-05-15 09:08:12,827 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:21:49,527 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.61.119:5000
+2025-05-15 09:21:49,528 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 09:21:49,529 INFO  * Restarting with stat
+2025-05-15 09:21:49,771 WARNING  * Debugger is active!
+2025-05-15 09:21:49,784 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:22:03,090 INFO 127.0.0.1 - - [15/May/2025 09:22:03] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:23:10,366 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:23:10,395 INFO  * Restarting with stat
+2025-05-15 09:23:10,749 WARNING  * Debugger is active!
+2025-05-15 09:23:10,757 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:23:21,828 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:23:21,855 INFO  * Restarting with stat
+2025-05-15 09:23:22,124 WARNING  * Debugger is active!
+2025-05-15 09:23:22,134 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:23:31,382 INFO 127.0.0.1 - - [15/May/2025 09:23:31] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:24:03.816 | ERROR    | __main__:generate_github_report:901 - Error generating GitHub report
+Traceback (most recent call last):
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1199, in <module>
+    print("[DEBUG] GITHUB_TOKEN not set in environment, .env, or config.yaml")
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1195, in main
+    print(f"[DEBUG] GITHUB_TOKEN loaded from environment or .env: {github_token_env[:8]}... (hidden)")
+                                                                   └ None
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1062, in main_menu
+    "🚪  Exit"
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1109, in reports_menu
+    "☁️ Upload report to API",
+
+> File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 666, in generate_github_report
+    return
+
+AttributeError: 'NoneType' object has no attribute 'get_branches'
+2025-05-15 09:24:53,790 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:24:53,816 INFO  * Restarting with stat
+2025-05-15 09:24:54,161 WARNING  * Debugger is active!
+2025-05-15 09:24:54,174 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:25:18,341 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:25:18,384 INFO  * Restarting with stat
+2025-05-15 09:25:18,721 WARNING  * Debugger is active!
+2025-05-15 09:25:18,736 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:25:49,953 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:25:49,982 INFO  * Restarting with stat
+2025-05-15 09:25:50,858 WARNING  * Debugger is active!
+2025-05-15 09:25:50,869 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:30:21,859 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:30:21,892 INFO  * Restarting with stat
+2025-05-15 09:30:22,284 WARNING  * Debugger is active!
+2025-05-15 09:30:22,295 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:30:50,860 INFO 127.0.0.1 - - [15/May/2025 09:30:50] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:30:52,394 INFO 127.0.0.1 - - [15/May/2025 09:30:52] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:30:56,901 INFO 127.0.0.1 - - [15/May/2025 09:30:56] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:30:59,544 INFO 127.0.0.1 - - [15/May/2025 09:30:59] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:31:03,037 INFO 127.0.0.1 - - [15/May/2025 09:31:03] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:32:08.840 | ERROR    | __main__:generate_github_report:912 - Error generating GitHub report
+Traceback (most recent call last):
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1210, in <module>
+    main()
+    └ <function main at 0x1052ab560>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1206, in main
+    main_menu(params)
+    │         └ {'host': 'http://localhost:11434', 'model': 'codellama:7b', 'port': 5000}
+    └ <function main_menu at 0x1052ab1a0>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1073, in main_menu
+    reports_menu(params)
+    │            └ {'host': 'http://localhost:11434', 'model': 'codellama:7b', 'port': 5000}
+    └ <function reports_menu at 0x1052ab2e0>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1120, in reports_menu
+    generate_github_report()
+    └ <function generate_github_report at 0x1052a8d60>
+
+> File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 694, in generate_github_report
+    pr_number = questionary.autocomplete(
+                │           └ <function autocomplete at 0x1052485e0>
+                └ <module 'questionary' from '/Users/mykalthomas/.pyenv/versions/3.12.3/lib/python3.12/site-packages/questionary/__init__.py'>
+
+  File "/Users/mykalthomas/.pyenv/versions/3.12.3/lib/python3.12/site-packages/questionary/prompts/autocomplete.py", line 194, in autocomplete
+    raise ValueError("No choices is given, you should use Text question.")
+
+ValueError: No choices is given, you should use Text question.
+2025-05-15 09:33:47,723 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:33:47,750 INFO  * Restarting with stat
+2025-05-15 09:33:48,100 WARNING  * Debugger is active!
+2025-05-15 09:33:48,112 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:34:02,207 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:34:02,237 INFO  * Restarting with stat
+2025-05-15 09:34:02,574 WARNING  * Debugger is active!
+2025-05-15 09:34:02,588 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:34:23,081 INFO 127.0.0.1 - - [15/May/2025 09:34:23] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:26,949 INFO 127.0.0.1 - - [15/May/2025 09:34:26] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:30,789 INFO 127.0.0.1 - - [15/May/2025 09:34:30] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:34,825 INFO 127.0.0.1 - - [15/May/2025 09:34:34] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:37,040 INFO 127.0.0.1 - - [15/May/2025 09:34:37] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:43,523 INFO 127.0.0.1 - - [15/May/2025 09:34:43] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:51,355 INFO 127.0.0.1 - - [15/May/2025 09:34:51] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:51,496 INFO 127.0.0.1 - - [15/May/2025 09:34:51] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:34:52,246 INFO 127.0.0.1 - - [15/May/2025 09:34:52] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:00,442 INFO 127.0.0.1 - - [15/May/2025 09:35:00] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:01,769 INFO 127.0.0.1 - - [15/May/2025 09:35:01] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:13,581 INFO 127.0.0.1 - - [15/May/2025 09:35:13] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:15,709 INFO 127.0.0.1 - - [15/May/2025 09:35:15] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:18,562 INFO 127.0.0.1 - - [15/May/2025 09:35:18] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:26,228 INFO 127.0.0.1 - - [15/May/2025 09:35:26] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:28,575 INFO 127.0.0.1 - - [15/May/2025 09:35:28] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:29,309 INFO 127.0.0.1 - - [15/May/2025 09:35:29] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:36,953 INFO 127.0.0.1 - - [15/May/2025 09:35:36] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:39,673 INFO 127.0.0.1 - - [15/May/2025 09:35:39] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:45,338 INFO 127.0.0.1 - - [15/May/2025 09:35:45] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:46,566 INFO 127.0.0.1 - - [15/May/2025 09:35:46] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:50,908 INFO 127.0.0.1 - - [15/May/2025 09:35:50] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:52,675 INFO 127.0.0.1 - - [15/May/2025 09:35:52] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:57,879 INFO 127.0.0.1 - - [15/May/2025 09:35:57] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:35:58,954 INFO 127.0.0.1 - - [15/May/2025 09:35:58] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:36:28.195 | INFO     | ollama_code_llama:__init__:16 - OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-15 09:37:02.762 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert software test strategist. Given...
+2025-05-15 09:37:23.470 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 09:37:25.476 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert technical writer and open sourc...
+2025-05-15 09:37:37.864 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 09:37:45.972 | ERROR    | __main__:generate_github_report:919 - Error generating GitHub report
+Traceback (most recent call last):
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1217, in <module>
+    main()
+    └ <function main at 0x106fab560>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1213, in main
+    main_menu(params)
+    │         └ {'host': 'http://localhost:11434', 'model': 'codellama:7b', 'port': 5000}
+    └ <function main_menu at 0x106fab1a0>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1080, in main_menu
+    reports_menu(params)
+    │            └ {'host': 'http://localhost:11434', 'model': 'codellama:7b', 'port': 5000}
+    └ <function reports_menu at 0x106fab2e0>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 1127, in reports_menu
+    generate_github_report()
+    └ <function generate_github_report at 0x106fa8d60>
+
+> File "/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py", line 803, in generate_github_report
+    report_md = generate_markdown_report(
+                └ <function generate_markdown_report at 0x105cb59e0>
+
+  File "/Users/mykalthomas/Documents/work/Ollama7BPoc/github_audit.py", line 350, in generate_markdown_report
+    for analysis in file_analyses:
+                    └ None
+
+TypeError: 'NoneType' object is not iterable
+2025-05-15 09:38:18,390 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:38:18,421 INFO  * Restarting with stat
+2025-05-15 09:38:18,820 WARNING  * Debugger is active!
+2025-05-15 09:38:18,833 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:38:25,874 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:38:25,916 INFO  * Restarting with stat
+2025-05-15 09:38:26,182 WARNING  * Debugger is active!
+2025-05-15 09:38:26,195 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:39:14,514 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:39:14,541 INFO  * Restarting with stat
+2025-05-15 09:39:14,821 WARNING  * Debugger is active!
+2025-05-15 09:39:14,833 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:39:24,897 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:39:24,929 INFO  * Restarting with stat
+2025-05-15 09:39:25,174 WARNING  * Debugger is active!
+2025-05-15 09:39:25,184 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:43:01,808 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:43:01,835 INFO  * Restarting with stat
+2025-05-15 09:43:02,231 WARNING  * Debugger is active!
+2025-05-15 09:43:02,245 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:43:22,373 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:43:22,408 INFO  * Restarting with stat
+2025-05-15 09:43:22,647 WARNING  * Debugger is active!
+2025-05-15 09:43:22,656 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:46:34,994 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/textual_main.py', reloading
+2025-05-15 09:46:35,020 INFO  * Restarting with stat
+2025-05-15 09:46:35,390 WARNING  * Debugger is active!
+2025-05-15 09:46:35,403 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:47:31,174 INFO 127.0.0.1 - - [15/May/2025 09:47:31] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:47:31,285 INFO 127.0.0.1 - - [15/May/2025 09:47:31] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:47:31,781 INFO 127.0.0.1 - - [15/May/2025 09:47:31] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:47:32,364 INFO 127.0.0.1 - - [15/May/2025 09:47:32] "GET /health HTTP/1.1" 200 -
+2025-05-15 09:48:24,136 INFO  * Detected change in '/Users/mykalthomas/Documents/work/Ollama7BPoc/cli.py', reloading
+2025-05-15 09:48:24,165 INFO  * Restarting with stat
+2025-05-15 09:48:24,510 WARNING  * Debugger is active!
+2025-05-15 09:48:24,524 INFO  * Debugger PIN: 770-879-636
+2025-05-15 09:49:34.894 | INFO     | ollama_code_llama:__init__:16 - OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-15 09:49:41.535 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert software test strategist. Given...
+2025-05-15 09:49:43.009 | INFO     | ollama_code_llama:generate:50 - Generation complete.
