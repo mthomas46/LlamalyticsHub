@@ -1580,3 +1580,84 @@ TypeError: 'NoneType' object is not iterable
 2025-05-15 09:49:41.535 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
 You are an expert software test strategist. Given...
 2025-05-15 09:49:43.009 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 10:58:29,662 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.61.119:5000
+2025-05-15 10:58:29,662 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 10:58:29,663 INFO  * Restarting with stat
+2025-05-15 10:58:29,887 WARNING  * Debugger is active!
+2025-05-15 10:58:29,895 INFO  * Debugger PIN: 770-879-636
+2025-05-15 10:58:53.091 | INFO     | ollama_code_llama:__init__:16 - OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-15 10:59:08.977 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert software test strategist. Given...
+2025-05-15 10:59:25.158 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 10:59:27.165 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert technical writer and open sourc...
+2025-05-15 11:00:02.659 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:00:34,692 INFO  * Detected change in '/Users/mykalthomas/Documents/work/LlamalyticsHub/cli.py', reloading
+2025-05-15 11:00:34,745 INFO  * Restarting with stat
+2025-05-15 11:00:35,132 WARNING  * Debugger is active!
+2025-05-15 11:00:35,147 INFO  * Debugger PIN: 770-879-636
+2025-05-15 11:02:04,723 INFO  * Detected change in '/Users/mykalthomas/Documents/work/LlamalyticsHub/cli.py', reloading
+2025-05-15 11:02:04,752 INFO  * Restarting with stat
+2025-05-15 11:02:05,089 WARNING  * Debugger is active!
+2025-05-15 11:02:05,103 INFO  * Debugger PIN: 770-879-636
+2025-05-15 11:02:28,983 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.10.61.119:5000
+2025-05-15 11:02:28,983 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 11:02:28,984 INFO  * Restarting with stat
+2025-05-15 11:02:29,225 WARNING  * Debugger is active!
+2025-05-15 11:02:29,238 INFO  * Debugger PIN: 770-879-636
+2025-05-15 11:02:33,606 INFO 127.0.0.1 - - [15/May/2025 11:02:33] "GET /health HTTP/1.1" 200 -
+2025-05-15 11:03:00.157 | INFO     | ollama_code_llama:__init__:16 - OllamaCodeLlama initialized with model=codellama:7b and host=http://localhost:11434
+2025-05-15 11:03:12.209 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:12.209 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:12.210 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:12.210 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:26.365 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:03:26.366 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:26.382 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:03:26.383 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:43.681 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:03:43.683 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:49.192 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:03:49.193 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:03:59.703 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:03:59.704 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:04:09.020 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:04:09.021 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:04:20.644 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:04:20.645 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:04:38.350 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:04:38.351 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert code reviewer. Analyze the foll...
+2025-05-15 11:04:55.971 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:05:06.173 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:05:34.169 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:05:52.780 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:05:54.788 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert software test strategist. Given...
+2025-05-15 11:06:34.198 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:06:36.207 | INFO     | ollama_code_llama:generate:29 - Generating response for prompt: 
+You are an expert technical writer and open sourc...
+2025-05-15 11:07:48.906 | INFO     | ollama_code_llama:generate:50 - Generation complete.
+2025-05-15 11:20:01,920 INFO  * Detected change in '/Users/mykalthomas/Documents/work/LlamalyticsHub/cli.py', reloading
+2025-05-15 11:20:01,963 INFO  * Restarting with stat
+2025-05-15 11:20:02,365 WARNING  * Debugger is active!
+2025-05-15 11:20:02,381 INFO  * Debugger PIN: 770-879-636
+2025-05-15 11:20:52,725 INFO  * Detected change in '/Users/mykalthomas/Documents/work/LlamalyticsHub/ollama_code_llama.py', reloading
+2025-05-15 11:20:52,760 INFO  * Restarting with stat

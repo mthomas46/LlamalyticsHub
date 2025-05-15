@@ -11,10 +11,14 @@ from github import Github
 import datetime
 import re
 from github_audit import (
+    async_fetch_repo_data,
     fetch_repo_data,
     analyze_code_files,
+    async_analyze_code_files,
     generate_test_strategy,
+    async_generate_test_strategy,
     suggest_readme_improvements,
+    async_suggest_readme_improvements,
     generate_markdown_report
 )
 import tempfile
@@ -33,6 +37,7 @@ from marshmallow import Schema, fields, ValidationError, validates, validates_sc
 from loguru import logger
 import signal
 from dotenv import load_dotenv
+import asyncio
 
 # Rich and Questionary for beautiful CLI
 try:
@@ -475,7 +480,7 @@ def get_cache_path(repo, branch, pr_number, filename_hash):
         os.makedirs(cache_dir, exist_ok=True)
     return os.path.join(cache_dir, f'{filename_hash}.json')
 
-def analyze_files_parallel(files, comments, commits, readme, llama, repo, branch, pr_number):
+def analyze_files_parallel(files, comments, commits, readme, llama, repo, branch, pr_number, max_workers=8):
     results = []
     uncached = []
     cache_map = {}
@@ -501,9 +506,9 @@ def analyze_files_parallel(files, comments, commits, readme, llama, repo, branch
         from rich.progress import Progress
         with Progress() as progress:
             task = progress.add_task("Analyzing files with LLM...", total=len(uncached))
-            with ThreadPoolExecutor(max_workers=4) as executor:
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
                 futures = {
-                    executor.submit(analyze_code_files, [f], comments, commits, readme, llama, repo, branch, pr_number): f for f in uncached
+                    executor.submit(analyze_code_files, [f], comments, commits, readme, llama): f for f in uncached
                 }
                 for future in as_completed(futures):
                     file_result = future.result()
@@ -575,6 +580,9 @@ class CLIAuditArgsSchema(Schema):
     editor = fields.Str(required=False, allow_none=True)
     no_preview = fields.Bool(required=False)
     save_readme = fields.Bool(required=False)
+    max_workers = fields.Int(required=False, default=8)
+    only_changed = fields.Bool(required=False)
+    profile = fields.Bool(required=False)
 
     @validates('repo')
     def validate_repo(self, value):
@@ -627,6 +635,9 @@ def collect_interactive_args() -> dict:
         pattern = questionary.text("Enter glob pattern (e.g. *.py, src/*.js):").ask() if filter_mode == "pattern" else None
         no_preview = questionary.confirm("Skip preview before saving report?").ask()
         save_readme = questionary.confirm("Save the updated README as a separate file?").ask()
+        max_workers = questionary.text("Number of parallel workers for LLM analysis (default: 8):", default="8").ask()
+        only_changed = questionary.confirm("Analyze only changed files (using git diff)?").ask()
+        profile = questionary.confirm("Profile report generation steps?").ask()
         args_dict = {
             'repo': repo,
             'branch': branch,
@@ -637,7 +648,10 @@ def collect_interactive_args() -> dict:
             'filter': filter_mode,
             'pattern': pattern,
             'no_preview': no_preview,
-            'save_readme': save_readme
+            'save_readme': save_readme,
+            'max_workers': int(max_workers) if max_workers.isdigit() else 8,
+            'only_changed': only_changed,
+            'profile': profile
         }
         try:
             validated = CLIAuditArgsSchema().load(args_dict)
@@ -646,7 +660,19 @@ def collect_interactive_args() -> dict:
             console.print(f"[red]Input error: {ve.messages}[/red]")
             continue
 
+def get_changed_files():
+    """Return a set of changed files using git diff if available."""
+    try:
+        import subprocess
+        result = subprocess.run(['git', 'diff', '--name-only', 'HEAD'], capture_output=True, text=True)
+        if result.returncode == 0:
+            return set(result.stdout.splitlines())
+    except Exception:
+        pass
+    return set()
+
 def generate_github_report(args=None):
+    import time as _time
     global repo_cache, branch_cache, pr_cache
     # Validate args (batch mode) or collect interactively
     config = load_config()
@@ -667,10 +693,16 @@ def generate_github_report(args=None):
     # Use env var first, then config, then prompt
     if args:
         token = args.token or os.environ.get('GITHUB_TOKEN') or config.get('github', {}).get('token')
+        max_workers = getattr(args, 'max_workers', 8)
+        only_changed = getattr(args, 'only_changed', False)
+        do_profile = getattr(args, 'profile', False)
     else:
         token = os.environ.get('GITHUB_TOKEN') or config.get('github', {}).get('token')
         if not token or not token.strip():
             token = questionary.text("GitHub token:").ask()
+        max_workers = 8
+        only_changed = False
+        do_profile = False
     if not token or not token.strip():
         console.print("[red]GitHub token is required. Please provide a valid token.[/red]")
         return
@@ -678,7 +710,7 @@ def generate_github_report(args=None):
         g = Github(token)
         # Fetch user repos for autocomplete
         if not repo_cache:
-            console.print("[cyan]Fetching your repositories...")
+            spinner("Fetching your repositories...", duration=2)
             repo_cache = [repo.full_name for repo in g.get_user().get_repos()]
         if args:
             repo = args.repo
@@ -693,6 +725,7 @@ def generate_github_report(args=None):
         if not repo or not repo.strip():
             console.print("[red]Repository is required.[/red]")
             return
+        spinner("Fetching repository details...", duration=1)
         repo_obj = safe_github_call(g.get_repo, repo)
         if repo_obj is None:
             console.print(f"[red]Failed to fetch repository '{repo}'. Please check the repo name and your GitHub token.[/red]")
@@ -707,7 +740,7 @@ def generate_github_report(args=None):
         if audit_target == "Pull Request (PR)":
             # Fetch PRs for autocomplete
             if repo not in pr_cache:
-                console.print("[cyan]Fetching pull requests for this repo...")
+                spinner("Fetching pull requests for this repo...", duration=2)
                 pr_cache[repo] = [str(pr.number) for pr in repo_obj.get_pulls(state="open")]
             pr_choices = pr_cache.get(repo, [])
             if pr_choices:
@@ -720,7 +753,7 @@ def generate_github_report(args=None):
         else:
             # Fetch branches for autocomplete
             if repo not in branch_cache:
-                console.print("[cyan]Fetching branches for this repo...")
+                spinner("Fetching branches for this repo...", duration=2)
                 branch_cache[repo] = [b.name for b in repo_obj.get_branches()]
             branch_choices = [repo_obj.default_branch] + [b for b in branch_cache[repo] if b != repo_obj.default_branch]
             branch = questionary.select(
@@ -743,9 +776,11 @@ def generate_github_report(args=None):
                     "Test strategy only"
                 ]).ask()
 
-        spinner("Fetching repository data...", duration=2)
+        spinner("Fetching repository data (async)...", duration=2)
         llama = OllamaCodeLlama()
-        repo_data = fetch_repo_data(repo, branch, pr_number_int, token)
+        t0 = _time.time() if do_profile else None
+        repo_data = asyncio.run(async_fetch_repo_data(repo, branch, pr_number_int, token))
+        t1 = _time.time() if do_profile else None
         files = repo_data['files']
         comments = repo_data['comments']
         commits = repo_data['commits']
@@ -753,40 +788,142 @@ def generate_github_report(args=None):
         pr_info = repo_data['pr_info']
         extra_info = pr_info if pr_info else None
 
+        # Only analyze changed files if requested
+        if only_changed:
+            changed_files = get_changed_files()
+            files = [f for f in files if f.get('filename') in changed_files]
+
         file_analyses = []
         test_strategy = ""
         readme_suggestions = ""
         updated_readme = ""
 
+        # Streaming report output path
+        report_filename = get_report_filename(repo, branch, pr_number_int)
+        report_path = os.path.join(output_dir, report_filename)
+        partial_report_path = report_path + ".partial"
+        # Write report header and TOC first
+        with open(partial_report_path, 'w', encoding='utf-8') as f:
+            f.write(f"# GitHub Code Audit & Report\n")
+            f.write(f"**Repository:** `{repo}`  \n")
+            if branch:
+                f.write(f"**Branch:** `{branch}`  \n")
+            if pr_number_int:
+                f.write(f"**Pull Request:** `{pr_number_int}`  \n")
+            if extra_info:
+                for k, v in extra_info.items():
+                    f.write(f"**{k}:** {v}  \n")
+            f.write("\n---\n")
+            f.write("## Table of Contents\n")
+            f.write("- [File Analyses](#file-analyses)\n")
+            f.write("- [Test Strategy](#test-strategy)\n")
+            f.write("- [README Suggestions](#readme-suggestions)\n")
+            f.write("- [Updated README](#updated-readme)\n\n")
+            f.write("---\n\n")
+            f.write("## File Analyses\n\n")
+
+        def retry_callback(failed_files):
+            if not failed_files:
+                return False
+            console.print(f"[red]{len(failed_files)} files failed LLM analysis.[/red]")
+            if questionary.confirm(f"Retry failed files? ({len(failed_files)} files)").ask():
+                return True
+            return False
+
         # Run only the selected sections
         if scope == "All code files":
-            spinner("Analyzing code files with LLM...", duration=2)
-            file_analyses = safe_llm_call(analyze_files_parallel, files, comments, commits, readme, llama, repo, branch, pr_number_int)
+            spinner("Analyzing code files with LLM (async, streaming)...", duration=2)
+            t2 = _time.time() if do_profile else None
+            file_analyses = asyncio.run(async_analyze_code_files(
+                files, comments, commits, readme, llama, partial_report_path=partial_report_path, retry_callback=retry_callback))
             if file_analyses is None:
                 file_analyses = []
-            spinner("Generating test strategy...", duration=2)
-            test_strategy = generate_test_strategy(files, llama)
-            spinner("Reviewing README...", duration=2)
-            readme_suggestions, updated_readme = suggest_readme_improvements(readme, llama)
+            t3 = _time.time() if do_profile else None
+            # Cache test strategy and README suggestions based on file list and readme
+            test_strategy_cache_path = os.path.join(CACHE_DIR, f"test_strategy_{hash_content(str([f['filename'] for f in files]))}.json")
+            readme_suggestions_cache_path = os.path.join(CACHE_DIR, f"readme_suggestions_{hash_content(readme)}.json")
+            if os.path.exists(test_strategy_cache_path):
+                with open(test_strategy_cache_path, 'r') as f:
+                    test_strategy = f.read()
+            else:
+                spinner("Generating test strategy (async)...", duration=2)
+                test_strategy = asyncio.run(async_generate_test_strategy(files, llama))
+                with open(test_strategy_cache_path, 'w') as f:
+                    f.write(test_strategy)
+            if os.path.exists(readme_suggestions_cache_path):
+                with open(readme_suggestions_cache_path, 'r') as f:
+                    readme_suggestions = f.read()
+                    updated_readme = ""
+            else:
+                spinner("Reviewing README (async)...", duration=2)
+                readme_suggestions, updated_readme = asyncio.run(async_suggest_readme_improvements(readme, llama))
+                with open(readme_suggestions_cache_path, 'w') as f:
+                    f.write(readme_suggestions)
+            t4 = _time.time() if do_profile else None
         elif scope == "Only changed files (for PR)":
             if not pr_number_int:
                 console.print("[red]No PR selected. Please select a PR for this option.[/red]")
                 return
             changed_files = [f for f in files if f.get('status') in ('added', 'modified', 'changed')]
-            spinner("Analyzing changed files with LLM...", duration=2)
-            file_analyses = safe_llm_call(analyze_files_parallel, changed_files, comments, commits, readme, llama, repo, branch, pr_number_int)
+            spinner("Analyzing changed files with LLM (async, streaming)...", duration=2)
+            t2 = _time.time() if do_profile else None
+            file_analyses = asyncio.run(async_analyze_code_files(
+                changed_files, comments, commits, readme, llama, partial_report_path=partial_report_path, retry_callback=retry_callback))
             if file_analyses is None:
                 file_analyses = []
-            spinner("Generating test strategy...", duration=2)
-            test_strategy = generate_test_strategy(changed_files, llama)
-            spinner("Reviewing README...", duration=2)
-            readme_suggestions, updated_readme = suggest_readme_improvements(readme, llama)
+            t3 = _time.time() if do_profile else None
+            test_strategy_cache_path = os.path.join(CACHE_DIR, f"test_strategy_{hash_content(str([f['filename'] for f in changed_files]))}.json")
+            readme_suggestions_cache_path = os.path.join(CACHE_DIR, f"readme_suggestions_{hash_content(readme)}.json")
+            if os.path.exists(test_strategy_cache_path):
+                with open(test_strategy_cache_path, 'r') as f:
+                    test_strategy = f.read()
+            else:
+                spinner("Generating test strategy (async)...", duration=2)
+                test_strategy = asyncio.run(async_generate_test_strategy(changed_files, llama))
+                with open(test_strategy_cache_path, 'w') as f:
+                    f.write(test_strategy)
+            if os.path.exists(readme_suggestions_cache_path):
+                with open(readme_suggestions_cache_path, 'r') as f:
+                    readme_suggestions = f.read()
+                    updated_readme = ""
+            else:
+                spinner("Reviewing README (async)...", duration=2)
+                readme_suggestions, updated_readme = asyncio.run(async_suggest_readme_improvements(readme, llama))
+                with open(readme_suggestions_cache_path, 'w') as f:
+                    f.write(readme_suggestions)
+            t4 = _time.time() if do_profile else None
         elif scope == "README only":
-            spinner("Reviewing README...", duration=2)
-            readme_suggestions, updated_readme = suggest_readme_improvements(readme, llama)
+            spinner("Reviewing README (async)...", duration=2)
+            readme_suggestions, updated_readme = asyncio.run(async_suggest_readme_improvements(readme, llama))
         elif scope == "Test strategy only":
-            spinner("Generating test strategy...", duration=2)
-            test_strategy = generate_test_strategy(files, llama)
+            spinner("Generating test strategy (async)...", duration=2)
+            test_strategy = asyncio.run(async_generate_test_strategy(files, llama))
+
+        # Append remaining report sections
+        with open(partial_report_path, 'a', encoding='utf-8') as f:
+            f.write("## Test Strategy\n\n")
+            f.write(f"{test_strategy}\n\n---\n\n")
+            f.write("## README Suggestions\n\n")
+            f.write(f"{readme_suggestions}\n\n---\n\n")
+            f.write("## Updated README\n\n")
+            f.write(f"```markdown\n{updated_readme}\n```\n\n---\n\n")
+
+        # Move partial report to final report path
+        import shutil
+        shutil.move(partial_report_path, report_path)
+        console.print(Panel(f"[green]GitHub Code Audit & Report generated![/green]\nSaved as: [yellow]{report_path}[/yellow]", style="bold green"))
+
+        if do_profile:
+            timings = [
+                ("Fetch repo data", t1-t0 if t0 and t1 else None),
+                ("LLM analysis", t3-t2 if t2 and t3 else None),
+                ("Test strategy/README", t4-t3 if t3 and t4 else None),
+            ]
+            for label, t in timings:
+                if t is not None:
+                    console.print(f"[cyan]{label} took {t:.2f} seconds[/cyan]")
+
+        # TODO: Refactor for async/await and batch LLM calls if backend supports it
 
         # Enhancement 4: Advanced Filtering and Inclusion
         file_names = [f['filename'] for f in files]
@@ -830,43 +967,25 @@ def generate_github_report(args=None):
                     new_content = file_info.get('content', '')
                     show_colored_diff(old_content, new_content, filename)
 
-        report_md = generate_markdown_report(
-            repo_full_name=repo,
-            branch=branch,
-            pr_number=pr_number_int,
-            file_analyses=file_analyses,
-            test_strategy=test_strategy,
-            readme_suggestions=readme_suggestions,
-            updated_readme=updated_readme,
-            extra_info=extra_info
-        )
-
         # Enhancement 2: Preview and Edit Report Before Saving
-        preview_lines = report_md.splitlines()[:40]
+        preview_lines = report_path.splitlines()[:40]
         console.print(Panel("\n".join(preview_lines), title="Report Preview", style="cyan"))
         if args:
             if args.no_preview:
-                preview_lines = report_md.splitlines()[:40]
+                preview_lines = report_path.splitlines()[:40]
                 console.print(Panel("\n".join(preview_lines), title="Report Preview", style="cyan"))
             else:
                 if questionary.confirm("Open full report in your editor before saving?").ask():
                     with tempfile.NamedTemporaryFile("w+", delete=False, suffix=".md") as tf:
-                        tf.write(report_md)
+                        tf.write(report_path)
                         tf.flush()
                         os.system(f"${{EDITOR:-nano}} {tf.name}")
         else:
             if questionary.confirm("Open full report in your editor before saving?").ask():
                 with tempfile.NamedTemporaryFile("w+", delete=False, suffix=".md") as tf:
-                    tf.write(report_md)
+                    tf.write(report_path)
                     tf.flush()
                     os.system(f"${{EDITOR:-nano}} {tf.name}")
-
-        # Save report
-        report_filename = get_report_filename(repo, branch, pr_number_int)
-        report_path = os.path.join(output_dir, report_filename)
-        with open(report_path, "w", encoding="utf-8") as f:
-            f.write(report_md)
-        console.print(Panel(f"[green]GitHub Code Audit & Report generated![/green]\nSaved as: [yellow]{report_path}[/yellow]", style="bold green"))
 
         # Enhancement 3: Option to Save Only the Updated README
         if updated_readme and updated_readme.strip():
@@ -1050,6 +1169,7 @@ def upload_report_to_api():
     with open(report_path, 'r', encoding='utf-8') as f:
         report_content = f.read()
     try:
+        spinner("Uploading report to API...", duration=2)
         if args['content_type'].startswith("JSON"):
             data = {"report": report_content, "filename": args['report_file']}
             resp = requests.post(args['api_url'], json=data, headers=args['headers'], timeout=30)
@@ -1090,6 +1210,9 @@ def parse_cli_args() -> argparse.Namespace:
     parser.add_argument('--editor', type=str, help='Editor for preview (default: $EDITOR or nano)')
     parser.add_argument('--no-preview', action='store_true', help='Skip preview before saving report')
     parser.add_argument('--save-readme', action='store_true', help='Save updated README as a separate file')
+    parser.add_argument('--max-workers', type=int, default=8, help='Number of parallel workers for LLM analysis')
+    parser.add_argument('--only-changed', action='store_true', help='Analyze only changed files (using git diff)')
+    parser.add_argument('--profile', action='store_true', help='Profile report generation steps')
     return parser.parse_args()
 
 def main_menu(params):
