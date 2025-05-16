@@ -1,11 +1,16 @@
-requests>=2.31.0
 Flask>=2.3.0
 PyGithub>=1.59.0
-marshmallow
-pyyaml
-gunicorn
-rich
-questionary
+httpx
 loguru
+marshmallow
+psutil
+pydantic
+pyyaml
+questionary
+requests>=2.31.0
+rich
 python-dotenv
-textual 
+textual
+# Gunicorn is only needed for production server
+# (comment out if not deploying with Gunicorn)
+gunicorn 
