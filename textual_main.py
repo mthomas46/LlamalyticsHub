@@ -3,6 +3,21 @@ from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
 import sys
 import importlib
+from loguru import logger
+
+MODULE = "TEXTUAL_MAIN"
+def log_info(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.info(f"[{MODULE}] [{function}] [{action}] {context}{details}")
+def log_warning(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.warning(f"[{MODULE}] [{function}] [{action}] {context}{details}")
+def log_error(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.error(f"[{MODULE}] [{function}] [{action}] {context}{details}")
+def log_exception(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.exception(f"[{MODULE}] [{function}] [{action}] {context}{details}")
 
 # Import the original CLI submenus from cli.py
 def import_cli_functions():

@@ -1,12 +1,9 @@
 # GitHub Code Audit & Report
-
 **Repository:** `mthomas46/LlamalyticsHub`  
 **Branch:** `master`  
 
 ---
-
 ## Table of Contents
-
 - [File Analyses](#file-analyses)
 - [Test Strategy](#test-strategy)
 - [README Suggestions](#readme-suggestions)
@@ -20,18 +17,7 @@
 
 **Summary:**
 
-This file contains the main menu of the Ollama Code Llama CLI tool. It uses Textual as its TUI library, which allows for a more modern and interactive user experience. The file imports various submenus from the cli module and defines an App class that handles the composition of the TUI layout, inclu
-
----
-
-### `test_github_connect.py`
-
-**Summary:**
-
-Summary:
-This file tests GitHub connection using Ollama and Github Python library. It checks for environment variable GITHUB_TOKEN set before testing connection. 
-
-Bugs or issues found: No issues have been found so far. However, the test lacks proper error handling for situations where the token is
+This file appears to be a Python script that sets up an interactive command line interface using the Textual library. It allows users to navigate between different menus and submenus related to Ollama, a tool for analyzing code and identifying potential issues. The file includes several functionali
 
 ---
 
@@ -39,7 +25,21 @@ Bugs or issues found: No issues have been found so far. However, the test lacks 
 
 **Summary:**
 
-The provided file is named `test_github_token_source.py` and it appears to be a Python script that uses the rich library to display messages in the terminal. The file contains several functions and classes that are used for displaying information in the terminal, but it does not appear to have any
+This file is a Python script that retrieves a GitHub token from an environment variable named "GITHUB_TOKEN" or a configuration file named "config.yaml". The code uses the Rich library to print messages in a panel with different colors depending on whether the token was found in the environment or the configuration file. If neither is present, it prints an error message.
+
+Bugs and issues:
+
+**Suggestions:**
+
+* Use a constant or a configuration parameter instead of hard-coding the names of the environment variable and the configuration file. This will make the code more modular and easier to maintain.
+
+---
+
+### `test_github_connect.py`
+
+**Summary:**
+
+This file contains Python code for testing GitHub connectivity using the Github API. It uses the `Github` library to authenticate with GitHub and retrieve user information. The function `test_github_connect()` takes no arguments and returns a boolean value indicating whether the connection was successful or not.
 
 ---
 
@@ -47,21 +47,13 @@ The provided file is named `test_github_token_source.py` and it appears to be a 
 
 **Summary:**
 
-File: setup.py
+This file is the `setup.py` script for an open-source Python project that provides a command-line interface (CLI) for interacting with an Ollama 7B Code Llama model. The CLI allows users to run and analyze code locally, as well as submit code to the Ollama platform for analysis.
 
-Summary: This file contains the setup script for the ollama-code-llama Python package, which provides an interface to the Ollama 7B Code Llama model. It defines the project's metadata, dependencies, and entry points for the CLI.
+Here are some pote
 
-Bugs or issues found: None that were identified durin
+**Suggestions:**
 
----
-
-### `run_server.sh`
-
-**Summary:**
-
-This file appears to be a shell script that starts a gunicorn server for the HTTP API. The file contains a few lines of code, including the command to start the server. However, there are some issues with this file:
-
-* The file is not well-structured, making it difficult to understand and maintain.
+* Use a more recent version of `setuptools`.
 
 ---
 
@@ -69,54 +61,31 @@ This file appears to be a shell script that starts a gunicorn server for the HTT
 
 **Summary:**
 
-This file provides an overview of the Ollama7BPoc project, which uses the 7B Code Llama model to analyze codebases. The file includes information about the project's features, setup instructions, and a table of contents that links to other sections in the README.
+The file reports/github_audit_mthomas46_Ollama7BPoc_main.md is a Markdown file that contains a report on the analysis of a GitHub repository using Ollama. The report includes information about the features and functionality of the project, as well as suggestions for improvement.
+
+Bugs or issues found:
+None
+
+Suggestions for improvement:
 
 **Suggestions:**
 
-(with code examples if file is small): One potential improvement could be to add a brief description of each feature in the "Features" section, rather than including a table with a mix of bullet points and descriptions. This would make the section easier to read and understand. For example:
-```markdown
-## Features
+.
 
-**Code Example:**
+Bugs or issues found:
+None
 
-```
-## Features
-
-* Local LLM API: Run and interact with the 7B Code Llama model locally via Ollama
-* Modern CLI: Interactive CLI with rich UI, arrow-key navigation, and spinners
-* Audit Scope Selection: Choose to audit all files, changed files (PR), README only, or test strategy only
-```
+Suggestions for improvement:
 
 ---
 
-### `ollama_code_llama.py`
+### `reports/github_audit_mthomas46_LlamalyticsHub_master.md`
 
 **Summary:**
 
-Bug:
-The file does not have any bugs or issues. However, there are some potential improvements that can be made to the code. For example, the `OllamaCodeLlama` class has several responsibilities, including initialization, generation of responses, and logging. It would be beneficial to separate thes
+This file is part of an Ollama project that uses the 7B Code Llama model to analyze codebases. It contains various components, including a main menu for the CLI tool, tests for GitHub connection, token source, and API integration, and an HTTP API server. The file also includes a README with setup instructions and a table of contents that links to other sections in the README.
 
----
-
-### `http_api.py`
-
-**Summary:**
-
-The main purpose of this Python file is to run an HTTP API server that serves as an interface between Ollama (a tool for automating code reviews) and various other tools. The file is named "http_api.py" and it contains a Flask app that sets up the endpoints for interacting with Ollama, such as gene
-
----
-
-### `example.py`
-
-**Summary:**
-
-This file appears to be a Python script that uses the OllamaCodeLlama class to generate code. It has been recently updated with additional features such as a health endpoint, improved LLM streaming response handling, and an automated CLI test for auditing GitHub repositories.
-
-**Suggestions:**
-
-+ Refactor the code to remove code duplication and improve readability.
-	+ Implement proper error handling mechanisms to ensure that the script can handle any unexpected inputs or exceptions.
-	+ Add more unit tests to cover different scenarios and edge cases.
+Bugs or issues found: None that were identified during review. However, there are some potential improvements that can be made to the code:
 
 ---
 
@@ -124,17 +93,32 @@ This file appears to be a Python script that uses the OllamaCodeLlama class to g
 
 **Summary:**
 
-The following are some of the best practices and tips that I have learned from reviewing and maintaining large Python projects.
-
-1. **Document your code**: Documentation is crucial for understanding the functionality and usage of a codebase. It helps other developers understand how to use the code,
+This file contains code that interacts with GitHub APIs to fetch code files, changed files in a pull request (PR), code comments, commit messages, and README from a repository. The code also performs various operations such as parsing the data and saving it to a local directory or uploading it to a
 
 ---
 
-### `cli.py`
+### `example.py`
 
 **Summary:**
 
-This file appears to be a Python script that serves as a command-line interface (CLI) for the 7B Code Llama model. The file contains a number of features and functionalities, including local LLM API integration, interactive CLI with rich UI, audit scope selection, parallel analysis and caching, fil
+This file is an example of a Python script that uses the OllamaCodeLlama class to generate Python code based on a prompt. The script is structured as a CLI program, with a main function that initializes an instance of the OllamaCodeLlama class and then generates code based on a user-provided prompt.
+
+Bugs/Issues:
+
+**Suggestions:**
+
+1. Add more comments to the code, such as describing what each function does and any assumptions made.
+2. Use a consistent coding style throughout the file.
+3. Consider adding type hints to the functions and variables to improve readability.
+4. Consider adding error handling to the script in case of unexpected input or exceptions.
+5. If possible, add test cases for the script to ensure its functionality and robustness.
+6. Improve the documentation by adding more details about the functionality of the script and how it can be used.
+7. Consider refactoring the code into smaller functions or modules to make it easier to read and maintain.
+8. Use a consistent naming convention throughout the file.
+9. Add logging to the script to track errors, performance, and other important information.
+10. Consider adding a command-line option for specifying the output directory for generated code and reports.
+
+Notable Code Smells or Anti-Patterns:
 
 ---
 
@@ -142,92 +126,280 @@ This file appears to be a Python script that serves as a command-line interface 
 
 **Summary:**
 
-In this section, we will discuss the different types of bugs that can occur in software, their impact on the user experience, and strategies for fixing them. We will also cover how to use Python's built-in testing framework, pytest, to write automated tests for our code.
+It looks like you are trying to review a Python script that contains a function called `add()`. The function takes two arguments, `a` and `b`, and returns their sum.
 
-Types of Bugs
+Here are some suggestions for improving the code:
 
-There are
+1. Add a docstring to the top of the file that describes what the file does. This
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/fad920157e7c52755fac8ead55a38b9d457380097565e84eac08dc140af92611.json`
+
+**Summary:**
+
+This README file provides an overview of the Ollama7BPoc project, which uses the 7B Code Llama model to analyze codebases. The file includes information about the project's features, setup instructions, and a table of contents that links to other sections in the README.
+
+Bugs/Issues: None that I could identify based on a quick review of the file. However, there are some potential issues with the file structure and organization that may be worth noting for future improvements. For example, the "Features" section is quite long and contains a lot of information about the project's capabilities. This section could potentially be split up into smaller sections to make the README more manageable.
+
+**Suggestions:**
+
+One potential improvement could be to add a brief description of each feature in the "Features" section, rather than including a table with a mix of bullet points and descriptions. This would make the section easier to read and understand. For example:
+```markdown
+## Features
+
+**Code Example:**
+
+```
+## Features
+* Local LLM API: Run and interact with the 7B Code Llama model locally via Ollama
+* Modern CLI: Interactive CLI with rich UI, arrow-key navigation, and spinners
+* Audit Scope Selection: Choose to audit all files, changed files (PR), README only, or test strategy only
+```
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/ceabb688999024ec1482f9944ee05ca7a6208cee0876ef1f4804d9129f287bdf.json`
+
+**Summary:**
+
+This file contains the setup script for the ollama-code-llama Python package, which provides an interface to the Ollama 7B Code Llama model. It defines the project's metadata, dependencies, and entry points for the CLI.
+
+Bugs or issues found: None that were identified during the code review.
+
+Suggestions for improvement (with code examples if file is small):
+
+**Suggestions:**
+
+(with code examples if file is small):
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/cb1fcf06539831fa00e7b9aba3dd952c0190f07b5ad0e36ce3f4a2d684645715.json`
+
+**Summary:**
+
+This file appears to be a Python script that uses the rich library to display messages in the terminal. The file contains several functions and classes that are used for displaying information in the terminal, but it does not appear to have any specific purpose or functionality beyond that of simpl
+
+**Suggestions:**
+
+* Add comprehensive comments and docstrings to all functions and classes to explain their purpose and usage.
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/ca8054a62ee272e9dcfb91f3c9b5d97f90c25221f437129ad1cbfc3aa8781257.json`
+
+**Summary:**
+
+This file contains a Python script that uses the OllamaCodeLlama class to generate code. It has been recently updated with additional features such as a health endpoint, improved LLM streaming response handling, and an automated CLI test for auditing GitHub repositories. The file seems to be well-structured and has a clear purpose, but there are some potential bugs or issues that could be addressed.
+
+Bugs/Issues:
+
+**Suggestions:**
+
+* Refactor the code to remove code duplication and improve readability.
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/c48ad0ca6e51d97bb4f11e238dccc306366d9eb7c98ea8ec764928cb9d4dc6b8.json`
+
+**Summary:**
+
+This file contains the main menu of the Ollama Code Llama CLI tool. It uses Textual as its TUI library, which allows for a more modern and interactive user experience. The file imports various submenus from the cli module and defines an App class that handles the composition of the TUI layout, including the display of the main menu options.
+
+**Suggestions:**
+
+(with code examples if file is small):
+	+ Improve the modularity of the code by breaking it down into smaller, more manageable components. This could be done by creating separate functions or classes for each submenu option.
+	+ Add error handling to the code to ensure that any exceptions or errors are properly caught and handled.
+	+ Consider adding additional documentation to the file, including comments and docstrings, to make it easier for others to understand and maintain the code.
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/9ec214bff2a3d0b949680b7de127d03d5eda2b7bef900e6953a404ed82d9c660.json`
+
+**Summary:**
+
+[PYTHON]
+import os
+import requests
+from dotenv import load_dotenv
+from github import Github
+
+load_dotenv()
+github_token = os.getenv("GITHUB_TOKEN")
+github_api = "https://api.github.com"
+github = Github(github_token)
+
+def test_github_connect():
+    """Tests GitHub connection using Ollama and Github
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/9d02f06ba3d9d32c649aba7a856ba13d45224c15f88f674377e566508223bfe0.json`
+
+**Summary:**
+
+Summary:
+This file is a Python script named "github_audit.py" that contains code for a large Python project. The file is used to review and maintain the codebase, and it includes various best practices and tips for coding in Python.
+
+Bugs or issues found: None
+
+Suggestions for improvement (with cod
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/1d08e14f5da2222ffbdb504916a7e3ad353e5561cd93d567433ce587f7d9ed22.json`
+
+**Summary:**
+
+This file is an Ollama configuration file that contains the settings and options for the 7B Code Llama model. The file includes various sections that define the behavior of the model, such as the name of the model, the host URL, and the directory where the model files are located.
+
+Here are some bu
+
+**Code Example:**
+
+```
+from config import config
+
+class OllamaCodeLlama:
+    def __init__(self):
+        self.model_name = config["llama_model_name"]
+        self.host_url = config["host_url"]
+```
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/1c43fd65c9a24e3f4deba75f9f4ad70762b348f0cb9d6da9e48553a74ed26476.json`
+
+**Summary:**
+
+Summary: This file appears to be a JSON file containing data related to a Python project. The file is likely used for storing metadata about the project, such as the name of the project, the version number, and any other relevant information.
+
+Bugs or Issues: None apparent from a quick review of th
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/178f1d20e94692b1f8ecc7e60e228d66348583c5bd4ba939da5090d410605db2.json`
+
+**Summary:**
+
+The file is a shell script that starts a gunicorn server for the HTTP API. The file contains several lines of code, including the command to start the server. However, there are some issues with this file, such as poor structure and lack of comments.
+
+Bugs/Issues:
+
+**Suggestions:**
+
+* Add comprehensive comments and docstrings to all functions and code blocks.
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/02580e1ad1596f941b463a4b004badd821f3a1e1b8373a32c1186ffa46319ca0.json`
+
+**Summary:**
+
+This file appears to be a Python script that serves as a command-line interface (CLI) for the 7B Code Llama model. The file contains a number of features and functionalities, including local LLM API integration, interactive CLI with rich UI, audit scope selection, parallel analysis and caching, fil
+
+Bugs or issues found:
+with some users who do not have the "rich" library installed.
+
+Suggestions for improvement:
+Add comprehensive comments and docstrings to all functions and code blocks.
+Improve LLM streaming response handling.
+Update README with run instructions.
+Enhance CLI and server: persistent log viewing, marshmallow validation, improved UX, and robust dependency management.
+Major release: advanced GitHub audit CLI, parallel LLM analysis, caching, API integration, automated tests, and full documentation overhaul.
+Full modularization and schema-based validation for all CLI workflows (config, logs, endpoints, server, example run, API upload).
+Add Textual main menu, improve server start/stop checks, and robust logging. Requirements updated for textual. CLI and questionary submenus integrated. Server management now checks running state before actions.
+
+**Suggestions:**
+
+Add comprehensive comments and docstrings to all functions and code blocks.
+Improve LLM streaming response handling.
+Update README with run instructions.
+Enhance CLI and server: persistent log viewing, marshmallow validation, improved UX, and robust dependency management.
+Major release: advanced GitHub audit CLI, parallel LLM analysis, caching, API integration, automated tests, and full documentation overhaul.
+Full modularization and schema-based validation for all CLI workflows (config, logs, endpoints, server, example run, API upload).
+Add Textual main menu, improve server start/stop checks, and robust logging. Requirements updated for textual. CLI and questionary submenus integrated. Server management now checks running state before actions.
+
+---
+
+### `run_server.sh`
+
+**Summary:**
+
+This file contains a shell script that starts the Ollama server using Gunicorn. The file also includes comments from Mykal Thomas, who made initial commits to the project and implemented health checks for the server.
+
+---
+
+### `ollama_code_llama.py`
+
+**Summary:**
+
+This file contains a Python class named OllamaCodeLlama that provides an interface for interacting with the 7B Code Llama model using the Ollama CLI. The class has methods for generating code or text using the LLM, as well as asynchronous methods for generating responses in batches.
+
+Here are some
+
+---
+
+### `http_api.py`
+
+**Summary:**
+
+This file contains an HTTP API for interacting with the 7B Code Llama model. It is written in Python using Flask as the web framework. The API includes endpoints for generating text based on prompts, uploading code files or GitHub pull requests, and health checks. It also includes a persistent log
+
+---
+
+### `cli.py`
+
+**Summary:**
+
+As an expert code reviewer, I would suggest the following improvements to the file:
+
+1. Add type hints and annotations to all functions and variables to improve code readability and maintainability.
+2. Implement the "Do One Thing" principle by breaking down the large CLI file into smaller, more focu
+
+---
+
+### `.cache/mthomas46_LlamalyticsHub_master/93c8dc3b1b04ee703b69e13753c9440645d1b6e5bbbba7fb16f3f620bb8a8f3f.json`
+
+**Summary:**
+
+The main purpose of this file is to run an HTTP API server that serves as an interface between Ollama (a tool for automating code reviews) and various other tools. It contains a Flask app that sets up the endpoints for interacting with Ollama, such as generating reports and uploading them to a remote API endpoint.
+
+**Suggestions:**
+
++ Add documentation for the file and its functions.
+	+ Improve the structure of the code by separating it into smaller modules or classes.
+	+ Use more descriptive variable names and comments to make the code easier to read and understand.
+	+ Consider adding type hints and linting to ensure that the code is well-formatted and easy to maintain.
 
 ---
 
 ## Test Strategy
 
 
-Summary of Recommended Test Strategy:
-The codebase has a high level of modularity and reusability, making it easier to test. However, there are still some areas where testing can be improved. Here's a suggested test strategy based on the codebase provided:
+Test Strategy:
+The overall testability of the codebase is moderate, with some areas that could benefit from more robust testing. However, it appears that there are sufficient test cases for the critical components, and a comprehensive strategy could involve testing all functionalities and interactions.
 
-1. Unit tests: Write unit tests for individual functions, classes, or modules. For example, write unit tests for the `test_github_token_source` and `test_github_connect` functions to ensure that they are working correctly.
-2. Integration tests: Test the integration of different components of the codebase. For example, test the integration between the `ollama_code_llama` module and the `http_api` module.
-3. Functional tests: Write functional tests that simulate real-world usage scenarios. For example, write a functional test to ensure that the CLI is working correctly when providing arguments for the `server` command.
-4. Acceptance tests: Write acceptance tests that verify the functionality of the codebase as a whole. For example, write an acceptance test to ensure that the `OllamaApp` class is working correctly and that the CLI is displaying the correct information.
-5. Edge case testing: Test the edge cases of the codebase, such as testing the behavior of the code when the GITHUB_TOKEN environment variable is not set or when an invalid token is provided.
-6. Security testing: Perform security testing to ensure that the codebase is secure and does not have any vulnerabilities.
+Recommended Test Strategy:
+1. Unit tests for critical functions and classes in isolated environments to ensure their correctness and reliability.
+2. Integration tests between different components to verify their interplay and functionality.
+3. End-to-end tests for the CLI, including all features and interactions, to ensure a seamless user experience.
+4. Testing of edge cases, such as malformed inputs or unexpected errors, to identify potential issues.
+5. Continuous testing with automated scripts to maintain test coverage and detect regressions early on.
 
-Suggestions for missing or weak test cases:
-1. Write test cases for the `OllamaApp` class to ensure that it is working correctly and that the CLI is displaying the correct information.
-2. Test the behavior of the `ollama_code_llama` module when an invalid token is provided or when the GITHUB_TOKEN environment variable is not set.
-3. Write test cases for the `http_api` module to ensure that it is working correctly and that the HTTP API endpoints are returning the correct information.
-4. Test the behavior of the CLI when providing arguments for the `server` command, such as testing the `--help` flag or the `--version` flag.
-5. Test the behavior of the CLI when providing arguments for the `reports` command, such as testing the `--list` flag or the `--generate` flag.
-6. Test the behavior of the CLI when providing arguments for the `config` command, such as testing the `--list` flag or the `--set` flag.
-7. Test the behavior of the CLI when providing arguments for the `logs` command, such as testing the `--list` flag or the `--tail` flag.
-8. Test the behavior of the CLI when providing arguments for the `exit` command, such as testing that the CLI exits correctly and that the correct exit code is returned.
-9. Test the behavior of the CLI when providing invalid arguments, such as testing that the CLI displays an error message when an invalid argument is provided.
-10. Test the behavior of the CLI when providing multiple arguments at once, such as testing that the CLI processes the arguments correctly and that the correct output is displayed.
+Missing/Weak Test Cases:
+1. The test_github_connect.py file only tests that the GITHUB_TOKEN environment variable is set, but does not verify its validity or compatibility with the GitHub API. Adding additional tests for connection errors and token validation could help ensure a more robust connection.
+2. The textual_main.py file only imports the original CLI submenus from cli.py, but does not provide any mocking or stubbing to isolate the testing environment. This could lead to issues with dependencies and external systems. Consider implementing a separate testing module to support isolated testing of individual menu options.
+3. The setup.py file provides some test coverage for the CLI entry point, but it may be beneficial to include additional tests for the installation and packaging process, as well as any dependencies or system requirements.
+4. End-to-end testing for the HTTP API could provide additional confidence in its functionality and compatibility with external systems. This could involve mocking or stubbing the external dependencies and verifying expected responses from different requests.
 
-Example test cases:
-1. `test_github_token_source` function:
-```python
-import os
-from dotenv import load_dotenv
-
-def test_load_dotenv():
-    load_dotenv()
-    assert os.environ.get('GITHUB_TOKEN') is not None
-```
-2. `test_github_connect` function:
-```python
-import os
-from github import Github
-
-def test_connect_to_github():
-    token = os.environ.get('GITHUB_TOKEN')
-    assert token is not None
-    try:
-        g = Github(token)
-        user = g.get_user()
-        assert user.login == 'yourusername'
-    except Exception as e:
-        print(f'Failed to connect to GitHub: {e}')
-```
-3. `test_ollama_code_llama` class:
-```python
-import requests
-from ollama_code_llama import OllamaCodeLlama
-
-def test_ollama_code_llama():
-    llama = OllamaCodeLlama()
-    assert llama.get_response("hello") == "Ollama 7B Code Llama: Hello!"
-```
-4. `test_http_api` class:
-```python
-import requests
-from http_api import HttpApi
-
-def test_http_api():
-    api = HttpApi()
-    assert api.get_response("hello") == "Ollama 7B Code Llama: Hello!"
-```
-5. `test_cli` class:
-```python
-import os
-from cli import Cli
-
-def test_cli():
-    cli = Cli()
-    args = ["server"]
-    assert cli.run(args) == 0
-```
+Example Test Cases:
+1. Unit tests for critical functions in isolated environments, such as test_ollama_code_llama.py (from the ollama_code_llama module) and test_github_connect.py (from the cli module). These tests could verify the correctness and reliability of specific components without affecting the overall system.
+2. Integration tests between different components, such as test_cli_menu.py (from the cli module), that can verify the interplay and functionality of individual menu options. This could help identify potential issues with dependencies or interactions.
+3. End-to-end tests for the CLI, such as test_cli.py, that can simulate a user experience and verify the expected output and behavior from different input combinations. This could provide additional confidence in the overall system's functionality and usability.
+4. Testing of edge cases, such as malformed inputs or unexpected errors, to identify potential issues with the CLI or HTTP API. These tests could help ensure that the system is robust enough to handle a wide range of scenarios and input combinations.
 
 ---
 
@@ -235,137 +407,22 @@ def test_cli():
 
 Suggestions:
 
- Introduction section: Provide a brief overview of the project, including its purpose, features, and goals.
+ Missing section: Discussion on how to use the CLI for day-to-day auditing, such as filtering files, setting output directories, and using parallel analysis.
 
 ---
 
 ## Updated README
 
 ```markdown
-Setup instructions: Add more detailed instructions for setup, including how to install dependencies and configure secrets.
-3. Configuration and Secrets Loading Order: Explain the loading order of config values (e.g., environment variables, .env file, config.yaml) and provide an example of each with explanatory comments.
-4. Usage Examples: Provide more comprehensive usage examples, such as how to use the CLI to run a full audit on a public repo or how to upload reports to an API.
-5. Tips & Best Practices: Add more tips and best practices for using the project, including how to handle large codebases, how to debug issues, and how to integrate with other tools and platforms.
-6. Contributing section: Provide more detailed guidelines for contributors, including how to run tests, how to submit pull requests, and how to get involved in the community.
-7. License section: Add a disclaimer or legal notice regarding the use of the code and any applicable licenses.
-8. API Usage Examples: Provide more usage examples for the HTTP API, including how to use the API endpoints for text and file-based code analysis, how to filter files before audit, and how to configure the output directory.
-9. Interactive CLI: Provide more detailed information about the interactive CLI, such as its features, usage examples, and troubleshooting tips.
-10. Advanced Usage: Provide more advanced usage examples for the project, such as how to use the LLM to analyze code in different programming languages or how to integrate with other open source projects.
-
-Updated README:
---- BEGIN README ---
-# Ollama 7B Code Llama Python Project
-
-## Introduction
-Our project is a wrapper for the [7B Code Llama](https://ollama.com/docs/models/codellama) model from Ollama, an AI-powered code auditing tool. We provide an HTTP API and command-line interface (CLI) to simplify the integration of our project into your workflow.
-
-## Features
-Our project offers the following features:
-* Text-based code analysis for bugs and improvements suggestions.
-* File-based code analysis for bugs and improvements suggestions.
-* Filtering files before audit.
-* Configuring the output directory.
-* Automated testing of the CLI and API.
-* Integration with other open source projects.
-
-## Setup
-To set up our project, you will need to install Python 3.6 or later and clone this repository. Then, follow these steps:
-1. Install dependencies by running `pip install -r requirements.txt` in the project directory.
-2. Configure secrets for your GitHub token (see configuration and secrets loading order below).
-3. Start the Flask API server by running `python http_api.py`.
-4. Check if the LLM is running by sending a `GET` request to `/health`.
-
-## Configuration and Secrets Loading Order
-We use environment variables for configuration and secrets loading order, with higher precedence given to later configurations. Here's an example of each:
-1. Environment Variables: Use the following environment variables in your `.env` file or in your system's environment variables:
-* `GITHUB_TOKEN`: Your GitHub token for accessing private repos.
-* `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USERNAME`, and `MYSQL_PASSWORD`: Credentials for connecting to a MySQL database (optional).
-2. .env File: Create an `.env` file in the project directory with the following variables:
-* `GITHUB_TOKEN`: Your GitHub token for accessing private repos.
-* `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USERNAME`, and `MYSQL_PASSWORD`: Credentials for connecting to a MySQL database (optional).
-3. Configuration File: Create a configuration file in the project directory named `config.yaml`. The following variables are supported:
-* `github_token`: Your GitHub token for accessing private repos.
-* `mysql_host`, `mysql_port`, `mysql_username`, and `mysql_password`: Credentials for connecting to a MySQL database (optional).
-4. Secrets File: Create a secrets file in the project directory named `secrets.yaml`. The following variables are supported:
-* `github_token`: Your GitHub token for accessing private repos.
-
-## Usage Examples
-We provide several usage examples below to help you get started with our project.
-### 1. Generate a GitHub Audit Report (Full Workflow)
-```
-$ python cli.py
-? Main Menu: Generate GitHub Report
-? GitHub token: <your_token>
-? GitHub repo (e.g. user/repo): psf/requests
-? Branch (leave blank for default): master
-? PR number (leave blank if not analyzing a PR):
-? What do you want to audit?: All code files
-? Would you like to filter which files to include in the audit?: Yes
-? Filter files by: Pattern (glob/regex)
-? Enter glob pattern (e.g. *.py, src/*.js): *.py
-? Output directory for reports and README? (default: reports): my_audits
-? Open full report in your editor before saving?: No
-? Save the updated README as a separate file?: Yes
-```
-- The audit runs in parallel, showing a progress bar.
-- The report and updated README are saved in `my_audits/`.
-
-### 2. Audit Only Changed Files in a PR
-```
-? Main Menu: Generate GitHub Report
-? ...
-? PR number (leave blank if not analyzing a PR): 123
-? What do you want to audit?: Only changed files (for PR)
-```
-- Only files changed in PR #123 are analyzed.
-
-### 3. Audit README Only
-```
-? Main Menu: Generate GitHub Report
-? ...
-? What do you want to audit?: README only
-```
-- Only the README is analyzed and improved.
-
-### 4. Run Automated CLI Test
-```
-? Main Menu: Run automated test
-```
-- Runs a full audit on a public repo and checks for all key report sections.
-
-### 5. Upload a Report to an API
-```
-? Main Menu: Upload report to API
-? Directory containing report? (default: reports): my_audits
-? Select report to upload: github_audit_psf_requests_master.md
-? API endpoint URL: https://my-api.example.com/upload
-? Add custom headers (e.g., API key)?: Yes
-? Header key (leave blank to finish): X-API-KEY
-? Value for X-API-KEY: myapikey123
-? Send as: JSON (report as string)
-```
-- The report is POSTed to the specified API endpoint with custom headers.
-
-### 6. Use Parallel Analysis & Caching
-- On first run, all files are analyzed in parallel (progress bar shown).
-- On rerun, cached results are used for unchanged files, speeding up the audit.
-
-### 7. Filter Files Before Audit
-- When prompted, choose to filter files by pattern (e.g., `*.py`) or manual selection.
-- Only selected files are included in the audit and report.
-
-### 8. Set Output Directory
-- When prompted, enter a directory name (e.g., `my_audits`).
-- All reports and updated READMEs will be saved there.
-
-## Tips & Best Practices
-We recommend the following tips for using our project:
-1. **Use a valid GitHub token** with appropriate scopes for private repos and higher rate limits.
-2. **Use file filtering** to focus audits on relevant code (e.g., skip vendor or test files).
-3. **Leverage caching** by rerunning audits after small changes—only changed files are re-analyzed.
-4. **Preview and edit reports** before saving for maximum control.
-5. **Automate validation** with the built-in CLI test runner.
-6. **Upload reports** to your own API or dashboard for team review.
+Improve the API usage examples by providing more detailed instructions on how to use the API endpoints for file uploads and reports.
+3. Add a section on how to use the CLI with remote repos (e.g., private repos or repos in different organizations) by discussing authentication and authorization methods.
+4. Provide best practices for using the LLM model, such as providing context and examples for code samples, and discussing the trade-offs between accuracy and completeness of suggestions.
+5. Add a section on how to use the CLI with other languages, such as Scala, by providing guidance on how to prepare code for analysis and the best practices for interpreting LLM responses.
+6. Include a section on the history and development of the project, including any notable milestones or contributors.
+7. Provide more detailed information on the LLM model used in the project, such as its architecture, training data, and evaluation metrics.
+8. Add a section on how to contribute to the project by discussing the contribution guidelines, issue tracking, and community involvement.
+9. Include a section on the license under which the project is released, and provide information on any open-source dependencies or libraries used in the project.
 ```
 
 ---
+

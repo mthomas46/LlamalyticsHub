@@ -15,4 +15,7 @@ venv/
 # Environment-specific configuration
 config.yaml
 .env.example
-config.yaml.example 
+config.yaml.example
+
+# Cache files
+.cache 

@@ -8,6 +8,21 @@ import asyncio
 # Configure logging
 console = Console()
 
+# Add standardized logging helpers
+MODULE = "OLLAMA_CODE_LLAMA"
+def log_info(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.info(f"[{MODULE}] [{function}] [{action}] {context}{details}")
+def log_warning(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.warning(f"[{MODULE}] [{function}] [{action}] {context}{details}")
+def log_error(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.error(f"[{MODULE}] [{function}] [{action}] {context}{details}")
+def log_exception(function, action, details, feature=None, file=None, prompt_hash=None):
+    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
+    logger.exception(f"[{MODULE}] [{function}] [{action}] {context}{details}")
+
 class OllamaCodeLlama:
     def __init__(self, model="codellama:7b", host="http://localhost:11434"):
         """
@@ -15,7 +30,7 @@ class OllamaCodeLlama:
         """
         self.model = model
         self.host = host
-        logger.info(f"OllamaCodeLlama initialized with model={model} and host={host}")
+        log_info("__init__", "init", f"OllamaCodeLlama initialized with model={model} and host={host}", feature=MODULE)
 
     def generate(self, prompt, options=None):
         """
@@ -28,7 +43,7 @@ class OllamaCodeLlama:
         Returns:
             str: The generated response from the LLM.
         """
-        logger.info(f"Generating response for prompt: {prompt[:50]}...")
+        log_info("generate", "start", f"Generating response for prompt: {prompt[:50]}...", feature=MODULE)
         url = f"{self.host}/api/generate"
         payload = {
             "model": self.model,
@@ -47,18 +62,18 @@ class OllamaCodeLlama:
                     if "response" in obj and obj["response"]:
                         responses.append(obj["response"])
                 except json.JSONDecodeError as e:
-                    logger.error(f"JSON decode error for line: {line} | Error: {e}")
+                    log_error("generate", "json_decode", f"JSON decode error for line: {line} | Error: {e}", feature=MODULE)
             full_response = "".join(responses)
-            logger.info("Generation complete.")
+            log_info("generate", "complete", "Generation complete.", feature=MODULE)
             if not full_response:
-                logger.warning("LLM returned an empty response.")
+                log_warning("generate", "empty_response", "LLM returned an empty response.", feature=MODULE)
             return full_response
         except requests.RequestException as e:
-            logger.error(f"Request to LLM failed: {e}")
+            log_error("generate", "request", f"Request to LLM failed: {e}", feature=MODULE)
             console.print_exception()
             raise RuntimeError(f"Request to LLM failed: {e}")
         except Exception as e:
-            logger.exception("Unexpected error in generate")
+            log_exception("generate", "unexpected", "Unexpected error in generate", feature=MODULE)
             console.print_exception()
             raise
 
@@ -66,7 +81,7 @@ class OllamaCodeLlama:
         """
         Asynchronously generate code or text using the LLM.
         """
-        logger.info(f"[async] Generating response for prompt: {prompt[:50]}...")
+        log_info("async_generate", "start", f"[async] Generating response for prompt: {prompt[:50]}...", feature=MODULE)
         url = f"{self.host}/api/generate"
         payload = {
             "model": self.model,
@@ -86,18 +101,18 @@ class OllamaCodeLlama:
                         if "response" in obj and obj["response"]:
                             responses.append(obj["response"])
                     except json.JSONDecodeError as e:
-                        logger.error(f"JSON decode error for line: {line} | Error: {e}")
+                        log_error("async_generate", "json_decode", f"JSON decode error for line: {line} | Error: {e}", feature=MODULE)
                 full_response = "".join(responses)
-                logger.info("[async] Generation complete.")
+                log_info("async_generate", "complete", "[async] Generation complete.", feature=MODULE)
                 if not full_response:
-                    logger.warning("LLM returned an empty response.")
+                    log_warning("async_generate", "empty_response", "LLM returned an empty response.", feature=MODULE)
                 return full_response
             except httpx.RequestError as e:
-                logger.error(f"[async] Request to LLM failed: {e}")
+                log_error("async_generate", "request", f"[async] Request to LLM failed: {e}", feature=MODULE)
                 console.print_exception()
                 raise RuntimeError(f"Request to LLM failed: {e}")
             except Exception as e:
-                logger.exception("Unexpected error in async_generate")
+                log_exception("async_generate", "unexpected", "Unexpected error in async_generate", feature=MODULE)
                 console.print_exception()
                 raise
 
@@ -106,7 +121,7 @@ class OllamaCodeLlama:
         Asynchronously generate responses for a batch of prompts.
         Returns a list of responses in the same order as prompts.
         """
-        logger.info(f"[async] Batch generating {len(prompts)} prompts...")
+        log_info("batch_async_generate", "start", f"[async] Batch generating {len(prompts)} prompts...", feature=MODULE)
         url = f"{self.host}/api/generate"
         async with httpx.AsyncClient(timeout=60) as client:
             tasks = []
@@ -122,7 +137,7 @@ class OllamaCodeLlama:
             results = []
             for resp in responses:
                 if isinstance(resp, Exception):
-                    logger.error(f"Batch LLM call failed: {resp}")
+                    log_error("batch_async_generate", "batch_llm_call", f"Batch LLM call failed: {resp}", feature=MODULE)
                     results.append("")
                     continue
                 try:
@@ -134,10 +149,10 @@ class OllamaCodeLlama:
                             if "response" in obj and obj["response"]:
                                 out.append(obj["response"])
                         except json.JSONDecodeError as e:
-                            logger.error(f"JSON decode error for line: {line} | Error: {e}")
+                            log_error("batch_async_generate", "json_decode", f"JSON decode error for line: {line} | Error: {e}", feature=MODULE)
                     results.append("".join(out))
                 except Exception as e:
-                    logger.error(f"Error parsing batch LLM response: {e}")
+                    log_error("batch_async_generate", "parse_batch_response", f"Error parsing batch LLM response: {e}", feature=MODULE)
                     results.append("")
-            logger.info("[async] Batch generation complete.")
+            log_info("batch_async_generate", "complete", "[async] Batch generation complete.", feature=MODULE)
             return results 
