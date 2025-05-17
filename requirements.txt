@@ -1,5 +1,6 @@
 Flask>=2.3.0
 PyGithub>=1.59.0
+aiohttp>=3.8.3,<3.9
 httpx
 loguru
 marshmallow
@@ -13,4 +14,6 @@ python-dotenv
 textual
 # Gunicorn is only needed for production server
 # (comment out if not deploying with Gunicorn)
-gunicorn 
+gunicorn
+# LlamalyticsHub requirements
+# (add or update aiohttp version if present) 
