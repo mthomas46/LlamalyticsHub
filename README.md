@@ -9,6 +9,7 @@
 - [Running the Server and Health Check](#running-the-server-and-health-check)
 - [Usage](#usage)
 - [HTTP API Usage](#http-api-usage)
+  - [List All Endpoints](#list-all-endpoints)
   - [Submit Code as Text](#submit-code-as-text)
   - [Submit Code as a File](#submit-code-as-a-file)
   - [Example Response](#example-response)
@@ -17,11 +18,15 @@
 - [License](#license)
 - [Usage Examples](#usage-examples)
 - [Tips & Best Practices](#tips-and-best-practices)
+- [What's New](#whats-new)
 
 ## Features
 
 | Feature | Description |
 |---------|-------------|
+| **Live Endpoint Discovery** | `/endpoints` route lists all available HTTP endpoints and methods |
+| **Open API** | All endpoints are accessible without authentication by default |
+| **Optional API Key** | `X-API-KEY` header is optional; presence is logged but not required |
 | **Local LLM API** | Run and interact with the 7B Code Llama model locally via Ollama |
 | **Modern CLI** | Interactive CLI with rich UI, arrow-key navigation, and spinners |
 | **Audit Scope Selection** | Choose to audit all files, changed files (PR), README only, or test strategy only |
@@ -45,7 +50,31 @@
    ```sh
    pip install -r requirements.txt
    ```
-   This will install all required packages, including [python-dotenv](https://pypi.org/project/python-dotenv/) for .env support.
+   This will install all required packages, including:
+   - Flask
+   - PyGithub
+   - httpx
+   - loguru
+   - marshmallow (3.x)
+   - psutil
+   - pydantic
+   - pyyaml
+   - questionary
+   - requests
+   - rich
+   - python-dotenv
+   - textual
+   - aiohttp (>=3.8.3,<3.9)
+   - gunicorn *(only needed for production server)*
+
+   > **Note:**
+   > - `aiohttp` is required for async HTTP support. Version must be `>=3.8.3,<3.9`.
+   > - `gunicorn` is only needed if you deploy the server in production mode.
+   > - This project requires **marshmallow 3.x**. Marshmallow 4.x is not supported and will cause runtime errors (e.g., `TypeError: ... got an unexpected keyword argument 'data_key'`).
+   >   If you see this error, run:
+   >   ```sh
+   >   pip install 'marshmallow<4'
+   >   ```
 
 3. **Configure secrets and environment variables:**
    - Copy `.env.example` to `.env` and fill in your secrets (e.g., `GITHUB_TOKEN`, `OLLAMA_API_KEY`).
@@ -67,13 +96,6 @@ GITHUB_TOKEN=ghp_yourgithubapitoken
 OLLAMA_API_KEY=changeme
 OLLAMA_LOG_FILE=ollama_server.log
 ```
-
-> **Important:**
-> This project requires **marshmallow 3.x**. Marshmallow 4.x is not supported and will cause runtime errors (e.g., `TypeError: ... got an unexpected keyword argument 'data_key'`).
-> If you see this error, run:
-> ```sh
-> pip install 'marshmallow<4'
-> ```
 
 ## How to Run
 
@@ -192,6 +214,35 @@ python example.py
 ## HTTP API Usage
 
 You can interact with the LLM via HTTP endpoints for both text and file-based code analysis.
+
+### List All Endpoints
+
+GET `/endpoints` returns a JSON list of all currently served HTTP endpoints and their allowed methods. This is useful for live API discovery and debugging.
+
+```sh
+curl http://localhost:5000/endpoints
+```
+
+Example response:
+```json
+{
+  "endpoints": [
+    {"endpoint": "/generate/text", "methods": ["POST"], "function": "generate_text"},
+    {"endpoint": "/generate/file", "methods": ["POST"], "function": "generate_file"},
+    {"endpoint": "/generate/github-pr", "methods": ["POST"], "function": "generate_github_pr"},
+    {"endpoint": "/reports", "methods": ["GET"], "function": "list_reports"},
+    {"endpoint": "/reports/<report_name>", "methods": ["GET"], "function": "get_report"},
+    {"endpoint": "/logs", "methods": ["GET"], "function": "get_logs"},
+    {"endpoint": "/health", "methods": ["GET"], "function": "health"},
+    {"endpoint": "/help", "methods": ["GET"], "function": "help"},
+    {"endpoint": "/endpoints", "methods": ["GET"], "function": "list_endpoints"}
+  ]
+}
+```
+
+### Authentication
+
+> **Note:** The API key (`X-API-KEY` header) is now optional for all endpoints. You may include it for logging or compatibility, but it is not required to access any API route. All endpoints are open by default.
 
 ### Submit Code as Text
 
@@ -314,3 +365,10 @@ $ python cli.py
 - **Preview and edit reports** before saving for maximum control.
 - **Automate validation** with the built-in CLI test runner.
 - **Upload reports** to your own API or dashboard for team review. 
+
+## What's New
+
+- **Live Endpoint Discovery:** New `/endpoints` route returns a live JSON list of all HTTP endpoints and their methods.
+- **Open API:** All endpoints are now accessible without an API key.
+- **Improved Logging:** The server logs whether an API key was provided with each request for auditing and debugging.
+- **Updated Documentation:** The README and API usage sections have been updated to reflect these changes. 
