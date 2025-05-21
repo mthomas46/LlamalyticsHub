@@ -67,9 +67,12 @@ def log_exception(function, action, details, feature=None, file=None, prompt_has
 def require_api_key():
     # Log each incoming request
     log_info(__name__, "Incoming request", f"{request.method} {request.path} from {request.remote_addr}", feature=__name__, file=request.path)
-    if request.endpoint not in ('health', 'help'):
-        if request.headers.get('X-API-KEY') != API_KEY:
-            abort(401)
+    # API key is now optional; just log if present or not
+    api_key_header = request.headers.get('X-API-KEY')
+    if api_key_header:
+        log_info(__name__, "API key provided", api_key_header, feature=__name__, file=request.path)
+    else:
+        log_info(__name__, "No API key provided", None, feature=__name__, file=request.path)
 
 # Marshmallow Schemas
 class TextSchema(Schema):
@@ -215,6 +218,22 @@ def get_logs():
     except Exception as e:
         log_exception(__name__, "Error in /logs", str(e), feature=__name__, file=request.path)
         return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/endpoints', methods=['GET'])
+def list_endpoints():
+    """Return a JSON list of all currently served HTTP endpoints and their methods."""
+    output = []
+    for rule in app.url_map.iter_rules():
+        # Exclude static endpoint if not needed
+        if rule.endpoint == 'static':
+            continue
+        methods = sorted(rule.methods - {'HEAD', 'OPTIONS'})
+        output.append({
+            'endpoint': str(rule.rule),
+            'methods': methods,
+            'function': rule.endpoint
+        })
+    return jsonify({'endpoints': output})
 
 def log_startup_context():
     mode = 'production (Gunicorn)' if 'gunicorn' in sys.argv[0] else 'development (Flask app.run)'
