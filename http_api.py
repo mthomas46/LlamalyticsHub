@@ -20,6 +20,11 @@ from loguru import logger
 from rich.console import Console
 import yaml
 import glob
+import re
+from functools import wraps
+from datetime import datetime, timedelta
+from collections import defaultdict
+import threading
 
 # Load config.yaml after .env
 CONFIG_PATH = 'config.yaml'
@@ -63,6 +68,84 @@ def log_exception(function, action, details, feature=None, file=None, prompt_has
     context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
     logger.exception(f"[{MODULE}] [{function}] [{action}] {context}{details}")
 
+# Rate limiting
+class RateLimiter:
+    def __init__(self, requests_per_minute=60):
+        self.requests_per_minute = requests_per_minute
+        self.requests = defaultdict(list)
+        self.lock = threading.Lock()
+    
+    def is_allowed(self, client_ip):
+        now = datetime.now()
+        with self.lock:
+            # Clean old requests
+            self.requests[client_ip] = [req_time for req_time in self.requests[client_ip] 
+                                      if now - req_time < timedelta(minutes=1)]
+            
+            # Check if under limit
+            if len(self.requests[client_ip]) >= self.requests_per_minute:
+                return False
+            
+            # Add current request
+            self.requests[client_ip].append(now)
+            return True
+
+rate_limiter = RateLimiter()
+
+def rate_limit(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        client_ip = request.remote_addr
+        if not rate_limiter.is_allowed(client_ip):
+            log_warning(__name__, "Rate limit exceeded", f"IP: {client_ip}", feature=__name__, file=request.path)
+            return jsonify({'error': 'Rate limit exceeded'}), 429
+        return f(*args, **kwargs)
+    return decorated_function
+
+def validate_file_upload(file):
+    """Validate uploaded file for security"""
+    if not file:
+        return False, "No file provided"
+    
+    # Check file size
+    file.seek(0, 2)  # Seek to end
+    size = file.tell()
+    file.seek(0)  # Reset to beginning
+    
+    if size > 2 * 1024 * 1024:  # 2MB limit
+        return False, "File too large"
+    
+    # Check file extension
+    filename = file.filename
+    if not filename:
+        return False, "No filename provided"
+    
+    # Allow only text files
+    allowed_extensions = {'.txt', '.py', '.js', '.java', '.cpp', '.c', '.h', '.md', '.json', '.xml', '.yaml', '.yml'}
+    file_ext = os.path.splitext(filename)[1].lower()
+    if file_ext not in allowed_extensions:
+        return False, f"File type {file_ext} not allowed"
+    
+    # Check for path traversal
+    if '..' in filename or '/' in filename or '\\' in filename:
+        return False, "Invalid filename"
+    
+    return True, "OK"
+
+def sanitize_input(text):
+    """Basic input sanitization"""
+    if not text:
+        return ""
+    
+    # Remove null bytes
+    text = text.replace('\x00', '')
+    
+    # Limit length
+    if len(text) > 10000:  # 10KB limit
+        text = text[:10000]
+    
+    return text
+
 @app.before_request
 def require_api_key():
     # Log each incoming request
@@ -76,13 +159,13 @@ def require_api_key():
 
 # Marshmallow Schemas
 class TextSchema(Schema):
-    prompt = fields.Str(required=True)
+    prompt = fields.Str(required=True, validate=lambda x: len(x) <= 10000)
 
 class GithubPRSchema(Schema):
-    repo = fields.Str(required=True)
-    pr_number = fields.Int(required=True)
+    repo = fields.Str(required=True, validate=lambda x: re.match(r'^[\w.-]+/[\w.-]+$', x))
+    pr_number = fields.Int(required=True, validate=lambda x: 1 <= x <= 999999)
     token = fields.Str(required=True)
-    prompt = fields.Str(required=False)
+    prompt = fields.Str(required=False, validate=lambda x: len(x) <= 10000 if x else True)
 
 @app.route('/help', methods=['GET'])
 def help():
@@ -99,11 +182,19 @@ def help():
     return jsonify(info)
 
 @app.route('/generate/text', methods=['POST'])
+@rate_limit
 def generate_text():
     try:
         data = request.get_json()
+        if not data:
+            return jsonify({'error': 'Invalid JSON'}), 400
+        
         validated = TextSchema().load(data)
-        prompt = validated['prompt']
+        prompt = sanitize_input(validated['prompt'])
+        
+        if not prompt.strip():
+            return jsonify({'error': 'Empty prompt'}), 400
+        
         result = llama.generate(prompt)
         return jsonify({'response': result})
     except ValidationError as ve:
@@ -115,16 +206,30 @@ def generate_text():
         return jsonify({'error': 'Internal server error'}), 500
 
 @app.route('/generate/file', methods=['POST'])
+@rate_limit
 def generate_file():
     try:
         if 'file' not in request.files:
             log_warning(__name__, "Missing file in /generate/file", None, feature=__name__, file=request.path)
             return jsonify({'error': 'Missing file'}), 400
+        
         file = request.files['file']
-        prompt = file.read().decode('utf-8')
+        is_valid, message = validate_file_upload(file)
+        
+        if not is_valid:
+            log_warning(__name__, "File validation failed", message, feature=__name__, file=request.path)
+            return jsonify({'error': message}), 400
+        
+        try:
+            prompt = file.read().decode('utf-8')
+        except UnicodeDecodeError:
+            return jsonify({'error': 'File must be UTF-8 encoded text'}), 400
+        
+        prompt = sanitize_input(prompt)
         if not prompt.strip():
             log_warning(__name__, "Empty file uploaded to /generate/file", None, feature=__name__, file=request.path)
             return jsonify({'error': 'File is empty'}), 400
+        
         result = llama.generate(prompt)
         return jsonify({'response': result})
     except Exception as e:
@@ -133,25 +238,34 @@ def generate_file():
         return jsonify({'error': 'Internal server error'}), 500
 
 @app.route('/generate/github-pr', methods=['POST'])
+@rate_limit
 def generate_github_pr():
     try:
         data = request.get_json()
+        if not data:
+            return jsonify({'error': 'Invalid JSON'}), 400
+        
         validated = GithubPRSchema().load(data)
         repo_name = validated['repo']
         pr_number = validated['pr_number']
         token = validated.get('token') or GITHUB_TOKEN
+        
         if not token:
             return jsonify({'error': 'GitHub token required'}), 400
-        prompt_prefix = validated.get('prompt', 'Review the following GitHub pull request diff for bugs, improvements, and best practices.')
+        
+        prompt_prefix = sanitize_input(validated.get('prompt', 'Review the following GitHub pull request diff for bugs, improvements, and best practices.'))
+        
         g = Github(token)
         repo = g.get_repo(repo_name)
         pr = repo.get_pull(pr_number)
         files = pr.get_files()
         diff_summary = []
+        
         for file in files:
             filename = file.filename
             patch = file.patch if hasattr(file, 'patch') else ''
             diff_summary.append(f"File: {filename}\n{patch}")
+        
         diff_text = '\n\n'.join(diff_summary)
         prompt = f"{prompt_prefix}\n\n{diff_text}"
         result = llama.generate(prompt)
@@ -192,13 +306,19 @@ def get_report(report_name):
         if not report_name.endswith('.md') or report_name.endswith('.partial'):
             log_warning(__name__, "Attempt to access invalid report", f"Report name: {report_name}", feature=__name__, file=request.path)
             return jsonify({'error': 'Invalid report name'}), 400
+        
+        # Security: prevent path traversal
+        if '..' in report_name or '/' in report_name or '\\' in report_name:
+            return jsonify({'error': 'Invalid report name'}), 400
+        
         report_path = os.path.join(reports_dir, report_name)
         if not os.path.isfile(report_path):
             log_warning(__name__, "Report not found", f"Report name: {report_name}", feature=__name__, file=request.path)
             return jsonify({'error': 'Report not found'}), 404
+        
         with open(report_path, 'r', encoding='utf-8') as f:
             content = f.read()
-        log_info(__name__, "Served report", f"Report name: {report_name}", feature=__name__, file=report_name)
+        log_info(__name__, "Served report", f"Report: {report_name}", feature=__name__, file=report_name)
         return Response(content, mimetype='text/markdown')
     except Exception as e:
         log_exception(__name__, "Error in /reports/<report_name>", str(e), feature=__name__, file=request.path)
@@ -211,6 +331,11 @@ def get_logs():
         if not os.path.isfile(log_file):
             log_warning(__name__, "Log file not found", f"Log file: {log_file}", feature=__name__, file=log_file)
             return jsonify({'error': 'Log file not found'}), 404
+        
+        # Security: prevent path traversal
+        if '..' in log_file or log_file.startswith('/'):
+            return jsonify({'error': 'Invalid log file path'}), 400
+        
         with open(log_file, 'r', encoding='utf-8') as f:
             content = f.read()
         log_info(__name__, "Served server log file", None, feature=__name__, file=log_file)
@@ -221,62 +346,30 @@ def get_logs():
 
 @app.route('/endpoints', methods=['GET'])
 def list_endpoints():
-    """Return a JSON list of all currently served HTTP endpoints and their methods."""
-    output = []
-    for rule in app.url_map.iter_rules():
-        # Exclude static endpoint if not needed
-        if rule.endpoint == 'static':
-            continue
-        methods = sorted(rule.methods - {'HEAD', 'OPTIONS'})
-        output.append({
-            'endpoint': str(rule.rule),
-            'methods': methods,
-            'function': rule.endpoint
-        })
-    return jsonify({'endpoints': output})
+    """List all available endpoints and their methods."""
+    try:
+        endpoints = []
+        for rule in app.url_map.iter_rules():
+            endpoints.append({
+                'endpoint': rule.rule,
+                'methods': list(rule.methods - {'HEAD', 'OPTIONS'}),
+                'function': rule.endpoint
+            })
+        log_info(__name__, "Listed endpoints", f"Found {len(endpoints)} endpoints", feature=__name__, file=request.path)
+        return jsonify({'endpoints': endpoints})
+    except Exception as e:
+        log_exception(__name__, "Error in /endpoints", str(e), feature=__name__, file=request.path)
+        return jsonify({'error': 'Internal server error'}), 500
 
 def log_startup_context():
-    mode = 'production (Gunicorn)' if 'gunicorn' in sys.argv[0] else 'development (Flask app.run)'
-    host = os.environ.get('HOST', '0.0.0.0')
-    port = os.environ.get('PORT', '5000')
-    pid = os.getpid()
-    cpu_count = multiprocessing.cpu_count()
-    log_info(__name__, "=== Ollama Server Startup ===", None, feature=__name__)
-    log_info(__name__, "Mode", mode, feature=__name__)
-    log_info(__name__, "Host", host, feature=__name__)
-    log_info(__name__, "Port", port, feature=__name__)
-    log_info(__name__, "Process ID", pid, feature=__name__)
-    log_info(__name__, "CPU count", cpu_count, feature=__name__)
-    log_info(__name__, "Log file", LOG_FILE, feature=__name__)
-    log_info(__name__, "API key set", 'yes' if API_KEY != 'changeme' else 'no', feature=__name__)
-    log_info(__name__, "GitHub token set", 'yes' if GITHUB_TOKEN else 'no', feature=__name__)
+    """Log startup context for debugging."""
     try:
-        hostname = socket.gethostname()
-        ip = socket.gethostbyname(hostname)
-        log_info(__name__, "Hostname", hostname, feature=__name__)
-        log_info(__name__, "IP", ip, feature=__name__)
+        log_info(__name__, "Startup", f"App started with config: {config}", feature=__name__, file=__file__)
+        log_info(__name__, "Startup", f"Environment: FLASK_ENV={os.environ.get('FLASK_ENV', 'development')}", feature=__name__, file=__file__)
+        log_info(__name__, "Startup", f"Log file: {LOG_FILE}", feature=__name__, file=__file__)
     except Exception as e:
-        log_info(__name__, "Could not determine hostname/IP", str(e), feature=__name__)
-    log_info(__name__, "Server is starting up...", None, feature=__name__)
-    for rule in app.url_map.iter_rules():
-        methods = ','.join(sorted(rule.methods - {'HEAD', 'OPTIONS'}))
-        log_info(__name__, "Endpoint", rule.endpoint, feature=__name__, file=rule.rule)
-    log_info(__name__, "Server ready to accept requests.", None, feature=__name__)
+        log_exception(__name__, "Startup", f"Error logging startup context: {e}", feature=__name__, file=__file__)
 
-# Call this function at startup for both app.run and Gunicorn
-log_startup_context()
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     log_startup_context()
-    import sys
-    port = 5000
-    if len(sys.argv) > 1:
-        try:
-            port = int(sys.argv[1])
-        except Exception:
-            pass
-    port = int(os.environ.get('PORT', port))
-    log_info(__name__, "Startup", f"Running app.run on port {port}", feature=__name__)
-    app.run(host="0.0.0.0", port=port, debug=True)
-
-# Note: Do NOT use app.run() here. Use Gunicorn to run this app in production. 
+    app.run(host='0.0.0.0', port=5000, debug=False) 

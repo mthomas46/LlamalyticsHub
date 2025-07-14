@@ -15,6 +15,7 @@ import tempfile
 import hashlib
 import asyncio
 import traceback
+from typing import Optional
 
 # Third-party imports
 from github import Github
@@ -53,6 +54,11 @@ from github_audit import (
 from reports.report_manager import preview_report
 
 console = Console()
+
+# Global caches for GitHub data
+repo_cache = []
+branch_cache = {}
+pr_cache = {}
 
 # Set up Loguru logging
 # Remove all previous handlers to avoid logging to stdout/stderr
@@ -201,221 +207,169 @@ class APIUploadModel(BaseModel):
         return v
 
 def collect_log_view_args() -> dict:
-    """Collect and validate log view arguments interactively using Marshmallow schema."""
-    log_file = os.environ.get('OLLAMA_LOG_FILE', 'ollama_server.log')
-    while True:
-        file_input = questionary.text(f"Log file to view (default: {log_file}):", default=log_file).ask()
-        lines = questionary.text("Number of lines to show (default: 50):", default="50").ask()
-        filter_str = questionary.text("Filter string (leave blank for none):").ask()
-        args_dict = {
-            'log_file': file_input,
-            'lines': int(lines) if lines.isdigit() else 50,
-            'filter': filter_str
-        }
-        try:
-            validated = LogViewModel(**args_dict)
-            return validated.dict()
-        except ValidationError as ve:
-            console.print(f"[red]Input error: {ve.errors()}[/red]")
-            continue
+    """Collect arguments for log viewing."""
+    log_file = questionary.text("Log file path:", default="ollama_server.log").ask()
+    lines = questionary.text("Number of lines to show:", default="50").ask()
+    filter_text = questionary.text("Filter text (optional):").ask()
+    return {
+        'log_file': log_file,
+        'lines': int(lines) if lines.isdigit() else 50,
+        'filter': filter_text if filter_text else None
+    }
 
 def collect_server_params(params: dict) -> dict:
-    """Collect and validate server parameters interactively using Marshmallow schema."""
-    while True:
-        host = questionary.text(f"host [{params['host']}]:", default=str(params['host'])).ask()
-        port = questionary.text(f"port [{params['port']}]:", default=str(params['port'])).ask()
-        model = questionary.text(f"model [{params['model']}]:", default=str(params['model'])).ask()
-        args_dict = {
-            'host': host,
-            'port': int(port) if port.isdigit() else 0,
-            'model': model
-        }
-        try:
-            validated = ServerParamsModel(**args_dict)
-            return validated.dict()
-        except ValidationError as ve:
-            console.print(f"[red]Input error: {ve.errors()}[/red]")
-            continue
+    """Collect server parameters interactively."""
+    host = questionary.text("Host:", default=params.get('host', 'localhost')).ask()
+    port = questionary.text("Port:", default=str(params.get('port', 8000))).ask()
+    model = questionary.text("Model:", default=params.get('model', 'codellama:7b')).ask()
+    return {
+        'host': host,
+        'port': int(port) if port.isdigit() else 8000,
+        'model': model
+    }
 
 def set_parameters(params: dict) -> dict:
-    """Set and validate run parameters using a modular, schema-based workflow."""
-    validated = collect_server_params(params)
-    console.print("[green]Parameters updated.[/green]")
-    return validated
+    """Set server parameters."""
+    return collect_server_params(params)
 
 def collect_endpoint_test_args(base_url: str, endpoint_choices: list) -> dict:
-    """Collect and validate endpoint test arguments interactively using Marshmallow schema."""
-    while True:
-        endpoint = questionary.select(
-            "Select an endpoint to test:",
-            choices=endpoint_choices + ['Back']
-        ).ask()
-        if endpoint == 'Back': return None
-        method = questionary.select(
-            "HTTP method:",
-            choices=["GET", "POST", "Back"]
-        ).ask()
-        if method == 'Back': return None
-        payload = questionary.text("Payload (JSON string, leave blank for none):").ask() if method == "POST" else None
-        headers = {}
-        if questionary.confirm("Add custom headers?").ask():
-            while True:
-                key = questionary.text("Header key (leave blank to finish):").ask()
-                if not key.strip():
-                    break
-                value = questionary.text(f"Value for {key}:").ask()
-                headers[key] = value
-        args_dict = {
-            'endpoint': endpoint,
-            'method': method,
-            'payload': payload,
-            'headers': headers
-        }
-        try:
-            validated = EndpointTestModel(**args_dict)
-            return validated.dict()
-        except ValidationError as ve:
-            console.print(f"[red]Input error: {ve.errors()}[/red]")
-            continue
+    """Collect arguments for endpoint testing."""
+    endpoint = questionary.select(
+        "Select endpoint to test:",
+        choices=endpoint_choices
+    ).ask()
+    method = questionary.select(
+        "HTTP method:",
+        choices=["GET", "POST"]
+    ).ask()
+    payload = None
+    if method == "POST":
+        payload = questionary.text("JSON payload (optional):").ask()
+    headers = {}
+    add_headers = questionary.confirm("Add custom headers?").ask()
+    if add_headers:
+        while True:
+            key = questionary.text("Header key (or 'done' to finish):").ask()
+            if key.lower() == 'done':
+                break
+            value = questionary.text(f"Header value for {key}:").ask()
+            headers[key] = value
+    return {
+        'endpoint': endpoint,
+        'method': method,
+        'payload': payload,
+        'headers': headers
+    }
 
 def collect_example_run_args() -> dict:
-    """Collect and validate example script run arguments using Marshmallow schema."""
-    while True:
-        script = questionary.text("Script to run (default: example.py):", default="example.py").ask()
-        args = questionary.text("Arguments to pass (leave blank for none):").ask()
-        args_dict = {'script': script, 'args': args}
-        try:
-            validated = ExampleRunModel(**args_dict)
-            return validated.dict()
-        except ValidationError as ve:
-            console.print(f"[red]Input error: {ve.errors()}[/red]")
-            continue
+    """Collect arguments for running example scripts."""
+    script = questionary.text("Script to run (e.g., example.py):").ask()
+    args = questionary.text("Arguments (optional):").ask()
+    return {
+        'script': script,
+        'args': args if args else None
+    }
 
 def run_example() -> None:
-    """Run an example script using modular, schema-based workflow."""
-    print_banner()
-    example_args = collect_example_run_args()
-    script = example_args['script']
-    script_args = example_args['args']
-    spinner(f"Running {script}...")
+    """Run an example script."""
+    args = collect_example_run_args()
+    if not args['script']:
+        console.print("[red]No script specified.[/red]")
+        return
     try:
-        cmd = [sys.executable, script]
-        if script_args:
-            cmd += script_args.split()
+        import subprocess
+        cmd = [sys.executable, args['script']]
+        if args['args']:
+            cmd.extend(args['args'].split())
         result = subprocess.run(cmd, capture_output=True, text=True)
-        if result.stdout:
-            logger.info(f"Output from {script}:\n{result.stdout}")
-        if result.stderr:
-            logger.error(f"Error from {script}:\n{result.stderr}")
-        if not result.stdout and not result.stderr:
-            logger.warning(f"No output from {script}")
+        if result.returncode == 0:
+            console.print(f"[green]Script executed successfully:[/green]\n{result.stdout}")
+        else:
+            console.print(f"[red]Script failed:[/red]\n{result.stderr}")
     except Exception as e:
-        logger.exception(f"Error running {script}")
-        console.print_exception()
-
-server_process = None
+        console.print(f"[red]Error running script: {e}[/red]")
 
 def write_env_vars_for_server():
-    config = load_config()
-    github_token = os.environ.get('GITHUB_TOKEN') or config.get('github', {}).get('token', '')
-    api_key = os.environ.get('OLLAMA_API_KEY') or config.get('api', {}).get('key', '')
-    log_file = os.environ.get('OLLAMA_LOG_FILE') or config.get('logging', {}).get('log_file', 'ollama_server.log')
-    with open('.env', 'a+') as f:
-        f.seek(0)
-        lines = f.readlines()
-        env_dict = {line.split('=')[0]: line.split('=')[1].strip() for line in lines if '=' in line}
-        def set_or_update(key, value):
-            if key in env_dict:
-                for i, line in enumerate(lines):
-                    if line.startswith(f'{key}='):
-                        lines[i] = f'{key}={value}\n'
-                        break
-            else:
-                lines.append(f'{key}={value}\n')
-        set_or_update('GITHUB_TOKEN', github_token)
-        set_or_update('OLLAMA_API_KEY', api_key)
-        set_or_update('OLLAMA_LOG_FILE', log_file)
-        f.seek(0)
-        f.truncate()
-        f.writelines(lines)
+    """Write environment variables for the server."""
+    env_vars = {
+        'OLLAMA_HOST': 'http://localhost:11434',
+        'OLLAMA_MODEL': 'codellama:7b',
+        'GITHUB_TOKEN': os.environ.get('GITHUB_TOKEN', ''),
+        'LOG_LEVEL': 'INFO',
+        'MAX_WORKERS': '8',
+        'CACHE_DIR': '.cache',
+        'REPORTS_DIR': 'reports'
+    }
+    
+    def set_or_update(key, value):
+        if key in os.environ:
+            env_vars[key] = os.environ[key]
+        else:
+            env_vars[key] = value
+    
+    set_or_update('OLLAMA_HOST', 'http://localhost:11434')
+    set_or_update('OLLAMA_MODEL', 'codellama:7b')
+    set_or_update('GITHUB_TOKEN', '')
+    set_or_update('LOG_LEVEL', 'INFO')
+    set_or_update('MAX_WORKERS', '8')
+    set_or_update('CACHE_DIR', '.cache')
+    set_or_update('REPORTS_DIR', 'reports')
+    
+    with open('.env', 'w') as f:
+        for key, value in env_vars.items():
+            f.write(f'{key}={value}\n')
+    console.print("[green]Environment variables written to .env[/green]")
 
 def start_server():
-    global server_process
-    print_banner()
-    write_env_vars_for_server()
-    # Check if server is already running
-    import requests
-    config = load_config()
-    port = config.get('server', {}).get('port', 5000)
-    base_url = f"http://localhost:{port}"
+    """Start the FastAPI server."""
     try:
-        r = requests.get(f"{base_url}/health", timeout=2)
-        if r.status_code == 200:
-            console.print(f"[green]Server is already running at {base_url}[/green]")
-            return
-    except Exception:
-        pass  # Not running, proceed to start
-    mode = questionary.select(
-        "Choose server mode:",
-        choices=[
-            "Production (Gunicorn)",
-            "Development (Flask app.run)"
-        ]).ask()
-    try:
-        if mode == "Production (Gunicorn)":
-            console.print("[cyan]Starting server with Gunicorn in the background...[/cyan]")
-            server_process = subprocess.Popen([
-                "gunicorn", "-w", "2", "--threads", "4", "-b", "0.0.0.0:5000", "http_api:app"
-            ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        else:
-            console.print("[cyan]Starting development server with Flask (app.run) in the background...[/cyan]")
-            server_process = subprocess.Popen([sys.executable, "http_api.py"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        console.print("[green]Server started in the background. You can continue using the CLI.[/green]")
-    except FileNotFoundError:
-        console.print("[red]Gunicorn is not installed. Please run: pip install gunicorn[/red]")
-    except KeyboardInterrupt:
-        console.print("\n[green]Server stopped. Returning to main menu.[/green]")
+        write_env_vars_for_server()
+        import subprocess
+        import sys
+        cmd = [sys.executable, '-m', 'uvicorn', 'fastapi_app:app', '--host', '0.0.0.0', '--port', '8000', '--reload']
+        console.print("[green]Starting FastAPI server...[/green]")
+        console.print(f"[cyan]Command: {' '.join(cmd)}[/cyan]")
+        subprocess.run(cmd)
+    except Exception as e:
+        console.print(f"[red]Error starting server: {e}[/red]")
 
 def show_server_status(params):
-    import time
-    base_url = f"http://localhost:{params['port']}"
-    max_retries = 5
-    for attempt in range(1, max_retries + 1):
-        try:
-            r = requests.get(f"{base_url}/health", timeout=2)
-            if r.status_code == 200:
-                console.print(f"[green]Server is running at {base_url}[/green]")
-                return
-        except Exception as e:
-            if attempt == 1:
-                console.print(f"[yellow]Waiting for server to start...[/yellow]")
-            time.sleep(1)
-    console.print(f"[red]Server is NOT running at {base_url} after {max_retries} attempts.[/red]")
+    """Show server status."""
+    try:
+        import requests
+        response = requests.get('http://localhost:8000/health', timeout=5)
+        if response.status_code == 200:
+            console.print("[green]Server is running[/green]")
+            console.print(f"[cyan]Health check response: {response.json()}[/cyan]")
+        else:
+            console.print(f"[yellow]Server responded with status {response.status_code}[/yellow]")
+    except requests.exceptions.ConnectionError:
+        console.print("[red]Server is not running[/red]")
+    except Exception as e:
+        console.print(f"[red]Error checking server status: {e}[/red]")
 
 def print_help():
-    console.print(Panel("""
-[bold cyan]Ollama Code Llama CLI Help[/bold cyan]
-
-- [bold]Start server[/bold]: Launches the API server using Gunicorn with recommended settings.
-- [bold]Set run parameters[/bold]: Change host, model, or port for your session.
-- [bold]Test endpoints[/bold]: Interactively test all API endpoints.
-- [bold]Run example.py[/bold]: Run the included example script.
-- [bold]View config.yaml[/bold]: Show the current configuration file.
-- [bold]View recent logs[/bold]: Show recent logs from this session.
-- [bold]Help[/bold]: Show this help message.
-- [bold]Exit[/bold]: Quit the CLI.
-
-[bold]Shortcuts:[/bold]
-- You can also run the server with [green]./run_server.sh[/green] or [green]make run-server[/green] if you prefer.
-""", style="bold blue"))
-
-repo_cache = []
-branch_cache = {}
-pr_cache = {}
-
-CACHE_DIR = '.cache'
-if not os.path.exists(CACHE_DIR):
-    os.makedirs(CACHE_DIR)
+    """Print help information."""
+    help_text = """
+    Ollama Code Llama CLI - Help
+    
+    Available commands:
+    - audit: Analyze GitHub repositories
+    - server: Manage FastAPI server
+    - reports: View generated reports
+    - config: Manage configuration
+    - logs: View application logs
+    - help: Show this help
+    
+    Examples:
+    - audit: Analyze a GitHub repository
+    - server start: Start the FastAPI server
+    - server status: Check server status
+    - reports list: List generated reports
+    - config show: Show current configuration
+    - logs view: View recent logs
+    """
+    console.print(Panel(help_text, title="Help", style="cyan"))
 
 def safe_github_call(callable_func, *args, retries=2, delay=2, **kwargs):
     """Safely call a GitHub API function with retries and error handling."""
@@ -445,14 +399,14 @@ def safe_llm_call(llm_func, *args, retries=1, delay=2, **kwargs):
 
 class CLIAuditArgsModel(BaseModel):
     repo: str
-    branch: str = None
-    pr: int = None
+    branch: Optional[str] = None
+    pr: Optional[int] = None
     token: str
-    output_dir: str = None
+    output_dir: Optional[str] = None
     scope: str = Field(..., pattern='^(all|changed|readme|test)$')
-    filter: str = Field(None, pattern='^(pattern|manual|none)?$')
-    pattern: str = None
-    editor: str = None
+    filter: Optional[str] = Field(None, pattern='^(pattern|manual|none)?$')
+    pattern: Optional[str] = None
+    editor: Optional[str] = None
     no_preview: bool = False
     save_readme: bool = False
     max_workers: int = 8
@@ -522,7 +476,7 @@ def collect_interactive_args() -> dict:
         }
         try:
             validated = CLIAuditArgsModel.validate_args(args_dict)
-            return validated.dict()
+            return validated.model_dump()
         except ValidationError as ve:
             console.print(f"[red]Input error: {ve.errors()}[/red]")
             continue
@@ -563,13 +517,14 @@ def run_async(coro):
 
 def generate_github_report(args=None):
     import time as _time
-    global repo_cache, branch_cache, pr_cache
+    global repo_cache
     try:
         config = load_config()
         if args:
             args_dict = vars(args)
             validated_args = CLIAuditArgsModel.validate_args(args_dict)
-            args = argparse.Namespace(**validated_args)
+            args = argparse.Namespace(**validated_args.model_dump())
+            output_dir = getattr(args, 'output_dir', None)
         else:
             output_dir = questionary.text("Output directory for reports and README? (default: reports)").ask()
         if not output_dir or not output_dir.strip():
@@ -824,8 +779,8 @@ def generate_github_report(args=None):
             if do_profile:
                 timings = [
                     ("Fetch repo data", t1-t0 if t0 and t1 else None),
-                    ("LLM analysis", t3-t2 if t2 and t3 else None),
-                    ("Test strategy/README", t4-t3 if t3 and t4 else None),
+                    ("LLM analysis", t4-t2 if t2 and t4 else None),
+                    ("Test strategy/README", t4-t2 if t2 and t4 else None),
                 ]
                 for label, t in timings:
                     if t is not None:
@@ -1071,7 +1026,7 @@ def collect_api_upload_args(output_dir: str) -> dict:
         }
         try:
             validated = APIUploadModel(**args_dict)
-            return validated.dict()
+            return validated.model_dump()
         except ValidationError as ve:
             console.print(f"[red]Input error: {ve.errors()}[/red]")
             continue

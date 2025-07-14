@@ -6,6 +6,7 @@ Handles efficient, type-safe, and rate-limited GitHub data access for code analy
 """
 
 import asyncio
+import time
 import httpx
 from pydantic import BaseModel, Field, ValidationError
 from typing import List, Optional, Dict, Any

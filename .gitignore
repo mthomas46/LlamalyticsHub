@@ -1,21 +1,79 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 
-# Virtual environment
+# Virtual environments
+.venv/
 venv/
+env/
+ENV/
 .env
 
-# VS Code settings
+# IDE/editor
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# MacOS
+# OS
 .DS_Store
+Thumbs.db
+ehthumbs.db
 
-# Environment-specific configuration
+# Test/coverage
+.cache/
+.pytest_cache/
+.hypothesis/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.dev.yml
+
+# Logs
+*.log
+*.log.*
+logs/
+app/logs/
+ollama_server.log
+ollama_server.log.*
+
+# Reports
+reports/
+app/reports/
+*.md.partial
+
+# Cache
+app/.cache/
+.cache/
+
+# Config/secrets
 config.yaml
 .env.example
 config.yaml.example
+.llamalyticshub.pid
 
-# Cache files
-.cache 
+# Application-specific
+Ollama7BPoc/
+ssl/
+
+# Test artifacts
+tests/ollama_server_test.log
+tests/*.log
+
+# Backup files
+*.bak
+
+# Ignore data volumes (if mapped locally)
+app_logs/
+app_reports/
+app_cache/ 

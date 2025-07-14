@@ -1,81 +1,98 @@
+"""
+Textual TUI main application for LlamalyticsHub.
+Provides a rich terminal user interface for the application.
+"""
+
 from textual.app import App, ComposeResult
-from textual.widgets import Button, Header, Footer, Static
 from textual.containers import Vertical
-import sys
-import importlib
-from loguru import logger
+from textual.widgets import Button
+import cli
 
-MODULE = "TEXTUAL_MAIN"
-def log_info(function, action, details, feature=None, file=None, prompt_hash=None):
-    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
-    logger.info(f"[{MODULE}] [{function}] [{action}] {context}{details}")
-def log_warning(function, action, details, feature=None, file=None, prompt_hash=None):
-    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
-    logger.warning(f"[{MODULE}] [{function}] [{action}] {context}{details}")
-def log_error(function, action, details, feature=None, file=None, prompt_hash=None):
-    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
-    logger.error(f"[{MODULE}] [{function}] [{action}] {context}{details}")
-def log_exception(function, action, details, feature=None, file=None, prompt_hash=None):
-    context = f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | " if feature or file or prompt_hash else ""
-    logger.exception(f"[{MODULE}] [{function}] [{action}] {context}{details}")
 
-# Import the original CLI submenus from cli.py
+def log_info(function, action, details, feature=None, file=None, 
+             prompt_hash=None):
+    """Log info messages with context."""
+    context = (
+        f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | "
+        if feature or file or prompt_hash else ""
+    )
+    print(f"[INFO] [{function}] [{action}] {context}{details}")
+
+
+def log_warning(function, action, details, feature=None, file=None, 
+                prompt_hash=None):
+    """Log warning messages with context."""
+    context = (
+        f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | "
+        if feature or file or prompt_hash else ""
+    )
+    print(f"[WARNING] [{function}] [{action}] {context}{details}")
+
+
+def log_error(function, action, details, feature=None, file=None, 
+              prompt_hash=None):
+    """Log error messages with context."""
+    context = (
+        f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | "
+        if feature or file or prompt_hash else ""
+    )
+    print(f"[ERROR] [{function}] [{action}] {context}{details}")
+
+
+def log_exception(function, action, details, feature=None, file=None, 
+                  prompt_hash=None):
+    """Log exception messages with context."""
+    context = (
+        f"Feature: {feature} | File: {file} | PromptHash: {prompt_hash} | "
+        if feature or file or prompt_hash else ""
+    )
+    print(f"[EXCEPTION] [{function}] [{action}] {context}{details}")
+
+
 def import_cli_functions():
-    cli = importlib.import_module('cli')
+    """Import CLI functions for use in the TUI."""
     return cli.server_menu, cli.reports_menu, cli.config_menu, cli.logs_help_menu
 
+
 class MainMenu(Vertical):
+    """Main menu container for the TUI."""
+
     def compose(self) -> ComposeResult:
-        yield Static("Ollama Code Llama CLI", classes="banner")
-        yield Button("🖥️  Server", id="server")
-        yield Button("📄  Reports & Audits", id="reports")
-        yield Button("⚙️  Configuration", id="config")
-        yield Button("📝  Logs & Help", id="logs")
-        yield Button("🚪  Exit", id="exit")
+        """Compose the main menu layout."""
+        yield Button("Server Management", id="server")
+        yield Button("Reports", id="reports")
+        yield Button("Configuration", id="config")
+        yield Button("Logs & Help", id="logs")
+        yield Button("Exit", id="exit")
+
 
 class OllamaApp(App):
-    CSS_PATH = None  # You can add a CSS file for styling if desired
+    """Main Textual application for Ollama Code Llama."""
 
-    def __init__(self, params):
+    CSS_PATH = "app.css"
+
+    def __init__(self):
         super().__init__()
-        self.params = params
         self.server_menu, self.reports_menu, self.config_menu, self.logs_help_menu = import_cli_functions()
 
     def compose(self) -> ComposeResult:
-        yield Header()
+        """Compose the application layout."""
         yield MainMenu()
-        yield Footer()
 
-    def on_button_pressed(self, event):
-        button_id = event.button.id
-        if button_id == "server":
-            self.exit("server")
-        elif button_id == "reports":
-            self.exit("reports")
-        elif button_id == "config":
-            self.exit("config")
-        elif button_id == "logs":
-            self.exit("logs")
-        elif button_id == "exit":
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Handle button press events."""
+        if event.button.id == "server":
+            self.server_menu({})
+        elif event.button.id == "reports":
+            self.reports_menu({})
+        elif event.button.id == "config":
+            self.config_menu()
+        elif event.button.id == "logs":
+            self.logs_help_menu()
+        elif event.button.id == "exit":
             self.exit()
 
+
 if __name__ == "__main__":
-    # Load params as in cli.py
-    import cli
-    config = cli.load_config()
-    params = {
-        'host': config.get('ollama', {}).get('host', 'http://localhost:11434'),
-        'model': config.get('ollama', {}).get('model', 'codellama:7b'),
-        'port': config.get('server', {}).get('port', 5000),
-    }
-    app = OllamaApp(params)
-    result = app.run()
-    # After exiting the TUI, call the appropriate submenu
-    if result == "server":
-        cli.server_menu(params)
-    elif result == "reports":
-        cli.reports_menu(params)
-    elif result == "config":
-        cli.config_menu()
-    elif result == "logs":
-        cli.logs_help_menu() 
+    app = OllamaApp()
+    app.run() 

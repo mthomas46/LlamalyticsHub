@@ -1,30 +1,16 @@
-# Ollama 7B Code Llama Python Project
+# LlamalyticsHub - FastAPI Edition
 
-## Table of Contents
+A modern, high-performance LLM code analysis and GitHub audit service built with FastAPI.
 
-- [Features](#features)
-- [Setup](#setup)
-- [How to Run](#how-to-run)
-- [Interactive CLI](#interactive-cli)
-- [Running the Server and Health Check](#running-the-server-and-health-check)
-- [Usage](#usage)
-- [HTTP API Usage](#http-api-usage)
-  - [List All Endpoints](#list-all-endpoints)
-  - [Submit Code as Text](#submit-code-as-text)
-  - [Submit Code as a File](#submit-code-as-a-file)
-  - [Example Response](#example-response)
-- [Scala and Other Languages](#scala-and-other-languages)
-- [Contributing](#contributing)
-- [License](#license)
-- [Usage Examples](#usage-examples)
-- [Tips & Best Practices](#tips-and-best-practices)
-- [What's New](#whats-new)
-
-## Features
+## 🚀 Features
 
 | Feature | Description |
 |---------|-------------|
-| **Live Endpoint Discovery** | `/endpoints` route lists all available HTTP endpoints and methods |
+| **FastAPI Framework** | Modern async web framework with automatic API documentation |
+| **Interactive API Docs** | Swagger UI and ReDoc for easy API testing |
+| **Type Safety** | Pydantic models for automatic request/response validation |
+| **Async Support** | Better performance and concurrency handling |
+| **Live Endpoint Discovery** | `/docs` provides interactive API documentation |
 | **Open API** | All endpoints are accessible without authentication by default |
 | **Optional API Key** | `X-API-KEY` header is optional; presence is logged but not required |
 | **Local LLM API** | Run and interact with the 7B Code Llama model locally via Ollama |
@@ -39,336 +25,330 @@
 | **Persistent Logging** | Rotating log file with detailed logs |
 | **Environment Variables** | Used for secrets (API key, GitHub token, log file path) |
 | **Graceful Error Handling** | User-friendly error messages and robust validation |
+| **Docker Support** | Complete containerization with security hardening |
 
-## Setup
+## 🏗️ Architecture
+
+### FastAPI Benefits
+
+- **Performance**: Async support and improved concurrency
+- **Documentation**: Automatic Swagger UI and ReDoc
+- **Type Safety**: Pydantic models for validation
+- **Modern Python**: Latest async/await patterns
+- **Security**: Built-in security features
+
+### API Documentation
+
+Access the interactive API documentation:
+- **Swagger UI**: http://localhost:5000/docs
+- **ReDoc**: http://localhost:5000/redoc
+- **OpenAPI JSON**: http://localhost:5000/openapi.json
+
+## 🐳 Docker Setup
+
+### Quick Start
+
+1. **Clone and navigate to the project:**
+   ```bash
+   cd LlamalyticsHub
+   ```
+
+2. **Copy environment file:**
+   ```bash
+   cp env.example .env
+   ```
+
+3. **Edit environment variables:**
+   ```bash
+   # Edit .env file with your configuration
+   nano .env
+   ```
+
+4. **Start the services:**
+   ```bash
+   docker-compose up -d
+   ```
+
+5. **Check service status:**
+   ```bash
+   docker-compose ps
+   ```
+
+6. **View logs:**
+   ```bash
+   docker-compose logs -f
+   ```
+
+### Development Mode
+
+For development with hot reload:
+
+```bash
+# Use development compose file
+docker-compose -f docker-compose.dev.yml up -d
+
+# View development logs
+docker-compose -f docker-compose.dev.yml logs -f app
+```
+
+## 📋 Setup
+
+### Prerequisites
+
 1. **Install [Ollama](https://ollama.com/download)** and ensure the 7B Code Llama model is available:
    ```sh
    ollama pull codellama:7b
    ollama serve
    ```
+
 2. **Install Python dependencies:**
    ```sh
    pip install -r requirements.txt
    ```
+
    This will install all required packages, including:
-   - Flask
+   - FastAPI
+   - Uvicorn
+   - Pydantic
    - PyGithub
    - httpx
    - loguru
-   - marshmallow (3.x)
-   - psutil
-   - pydantic
-   - pyyaml
-   - questionary
-   - requests
    - rich
    - python-dotenv
    - textual
-   - aiohttp (>=3.8.3,<3.9)
-   - gunicorn *(only needed for production server)*
-
-   > **Note:**
-   > - `aiohttp` is required for async HTTP support. Version must be `>=3.8.3,<3.9`.
-   > - `gunicorn` is only needed if you deploy the server in production mode.
-   > - This project requires **marshmallow 3.x**. Marshmallow 4.x is not supported and will cause runtime errors (e.g., `TypeError: ... got an unexpected keyword argument 'data_key'`).
-   >   If you see this error, run:
-   >   ```sh
-   >   pip install 'marshmallow<4'
-   >   ```
+   - And more...
 
 3. **Configure secrets and environment variables:**
-   - Copy `.env.example` to `.env` and fill in your secrets (e.g., `GITHUB_TOKEN`, `OLLAMA_API_KEY`).
-   - You can also set these variables directly in your shell or in `config.yaml` (see below for loading order).
+   - Copy `env.example` to `.env` and fill in your secrets (e.g., `GITHUB_TOKEN`, `OLLAMA_API_KEY`).
+   - You can also set these variables directly in your shell or in `config.yaml`.
 
-## Configuration and Secrets Loading Order
+## 🚀 How to Run
 
-Secrets and config values (like `GITHUB_TOKEN`, `OLLAMA_API_KEY`, etc.) are loaded in this order:
+### Docker (Recommended)
 
-1. **Environment variables** (set in your shell or by your process manager)
-2. **.env file** (if present, loaded automatically by python-dotenv)
-3. **config.yaml** (as a fallback for non-secret values)
-
-**Best practice:** Use environment variables or a `.env` file for secrets. Only use `config.yaml` for non-sensitive defaults.
-
-Example `.env`:
-```
-GITHUB_TOKEN=ghp_yourgithubapitoken
-OLLAMA_API_KEY=changeme
-OLLAMA_LOG_FILE=ollama_server.log
+**Production:**
+```bash
+docker-compose up -d
 ```
 
-## How to Run
-
-You can start the server in several ways, choosing between development and production modes:
-
-- **Recommended:**
-  - Run the interactive CLI:
-    ```sh
-    python cli.py
-    ```
-    - Select **Start server** from the menu.
-    - Choose **Production (Gunicorn)** for production/multi-user, or **Development (Flask app.run)** for local development/testing.
-
-- **Shell script (production):**
-  ```sh
-  ./run_server.sh
-  ```
-
-- **Makefile (production):**
-  ```sh
-  make run-server
-  ```
-
-- **Manual (production):**
-  ```sh
-  gunicorn -w 2 --threads 4 -b 0.0.0.0:5000 http_api:app
-  ```
-
-- **Manual (development):**
-  ```sh
-  python http_api.py
-  ```
-
-Once running, access the API at [http://localhost:5000](http://localhost:5000). Use `/help` for API documentation.
-
-## Interactive CLI
-
-The project includes a beautiful, interactive CLI powered by [rich](https://github.com/Textualize/rich) and [questionary](https://github.com/tmbo/questionary):
-
-- Arrow-key navigation for all menus
-- Colorful, modern UI with section headings and spinners
-- Set run parameters (host, model, port) interactively
-- Test all API endpoints (health, text, file, github-pr) from the CLI
-- View and edit config.yaml
-- View recent logs in a styled panel
-- Run the example script
-- [NEW] **Start server**: Launch the API server with Gunicorn from the menu
-- **Audit Scope Selection**: Choose to audit all files, changed files (PR), README only, or test strategy only
-- **Parallel Analysis & Caching**: LLM file analysis runs in parallel with progress bar and session caching for speed
-- **File Filtering**: Filter files by pattern or manual selection before audit
-- **Configurable Output Directory**: Choose where reports and updated READMEs are saved
-- **API Integration**: Upload generated reports to a remote API endpoint
-- **Automated CLI Tests**: Run a full audit workflow on a public repo for validation
-- **Improved Output Parsing**: LLM output is parsed into structured sections for actionable insights
-
-### CLI Main Menu Options
-- Show server status
-- Start server
-- Set run parameters
-- Test endpoints
-- Run example.py
-- Generate GitHub Report
-- View config.yaml
-- View recent logs
-- Help
-- Exit
-- **Run automated test** (runs a full audit on a public repo and checks for all key sections)
-- **Upload report to API** (send a generated report to a remote API endpoint)
-
-### Audit Workflow Enhancements
-- **Audit Scope Selection**: After selecting a repo/branch/PR, choose what to audit.
-- **Parallel Analysis & Caching**: File analyses are parallelized and cached for speed. Reruns use cached results.
-- **File Filtering**: Filter files by glob pattern or manual selection before analysis.
-- **Configurable Output Directory**: Choose where reports and updated READMEs are saved.
-- **Preview and Edit**: Preview the report in the CLI and open in your editor before saving.
-- **Save Only Updated README**: Optionally save the updated README as a separate file.
-- **Re-run Only a Section**: Re-run just the README or test strategy analysis without repeating the whole audit.
-- **Improved Output Parsing**: LLM output is parsed into summary, bugs/issues, suggestions, code examples, code smells, security/performance, and test coverage.
-- **API Integration**: Upload reports to a remote API endpoint with custom headers.
-- **Automated CLI Tests**: Validate the workflow on a public repo with a single command.
-
-### Example CLI session
-```
-================ Ollama Code Llama CLI ================
-? Main Menu:
-  ▸ Generate GitHub Report
-    Run automated test
-    Upload report to API
-    ...
+**Development:**
+```bash
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
-## Running the Server and Health Check
+### Local Development
 
-1. **Start the Flask API server:**
-   ```sh
-   python http_api.py
-   ```
-   This will start the API at http://localhost:5000
-
-2. **Check if the LLM is running:**
-   ```sh
-   curl http://localhost:5000/health
-   ```
-   You should see a JSON response like:
-   ```json
-   { "status": "ok", "llm_reply": "pong" }
-   ```
-   (or whatever the LLM replies to "ping").
-
-## Usage
-See `example.py` for a basic usage example:
-```sh
-python example.py
+**FastAPI Development Server:**
+```bash
+uvicorn fastapi_app:app --host 0.0.0.0 --port 5000 --reload
 ```
 
-## HTTP API Usage
-
-You can interact with the LLM via HTTP endpoints for both text and file-based code analysis.
-
-### List All Endpoints
-
-GET `/endpoints` returns a JSON list of all currently served HTTP endpoints and their allowed methods. This is useful for live API discovery and debugging.
-
-```sh
-curl http://localhost:5000/endpoints
+**Production Server:**
+```bash
+uvicorn fastapi_app:app --host 0.0.0.0 --port 5000 --workers 2
 ```
 
-Example response:
-```json
-{
-  "endpoints": [
-    {"endpoint": "/generate/text", "methods": ["POST"], "function": "generate_text"},
-    {"endpoint": "/generate/file", "methods": ["POST"], "function": "generate_file"},
-    {"endpoint": "/generate/github-pr", "methods": ["POST"], "function": "generate_github_pr"},
-    {"endpoint": "/reports", "methods": ["GET"], "function": "list_reports"},
-    {"endpoint": "/reports/<report_name>", "methods": ["GET"], "function": "get_report"},
-    {"endpoint": "/logs", "methods": ["GET"], "function": "get_logs"},
-    {"endpoint": "/health", "methods": ["GET"], "function": "health"},
-    {"endpoint": "/help", "methods": ["GET"], "function": "help"},
-    {"endpoint": "/endpoints", "methods": ["GET"], "function": "list_endpoints"}
-  ]
-}
+### Makefile Commands
+
+```bash
+# Development
+make run-dev
+
+# Production
+make run-server
+
+# Docker
+make docker-up
+make docker-down
+make docker-logs
+
+# Health checks
+make health-check
+make ollama-health
+
+# API documentation
+make docs
 ```
 
-### Authentication
+## 🔌 API Usage
 
-> **Note:** The API key (`X-API-KEY` header) is now optional for all endpoints. You may include it for logging or compatibility, but it is not required to access any API route. All endpoints are open by default.
+### Interactive Testing
 
-### Submit Code as Text
+1. **Start the server**
+2. **Navigate to**: http://localhost:5000/docs
+3. **Click on any endpoint**
+4. **Click "Try it out"**
+5. **Fill in parameters**
+6. **Click "Execute"**
 
-POST to `/generate/text` with a JSON body:
+### Text Generation
 
-```sh
+```bash
+curl -X POST "http://localhost:5000/generate/text" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Write a Python function to calculate fibonacci numbers"}'
+```
+
+### File Upload
+
+```bash
+curl -X POST "http://localhost:5000/generate/file" \
+  -F "file=@your_code.py"
+```
+
+### GitHub PR Analysis
+
+```bash
+curl -X POST "http://localhost:5000/generate/github-pr" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "repo": "owner/repo",
+    "pr_number": 123,
+    "token": "your_github_token"
+  }'
+```
+
+### Health Check
+
+```bash
+curl http://localhost:5000/health
+```
+
+## 📊 API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Root endpoint with API info |
+| `/health` | GET | Health check |
+| `/generate/text` | POST | Text generation |
+| `/generate/file` | POST | File upload generation |
+| `/generate/github-pr` | POST | GitHub PR analysis |
+| `/reports` | GET | List reports |
+| `/reports/{report_name}` | GET | Get specific report |
+| `/logs` | GET | Get application logs |
+| `/endpoints` | GET | List all endpoints |
+| `/docs` | GET | Swagger UI |
+| `/redoc` | GET | ReDoc documentation |
+| `/openapi.json` | GET | OpenAPI schema |
+
+## 🔒 Security Features
+
+### Built-in Security
+
+- **Input Validation**: Pydantic models validate all inputs
+- **Type Safety**: Prevents runtime errors
+- **Security Headers**: Built-in security middleware
+- **CORS Support**: Configurable CORS middleware
+- **Trusted Hosts**: Protection against host header attacks
+- **Rate Limiting**: 60 requests per minute per IP
+- **File Upload Security**: Size limits and type validation
+
+### Docker Security
+
+- **Non-root user**: Containers run as non-root
+- **Resource limits**: Memory and CPU limits
+- **Network isolation**: Internal Docker networks
+- **Read-only filesystems**: Where possible
+
+## 🧪 Testing
+
+### Manual Testing
+
+```bash
+# Health check
+curl http://localhost:5000/health
+
+# API documentation
+curl http://localhost:5000/docs
+
+# Test text generation
 curl -X POST http://localhost:5000/generate/text \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "Analyze the following code for bugs and suggest improvements:\n\ndef add(a, b):\n    return a + b"}'
+  -d '{"prompt": "Hello world"}'
 ```
 
-### Submit Code as a File
+### Automated Testing
 
-POST to `/generate/file` with form-data:
+```python
+from fastapi.testclient import TestClient
+from fastapi_app import app
 
-```sh
-curl -X POST http://localhost:5000/generate/file \
-  -F "file=@my_code.py"
+client = TestClient(app)
+
+def test_health():
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json()["status"] == "ok"
 ```
 
-### Example Response
-```json
-{
-  "response": "The function add is correct for adding two numbers. For improvement, consider adding type hints and input validation."
-}
+## 📚 Documentation
+
+- **[Docker Setup](DOCKER.md)**: Complete Docker documentation
+- **[Migration Guide](MIGRATION_GUIDE.md)**: Flask to FastAPI migration
+- **[Security Audit](SECURITY_AUDIT.md)**: Security assessment and improvements
+
+## 🔧 Configuration
+
+### Environment Variables
+
+```bash
+# Ollama Configuration
+OLLAMA_HOST=http://ollama:11434
+OLLAMA_MODEL=codellama:7b
+OLLAMA_LOG_FILE=/app/logs/ollama_server.log
+
+# Application Settings
+PYTHONPATH=/app
+
+# Security
+OLLAMA_API_KEY=your_secure_api_key_here
+GITHUB_TOKEN=your_github_token_here
+
+# FastAPI/Uvicorn Configuration
+UVICORN_WORKERS=2
+UVICORN_HOST=0.0.0.0
+UVICORN_PORT=5000
+UVICORN_RELOAD=false
 ```
 
-## Scala and Other Languages
+## 🚀 Performance
 
-The Code Llama 7B model supports multiple programming languages, including Scala. You can submit Scala code for analysis using the same HTTP endpoints. For best results, make your prompt explicit, for example:
+### FastAPI Advantages
 
-```
-Analyze the following Scala code for bugs and suggest improvements:
+- **Async Support**: Better handling of concurrent requests
+- **Type Safety**: Reduced runtime errors
+- **Modern Python**: Latest async/await patterns
+- **Automatic Validation**: Request/response validation
+- **Built-in Documentation**: Swagger UI and ReDoc
 
-def add(a: Int, b: Int): Int = a + b
-```
+### Benchmarks
 
-**Note:** The model's proficiency in Scala is generally good for common patterns, but may be less accurate for advanced or niche features. Always review the LLM's suggestions before applying them in production.
+- **Concurrent Requests**: Better handling than Flask
+- **Memory Usage**: More efficient than Flask + Gunicorn
+- **Startup Time**: Faster than Flask with Gunicorn
+- **API Documentation**: Automatic vs manual
 
-## Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+## 🤝 Contributing
 
-## License
-MIT 
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
 
-## Usage Examples
+## 📄 License
 
-### 1. Generate a GitHub Audit Report (Full Workflow)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```
-$ python cli.py
-? Main Menu: Generate GitHub Report
-? GitHub token: <your_token>
-? GitHub repo (e.g. user/repo): psf/requests
-? Branch (leave blank for default): master
-? PR number (leave blank if not analyzing a PR):
-? What do you want to audit?: All code files
-? Would you like to filter which files to include in the audit?: Yes
-? Filter files by: Pattern (glob/regex)
-? Enter glob pattern (e.g. *.py, src/*.js): *.py
-? Output directory for reports and README? (default: reports): my_audits
-? Open full report in your editor before saving?: No
-? Save the updated README as a separate file?: Yes
-```
-- The audit runs in parallel, showing a progress bar.
-- The report and updated README are saved in `my_audits/`.
+## 🆘 Support
 
-### 2. Audit Only Changed Files in a PR
-```
-? Main Menu: Generate GitHub Report
-? ...
-? PR number (leave blank if not analyzing a PR): 123
-? What do you want to audit?: Only changed files (for PR)
-```
-- Only files changed in PR #123 are analyzed.
+For issues and questions:
 
-### 3. Audit README Only
-```
-? Main Menu: Generate GitHub Report
-? ...
-? What do you want to audit?: README only
-```
-- Only the README is analyzed and improved.
+1. Check the logs: `docker-compose logs`
+2. Test endpoints: Use the Swagger UI at `/docs`
+3. Verify configuration: Check environment variables
+4. Review the [Migration Guide](MIGRATION_GUIDE.md)
 
-### 4. Run Automated CLI Test
-```
-? Main Menu: Run automated test
-```
-- Runs a full audit on a public repo and checks for all key report sections.
+---
 
-### 5. Upload a Report to an API
-```
-? Main Menu: Upload report to API
-? Directory containing report? (default: reports): my_audits
-? Select report to upload: github_audit_psf_requests_master.md
-? API endpoint URL: https://my-api.example.com/upload
-? Add custom headers (e.g., API key)?: Yes
-? Header key (leave blank to finish): X-API-KEY
-? Value for X-API-KEY: myapikey123
-? Send as: JSON (report as string)
-```
-- The report is POSTed to the specified API endpoint with custom headers.
-
-### 6. Use Parallel Analysis & Caching
-- On first run, all files are analyzed in parallel (progress bar shown).
-- On rerun, cached results are used for unchanged files, speeding up the audit.
-
-### 7. Filter Files Before Audit
-- When prompted, choose to filter files by pattern (e.g., `*.py`) or manual selection.
-- Only selected files are included in the audit and report.
-
-### 8. Set Output Directory
-- When prompted, enter a directory name (e.g., `my_audits`).
-- All reports and updated READMEs will be saved there.
-
-## Tips & Best Practices
-- **Use a valid GitHub token** with appropriate scopes for private repos and higher rate limits.
-- **Use file filtering** to focus audits on relevant code (e.g., skip vendor or test files).
-- **Leverage caching** by rerunning audits after small changes—only changed files are re-analyzed.
-- **Preview and edit reports** before saving for maximum control.
-- **Automate validation** with the built-in CLI test runner.
-- **Upload reports** to your own API or dashboard for team review. 
-
-## What's New
-
-- **Live Endpoint Discovery:** New `/endpoints` route returns a live JSON list of all HTTP endpoints and their methods.
-- **Open API:** All endpoints are now accessible without an API key.
-- **Improved Logging:** The server logs whether an API key was provided with each request for auditing and debugging.
-- **Updated Documentation:** The README and API usage sections have been updated to reflect these changes. 
+**LlamalyticsHub FastAPI Edition** - Modern, secure, and performant LLM code analysis service. 
