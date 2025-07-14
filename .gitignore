@@ -57,6 +57,7 @@ app/.cache/
 .cache/
 
 # Config/secrets
+config.yaml
 .env.example
 config.yaml.example
 .llamalyticshub.pid
