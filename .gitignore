@@ -76,3 +76,4 @@ tests/*.log
 app_logs/
 app_reports/
 app_cache/ 
+config.yaml
